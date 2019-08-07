@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> #include </title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td.doc {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:20px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>					
+						
+<h1> #include </h1>	
+<p class="desc">								
+Imports a local file, which is then inserted into the location where the #include directive is defined <br>
+The file is included as is (as a text file, not rendered through the template engine) <br>
+The files to be included must be located in the Telosys Templates directory <br>
+<br>
+<b>Examples : </b><br>
+<br>
+
+Include a single file :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #include("header.include") <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; #include("myfile.txt") <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; #include("include/myfile.txt") <br>
+</code>
+<br>
+<br>
+
+Include multiple files :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #include("header.include" "myfile.txt") <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; #include("header.include", "myfile.txt") <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; ## The 2 files are concatenated and inserted<br>
+</code>
+<br>
+<br>
+
+Include with variables :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #include($file1) <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; #include("header.include", $file2) <br>
+</code>
+<br>
+<br>
+
+
+</p>		
+<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> #if </title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 6px;		
+		padding-left: 4px;			
+		padding-right: 4px;			
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:14px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>					
+						
+<h1> #if </h1>	
+<p class="desc">								
+Conditional output<br>
+<br>
+<b>Examples : </b><br>
+<br>
+if / end :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #if ( $v == 1 ) equals 1 #end <br>
+<br>
+&nbsp;&nbsp;&nbsp; #if ( $v == 1 ) <br>
+&nbsp;&nbsp;&nbsp;  equals 1 <br>
+&nbsp;&nbsp;&nbsp; #end <br>
+<br>
+</code>
+if / else / end  :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #if ( $v == 1 ) equals 1 #else not equals 1 #end <br>
+<br>
+&nbsp;&nbsp;&nbsp; #if ( $v == 1 ) <br>
+&nbsp;&nbsp;&nbsp;  equals 1 <br>
+&nbsp;&nbsp;&nbsp; #else <br>
+&nbsp;&nbsp;&nbsp;  not equals 1 <br>
+&nbsp;&nbsp;&nbsp; #end <br>
+<br>
+</code>
+if / elseif / else / end :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #if ( $v == 1 ) <br>
+&nbsp;&nbsp;&nbsp;  equals 1 <br>
+&nbsp;&nbsp;&nbsp; #elseif ( $v == 2 )  <br>
+&nbsp;&nbsp;&nbsp;  equals 2 <br>
+&nbsp;&nbsp;&nbsp; #else  <br>
+&nbsp;&nbsp;&nbsp;  other <br>
+&nbsp;&nbsp;&nbsp; #end <br>
+<br>
+</code>
+
+</p>
+
+<table border="1">
+
+<tr class="title"><td>Operator Name</td>
+<td>Symbol</td>
+<td>Text Symbol</td>
+<td>Example</td>
+</tr>
+
+<tr ><td>Equals Number</td>
+<td>==</td>
+<td>eq</td>
+<td> #if( $foo == 42 )</td>
+</tr>
+
+<tr ><td>Equals String</td>
+<td>==</td>
+<td>eq</td>
+<td> #if( $foo == "bar" )</td>
+</tr>
+
+<tr ><td>Object Equivalence</td>
+<td>==</td>
+<td>eq</td>
+<td> #if( $foo == $bar )</td>
+</tr>
+
+<tr ><td>Not Equals</td>
+<td>!=</td>
+<td>ne</td>
+<td> #if( $foo != $bar )</td>
+</tr>
+
+<tr ><td>Greater Than</td>
+<td>&gt;</td>
+<td>gt</td>
+<td> #if( $foo &gt; 42 )</td>
+</tr>
+
+<tr ><td>Less Than</td>
+<td>&lt;</td>
+<td>lt</td>
+<td> #if( $foo &lt; 42 )</td>
+</tr>
+
+<tr ><td>Greater Than or Equal To</td>
+<td>&gt;=</td>
+<td>ge</td>
+<td> #if( $foo &gt;= 42 )</td>
+</tr>
+
+<tr ><td>Less Than or Equal To</td>
+<td>&lt;=</td>
+<td>le</td>
+<td> #if( $foo &lt;= 42 )</td>
+</tr>
+
+<tr ><td>Boolean NOT</td> <td>!</td> <td>not</td> <td> #if( !$foo )</td> </tr>
+
+<tr ><td>Logical AND</td> <td>&amp;&amp;</td> <td> and </td> <td> #if( $foo &amp;&amp; $bar ) </td> </tr>
+
+<tr ><td>Logical OR</td> <td>||</td> <td> or </td> <td> #if( $foo || $bar ) </td> </tr>
+
+</tbody>
+</table>
+<br>
+
+<b>NB : </b><br>
+<ul>
+<li>The "==" operator can be used to compare <b>numbers</b>, <b>strings</b>, <b>objects of the same class</b>, 
+or <b>objects of different classes</b>. <br>
+When objects of different classes are compared, the toString() method is called on each object
+and the resulting Strings are compared. <br></li>
+<br>
+<li>Brackets can be used to delimit directives (useful when text immediately follows an #else directive)<br>
+Example : <code>#if( $foo == $bar)it's true!#{else}it's not!#{end}</code></li>
+</ul>
+<br>
+<br>
+
+</body>
+</html>

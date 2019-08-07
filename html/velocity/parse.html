@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> #parse </title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td.doc {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:20px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>					
+						
+<h1> #parse </h1>	
+<p class="desc">								
+The #parse directive allows to import a local VTL file.<br>
+The file is parsed by the Velocity engine<br>
+Like the #include directive, #parse can take a variable rather than a literal file name,<br>
+Only one argument is accepted (only one file for each call, other arguments are ignored) <br>
+All the variables defined before the 'parse' call are usable in the 'parsed file'<br>
+<br>
+<b>Examples : </b><br>
+<br>
+
+The file 'initvariables.vm' (file to be parsed) :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #set ( $a = "AAA" ) <br>
+&nbsp;&nbsp;&nbsp; #set ( $n = 123 )   <br>
+&nbsp;&nbsp;&nbsp; Value of v1 = $v1  <br>
+</code>
+<br>
+Using the file 'initvariables.vm' with the 'parse' directive :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #set ( $v1 = "V1" ) ## Usable in "initvariables.vm" <br>
+&nbsp;&nbsp;&nbsp; #parse("initvariables.vm")<br>
+&nbsp;&nbsp;&nbsp; #set ( $v2 = "V2" ) ## Not usable in "initvariables.vm" (undefined)<br>
+&nbsp;&nbsp;&nbsp; Var a = $a ## variable defined in the parsed file <br>
+&nbsp;&nbsp;&nbsp; Var n = $n ## variable defined in the parsed file <br>
+</code>
+<br>
+<br>
+Parse with subfolder :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #parse("include/initvariables.vm")<br>
+</code>
+<br>
+<br>
+
+
+</p>		
+<br>
+<br>
+</body>
+</html>

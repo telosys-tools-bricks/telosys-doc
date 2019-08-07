@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> #set </title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td.doc {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:20px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>					
+						
+<h1> #set </h1>	
+<p class="desc">								
+Establishes the value of a reference <br>
+<br>
+<b>Examples : </b><br>
+<br>
+Single value :<br>
+<code>
+&nbsp;&nbsp;&nbsp; #set( $count = 0 ) ## number <br>
+&nbsp;&nbsp;&nbsp; #set( $name = "foo" ) ## string <br>
+&nbsp;&nbsp;&nbsp; #set( $flag = true ) ## boolean <br>
+&nbsp;&nbsp;&nbsp; #set( $name = $var ) ## variable <br>
+&nbsp;&nbsp;&nbsp; #set( $name = $person.firstName ) ## object property <br>
+&nbsp;&nbsp;&nbsp; #set( $v = "abc${generator.version}zzz" ) ## parsed<br>
+&nbsp;&nbsp;&nbsp; #set( $v = 'abc${generator.version}zzz' ) ## not parsed <br>
+<br>
+</code>
+Collections :<br>
+<code>
+&nbsp;&nbsp;&nbsp; #set( $v = [1,2,3,4] )<br>
+&nbsp;&nbsp;&nbsp; #set( $v = [1..6] )  ## from 1 to 6 <br> 
+&nbsp;&nbsp;&nbsp; #set( $v = ['a','b','c','d'] )<br>
+&nbsp;&nbsp;&nbsp; #set( $v = ['a', $DOLLAR, $SHARP, 'd'] ) ## parsed <br>
+&nbsp;&nbsp;&nbsp; #set( $v = ['a', '$DOLLAR', '$SHARP', 'd'] ) ## not parsed <br>
+&nbsp;&nbsp;&nbsp; #set( $v = $entity.attributes )<br>
+<br>
+&nbsp;&nbsp;&nbsp; #foreach( $e in $v )<br>
+&nbsp;&nbsp;&nbsp; . $e<br>
+&nbsp;&nbsp;&nbsp; #end<br>
+
+<br>
+</code>
+Maps :<br>
+<code>
+&nbsp;&nbsp;&nbsp; #set ( $map = {"banana" : "good", "cream" : "bad"} )<br>
+&nbsp;&nbsp;&nbsp; #foreach($key in $map.keySet() )<br>
+&nbsp;&nbsp;&nbsp; $key : $map.get($key)<br>
+&nbsp;&nbsp;&nbsp; #end<br>
+<br>
+</code>
+Simple arithmetic expression is allowed :<br>
+<code>
+&nbsp;&nbsp;&nbsp; #set( $foo = $value + 1 )<br>
+&nbsp;&nbsp;&nbsp; #set( $foo = $value - 1 )<br>
+&nbsp;&nbsp;&nbsp; #set( $foo = $foo + 1 )<br>
+&nbsp;&nbsp;&nbsp; #set( $val = $foo * $bar )<br>
+&nbsp;&nbsp;&nbsp; #set( $val = $foo / $bar )<br>
+&nbsp;&nbsp;&nbsp; #set( $val = $foo % $bar )<br>
+
+</code>
+</p>		
+<br>
+<br>
+</body>
+</html>

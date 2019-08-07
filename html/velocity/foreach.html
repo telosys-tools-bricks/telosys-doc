@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> #foreach </title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:14px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>					
+						
+<h1> #foreach </h1>	
+<p class="desc">								
+Loops through a list of objects<br>
+<br>
+<b>Examples : </b><br>
+<br>
+Loop through an array :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #foreach ( $item in [1..8] ) ## from 1 to 8<br>
+&nbsp;&nbsp;&nbsp;  . item = $item  <br>
+&nbsp;&nbsp;&nbsp; #end<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; #foreach ( $item in [3,2,1] ) ## from 3 to 1<br>
+&nbsp;&nbsp;&nbsp;  . item = $item  <br>
+&nbsp;&nbsp;&nbsp; #end<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; ## Everything in a single line<br>
+&nbsp;&nbsp;&nbsp; #foreach ( $item in ['this', 'is', 'a', 'loop' ] ) ${item}#end<br>
+</code>
+<br>
+<br>
+Loop through an object (array, list, collection) :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #foreach( $attribute in $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp; $attribute.type $attribute.name<br>
+&nbsp;&nbsp;&nbsp; #end<br>
+</code>
+<br>
+<br>
+Loop counter provided by "$foreach.count" ( 1 to N ) :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #foreach ( $item in ["A", "B", "C", "D" ] ) <br>
+&nbsp;&nbsp;&nbsp; $foreach.count : $item  <br>
+&nbsp;&nbsp;&nbsp; #end<br>
+</code>
+<br>
+<br>
+Map iteration :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #set ( $map = {"banana" : "good", "cream" : "bad"} ) <br>
+&nbsp;&nbsp;&nbsp; #foreach($key in $map.keySet() )<br>
+&nbsp;&nbsp;&nbsp; $key --> $map.get($key)<br>
+&nbsp;&nbsp;&nbsp; #end<br>
+</code>
+<br>
+<br>
+Break the current iteration :<br>
+<br>
+<code>
+&nbsp;&nbsp;&nbsp; #foreach ( $item in [1..20] )<br>
+&nbsp;&nbsp;&nbsp; #if ( $item > 3 ) #break #end<br>
+&nbsp;&nbsp;&nbsp; . item = $item  <br>
+&nbsp;&nbsp;&nbsp; #end<br>
+</code>
+
+
+
+
+</p>
+
+<br>
+<br>
+
+</body>
+</html>
