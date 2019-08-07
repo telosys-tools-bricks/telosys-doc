@@ -77,7 +77,7 @@ public class LanguagesDocGenerator {
 	}
 	
 	private static String buildHtmlFileName(String destDir, String languageName) {
-		return destDir + "/lang-types-" + languageName + ".html" ;
+		return destDir + "/language-" + languageName + ".html" ;
 	}
 	
 	public static void generatedHtmlFile(String fileName, TypeConverter typeConverter, LiteralValuesProvider literalValuesProvider ) {
