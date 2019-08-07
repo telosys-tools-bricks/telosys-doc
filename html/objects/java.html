@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> $java</title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td.doc {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:20px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>											
+<h1> $java</h1>	
+<p class="desc">								
+Object providing a set of utility functions for JAVA language code generation<br>
+<br>
+<br>
+Since : 2.0.7<br>
+</p>		
+<table width="100%" border="1" cellspacing="0">		
+<TR class="title">										
+  <TD>Attributes and methods</TD>			
+</TR>		
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.equalsMethod(String className, List fieldsList) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a Java 'equals' method<br>
+Tabulations are used for code indentation<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>className</b> : the Java class name (simple name or full name)<br>
+&nbsp;&nbsp;&nbsp;<b>fieldsList</b> : list of fields to be used in the equals method<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$java.equalsMethod( $entity.name, $entity.attributes )<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.equalsMethod(String className, List fieldsList, int indentSpaces) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a Java 'equals' method<br>
+Spaces are used for code indentation<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>className</b> : the Java class name (simple name or full name)<br>
+&nbsp;&nbsp;&nbsp;<b>fieldsList</b> : list of fields to be used in the equals method<br>
+&nbsp;&nbsp;&nbsp;<b>indentSpaces</b> : number of spaces to be used for each indentation level<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$java.equalsMethod( $entity.name, $entity.attributes, 4 )<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hashCodeMethod(String className, List fieldsList) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a Java 'hashCode' method<br>
+Tabulations are used for code indentation<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>className</b> : the Java class name (simple name or full name)<br>
+&nbsp;&nbsp;&nbsp;<b>fieldsList</b> : list of fields to be used in the equals method<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$java.hashCode( $entity.name, $entity.attributes )<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hashCodeMethod(String className, List fieldsList, int indentSpaces) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a Java 'hashCode' method<br>
+Spaces are used for code indentation<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>className</b> : the Java class name (simple name or full name)<br>
+&nbsp;&nbsp;&nbsp;<b>fieldsList</b> : list of fields to be used in the equals method<br>
+&nbsp;&nbsp;&nbsp;<b>indentSpaces</b> : number of spaces to be used for each indentation level<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$java.hashCode( $entity.name, $entity.attributes, 4 )<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.imports(EntityInContext entity) : List<String></B> </CODE>
+<p class="doc">
+Returns the list of Java classes to be imported for the given entity<br>
+The imports are determined using all the entity attributes  <br>
+and all the 'OneToMany' any 'ManyToMany' links found in the entity<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : entity to be used<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $import in $java.imports($entity) )<br>
+&nbsp;&nbsp;&nbsp;import $import;<br>
+&nbsp;&nbsp;&nbsp;#end)<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.imports(List attributes) : List<String></B> </CODE>
+<p class="doc">
+Returns the list of Java classes to be imported for the given attributes<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $import in $java.imports($entity.attributes) )<br>
+&nbsp;&nbsp;&nbsp;import $import;<br>
+&nbsp;&nbsp;&nbsp;#end)<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toStringMethod(EntityInContext entity, List nonKeyAttributes, String embeddedIdName) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a Java 'toString' method<br>
+Generates a 'toString' method with the primary key attribute or the embedded key <br>
+and the given list of 'non key' attributes if their type is usable in a 'toString' method<br>
+(excluded types are 'array', 'Clob', 'Blob', and 'Long Text String') <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity to be used<br>
+&nbsp;&nbsp;&nbsp;<b>nonKeyAttributes</b> : list of attributes that are not in the Primary Key<br>
+&nbsp;&nbsp;&nbsp;<b>embeddedIdName</b> : variable name for the embedded id (used only if the entity has a composite primary key)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$java.toStringMethod( $entity, $nonKeyAttributes, $embeddedIdName, 4 )<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toStringMethod(EntityInContext entity, List nonKeyAttributes, String embeddedIdName, int indentSpaces) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a Java 'toString' method<br>
+Generates a 'toString' method with the primary key attribute or the embedded key <br>
+and the given list of 'non key' attributes if their type is usable in a 'toString' method<br>
+(excluded types are 'array', 'Clob', 'Blob', and 'Long Text String') <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity to be used<br>
+&nbsp;&nbsp;&nbsp;<b>nonKeyAttributes</b> : list of attributes that are not in the Primary Key<br>
+&nbsp;&nbsp;&nbsp;<b>embeddedIdName</b> : variable name for the embedded id (used only if the entity has a composite primary key)<br>
+&nbsp;&nbsp;&nbsp;<b>indentSpaces</b> : number of spaces to be used for each indentation level<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$java.toStringMethod( $entity, $nonKeyAttributes, $embeddedIdName, 4 )<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toStringMethod(EntityInContext entity, int indentSpaces) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a Java 'toString' method<br>
+Generates a 'toString' method using all the attributes of the given entity<br>
+(excluded types are 'array', 'Clob', 'Blob', and 'Long Text String') <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity providing the attributes to be used in the 'toString' method<br>
+&nbsp;&nbsp;&nbsp;<b>indentSpaces</b> : number of spaces to be used for each indentation level<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$java.toStringMethod( $entity, 4 )<br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toStringMethod(List attributes, int indentSpaces) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a Java 'toString' method<br>
+Generates a 'toString' method using all the given attributes <br>
+(excluded types are 'array', 'Clob', 'Blob', and 'Long Text String') <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be used in the 'toString' method<br>
+&nbsp;&nbsp;&nbsp;<b>indentSpaces</b> : number of spaces to be used for each indentation level<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$java.toStringMethod( $attributes, 4 )<br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>Code generation peculiarities for "JavaScript" language</title>
+ <style>
+  table { border-collapse: collapse; }
+  table, th, td { border: 1px solid black; } 
+  th, td { padding: 15px; text-align: left; }
+  th { font-family: Courier New; font-weight: bold; background-color: #4CAF50; color: white; }
+  td { font-family: Courier New; font-weight: bold; }
+  p.code { font-family: Courier New; font-weight: bold; }
+  span.code { font-family: Courier New; font-weight: bold; }
+  ul.code { font-family: Courier New; font-weight: bold; }
+ </style>
+</head>
+
+<body>
+<h1>Code generation peculiarities for "JavaScript" language</h1>
+<hr/><br>
+<p>To define <b>JavaScript</b> as the target language call &nbsp;<span class="code">$env.setLanguage('JavaScript')</span>&nbsp; in the templates files.<br>
+<br>
+The information below shows the behavior of the generator when 'JavaScript' is the current target language.<br>
+<br>
+</p><br>
+<hr/>
+<h2>Type conversion </h2>
+
+The language type conversion has an impact on :<ul class="code" ><li> $attribute.type </li><li> $attribute.fullType </li><li> $attribute.simpleType </li><li> $attribute.wrapperType </li><li> $attribute.isPrimitiveType() </li></ul>
+<table style=""> 
+<colgroup>
+ <col style="width: 16%; background-color: GhostWhite ; "> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;">
+</colgroup>
+<thead>
+ <tr> <th> Model type </th> <th> Default </th>  <th> @UnsignedType </th> <th> @NotNull </th> <th> @PrimitiveType </th> <th> @ObjectType </th> <th> @SqlType </th></tr>
+</thead>
+<tbody>
+ <tr> <td>string</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>byte</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>short</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>int</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>long</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>decimal</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>float</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>double</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>boolean</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>date</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>time</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>timestamp</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+ <tr> <td>binary</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+</tbody>
+</table>
+<h2>Remarks</h2><p class="code" >JavaScript is a dynamically-typed language, there are no types in the source code.<br>Hence the type conversion always return a void string.<br></p><br>
+<hr/>
+<h2>Literals for TRUE, FALSE and NULL </h2>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col>
+</colgroup>
+<tbody>
+ <tr> <td> TRUE  </td> <td>true</td> </tr> <tr> <td> FALSE </td> <td>false</td> </tr> <tr> <td> NULL  </td> <td>null</td> </tr></tbody>
+</table>
+<br>
+<hr/>
+<h2>Literal values </h2>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col> <col> <col>
+</colgroup>
+<thead>
+ <tr> <th> Model type </th> <th> Language type </th>  <th> Language full type </th>  <th> Language literal value example </th></tr>
+</thead>
+<tbody>
+ <tr> <td>string</td> <td></td> <td></td> <td>"AAA"</td> </tr>
+ <tr> <td>byte</td> <td></td> <td></td> <td>1</td> </tr>
+ <tr> <td>short</td> <td></td> <td></td> <td>1</td> </tr>
+ <tr> <td>int</td> <td></td> <td></td> <td>100</td> </tr>
+ <tr> <td>long</td> <td></td> <td></td> <td>1000</td> </tr>
+ <tr> <td>decimal</td> <td></td> <td></td> <td>10000.77</td> </tr>
+ <tr> <td>float</td> <td></td> <td></td> <td>1000.5</td> </tr>
+ <tr> <td>double</td> <td></td> <td></td> <td>1000.66</td> </tr>
+ <tr> <td>boolean</td> <td></td> <td></td> <td>true</td> </tr>
+ <tr> <td>date</td> <td></td> <td></td> <td>null</td> </tr>
+ <tr> <td>time</td> <td></td> <td></td> <td>null</td> </tr>
+ <tr> <td>timestamp</td> <td></td> <td></td> <td>null</td> </tr>
+ <tr> <td>binary</td> <td></td> <td></td> <td>null</td> </tr>
+</tbody>
+</table>
+<br>
+<br>
+</body>
+</html>

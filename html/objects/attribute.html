@@ -1,0 +1,772 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> $attribute</title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td.doc {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:20px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>											
+<h1> $attribute</h1>	
+<p class="otherNames">								Other name(s) : <b>$attrib</b>,&nbsp;<b>$field</b></p>
+<p class="desc">								
+This object provides all information about an entity attribute<br>
+Each attribute is retrieved from the entity class <br>
+<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp;    $attribute.name : $attribute.type<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>		
+<table width="100%" border="1" cellspacing="0">		
+<TR class="title">										
+  <TD>Attributes and methods</TD>			
+</TR>		
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.booleanFalseValue : String</B> </CODE>
+<p class="doc">
+Returns the value to use for a boolean when is FALSE (eg to be stored in a database) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.booleanTrueValue : String</B> </CODE>
+<p class="doc">
+Returns the value to use for a boolean when is TRUE (eg to be stored in a database) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseComment : String</B> </CODE>
+<p class="doc">
+Returns the database comment for the attribute<br>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseDefaultValue : String</B> </CODE>
+<p class="doc">
+Returns the database default value for the attribute (or a void string if none)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseName : String</B> </CODE>
+<p class="doc">
+Returns the database name for the attribute<br>
+Typically the column name for a relational database<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseSize : int</B> </CODE>
+<p class="doc">
+Returns the database size for the attribute<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseType : String</B> </CODE>
+<p class="doc">
+Returns the database native type for the attribute<br>
+For example : INTEGER, VARCHAR, etc...<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseTypeWithSize : String</B> </CODE>
+<p class="doc">
+Returns the database native type for the attribute with the size if it makes sens<br>
+For example : INTEGER, VARCHAR(24), NUMBER, CHAR(3), etc...<br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.dateAfterValue : String</B> </CODE>
+<p class="doc">
+Returns the 'date after' value (for date validation)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.dateBeforeValue : String</B> </CODE>
+<p class="doc">
+Returns the 'date before' value (for date validation)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.dateType : int</B> </CODE>
+<p class="doc">
+Returns the type of the date : $const.DATE_ONLY, $const.TIME_ONLY, $const.DATE_AND_TIME<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.defaultValue : String</B> </CODE>
+<p class="doc">
+Returns the default value for the attribute<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.entity : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the entity owning the attribute <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.formattedName(int n) : String</B> </CODE>
+<p class="doc">
+Returns the attribute's name with trailing blanks in order to obtain the expected size <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>n</b> : the expected size<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.formattedType(int n) : String</B> </CODE>
+<p class="doc">
+Returns the attribute's type with trailing blanks in order to obtain the expected size<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>n</b> : the expected size<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.formattedWrapperType(int n) : String</B> </CODE>
+<p class="doc">
+Returns the attribute's wrapper type with trailing blanks in order to obtain the expected size<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>n</b> : the expected size<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fullType : String</B> </CODE>
+<p class="doc">
+Returns the full type name<br>
+e.g. for a Java object type : java.math.BigDecimal, java.util.Date,  .. <br>
+  or for a Java primitive type : short, int, .. <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.generatedValueGenerator : String</B> </CODE>
+<p class="doc">
+Returns the generator for a 'generated value' <br>
+Typically for JPA : 'SequenceGenerator' or 'TableGenerator' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.generatedValueStrategy : String</B> </CODE>
+<p class="doc">
+Returns the strategy for a 'generated value' (or null if none)<br>
+e.g : 'auto', 'identity', 'sequence', 'table' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getter : String</B> </CODE>
+<p class="doc">
+Returns the getter for the attribute<br>
+e.g : 'getFoo' for 'foo' (or 'isFoo' for a boolean primitive type)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getterWithGetPrefix : String</B> </CODE>
+<p class="doc">
+Returns the getter for the attribute with always a 'get' prefix<br>
+even for a boolean<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDatabaseDefaultValue() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute has a database default value<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDateAfterValidation() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute must be validated as a date after a given date value<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDateBeforeValidation() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute must be validated as a date before a given date value<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDateFutureValidation() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute must be validated as a date in the future<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDatePastValidation() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute must be validated as a date in the past<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDefaultValue() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if there's a default value for the attribute<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasInitialValue() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if there's an initial value for the attribute<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasSequenceGenerator() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute is a 'generated value' using a 'sequence generator' <br>
+Typically for JPA '@SequenceGenerator'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasTableGenerator() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute is a 'generated value' using a 'table generator' <br>
+Typically for JPA '@TableGenerator'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.initialValue : String</B> </CODE>
+<p class="doc">
+Returns the initial value for the attribute<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.inputType : String</B> </CODE>
+<p class="doc">
+Returns the 'input type' defined for the attribute<br>
+Typically for HTML 5 : 'number', 'date', ...<br>
+<br>
+<b>Since : </b>2.0.3<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isAutoIncremented() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute is 'auto-incremented' by the database<br>
+when a new entity is inserted in the database<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isBinaryType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'binary' <br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isBooleanType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is'boolean' <br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isByteType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'byte' <br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isDatabaseNotNull() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute must be NOT NULL when stored in the database<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isDateType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'date' <br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isDecimalType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'decimal' <br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isDoubleType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'double' <br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isFK() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute is used in (at least) one Foreign Key<br>
+( it can be an 'Simple FK' or a 'Composite FK' or both )<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isFKComposite() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute is a part of a 'Composite Foreign Key' <br>
+( the FK is based on many attributes including this attribute ) <br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isFKSimple() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute is itself a 'Simple Foreign Key' <br>
+( the FK is based only on this single attribute ) <br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isFloatType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'float' <br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isGeneratedValue() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's value is generated when a new entity is inserted in the database<br>
+It can be generated by the database ('auto-incremented') <br>
+or generated by the persistence layer (typically by JPA)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isIntegerType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'int' <br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isKeyElement() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute is the Primary Key or a part of the Primary Key in the database<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isLongText() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute is a 'Long Text' <br>
+i.e. that cannot be transported in a classical string<br>
+Typically a text stored as a CLOB or a BLOB<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isLongType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'long' <br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isNotBlank() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute has a 'Not Blank' validation rule <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isNotEmpty() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute has a 'Not Empty' validation rule <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isNotNull() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute has a 'Not Null' validation rule <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isNumberType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is a number type<br>
+( byte, short, int, long, decimal, float, double )<br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isPrimitiveType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's language type is a primitive type<br>
+i.e. for Java : int, float, boolean, ...<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isSelected() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute is selected (ckeckbox ckecked in the GUI)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isShortType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'short' <br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isStringType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'string' <br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isTemporalType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is a temporal type<br>
+( date, time, timestamp )<br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isTimeType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'time' <br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isTimestampType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute's neutral type is 'timestamp' <br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isUsedInLinks() : boolean</B> </CODE>
+<p class="doc">
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isUsedInSelectedLinks() : boolean</B> </CODE>
+<p class="doc">
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.jdbcRecommendedJavaType : String</B> </CODE>
+<p class="doc">
+Returns the recommended Java type for the JDBC type of the attribute<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.jdbcTypeCode : int</B> </CODE>
+<p class="doc">
+Returns the JDBC type of the attribute (the type code)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.jdbcTypeName : String</B> </CODE>
+<p class="doc">
+Returns the JDBC type name ('CHAR', 'VARCHAR', 'NUMERIC', ... )<br><br>
+The 'java.sql.Types' constant name for the current JDBC type code<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.label : String</B> </CODE>
+<p class="doc">
+Returns the label for the attribute <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.maxLength : String</B> </CODE>
+<p class="doc">
+Returns the maximum length for the attribute (if any, else returns void) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.maxValue : String</B> </CODE>
+<p class="doc">
+Returns the maximum value for the attribute (if any, else returns void) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.minLength : String</B> </CODE>
+<p class="doc">
+Returns the minimum length for the attribute (if any, else returns void) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.minValue : String</B> </CODE>
+<p class="doc">
+Returns the minimum value for the attribute (if any, else returns void) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.name : String</B> </CODE>
+<p class="doc">
+Returns the name of the attribute <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.neutralType : String</B> </CODE>
+<p class="doc">
+Returns the 'neutral type', that is to say the type as defined in the model<br>
+e.g. : 'string', 'short', 'decimal', 'boolean', 'date', 'time', etc <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.pattern : String</B> </CODE>
+<p class="doc">
+Returns the Reg Exp pattern defined for the attribute (if any, else returns void) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedEntity : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the entity referenced by this attribute (if any) <br>
+Can be used only if the attribute 'isFK' <br>
+Throws an exception if no entity is refrerenced by the attribute<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedEntityName : String</B> </CODE>
+<p class="doc">
+Returns the name (class name) of the entity referenced by this attribute (if any) <br>
+Can be used only if the attribute 'isFK' <br>
+Throws an exception if no entity is refrerenced by the attribute<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sequenceGeneratorAllocationSize : int</B> </CODE>
+<p class="doc">
+Returns the 'sequence allocation size' to be used in the 'sequence generator' definition<br>
+Typically for JPA '@SequenceGenerator/allocationSize'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sequenceGeneratorName : String</B> </CODE>
+<p class="doc">
+Returns the name of the 'sequence generator' <br>
+Typically for JPA '@SequenceGenerator/name'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sequenceGeneratorSequenceName : String</B> </CODE>
+<p class="doc">
+Returns the 'sequence name' to be used in the 'sequence generator' definition<br>
+Typically for JPA '@SequenceGenerator/sequenceName'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.setter : String</B> </CODE>
+<p class="doc">
+Returns the setter for the attribute<br>
+e.g : 'setFoo' for 'foo' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.simpleType : String</B> </CODE>
+<p class="doc">
+Returns the simple type name <br>
+e.g. for a Java object type : BigDecimal, Date, Integer, .. <br>
+  or for a Java primitive type : short, int, .. <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tableGeneratorName : String</B> </CODE>
+<p class="doc">
+Returns the name of the 'table generator' <br>
+Typically for JPA '@TableGenerator/name'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tableGeneratorPkColumnName : String</B> </CODE>
+<p class="doc">
+Returns the name of the Primary Key column used in the 'table generator' <br>
+Typically for JPA '@TableGenerator/pkColumnName'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tableGeneratorPkColumnValue : String</B> </CODE>
+<p class="doc">
+Returns the primary key value in the generator table that distinguishes this set of generated values<br>
+from others that may be stored in the table<br>
+Typically for JPA '@TableGenerator/pkColumnValue'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tableGeneratorTable : String</B> </CODE>
+<p class="doc">
+Returns the name of the table used in the 'table generator' <br>
+Typically for JPA '@TableGenerator/table'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tableGeneratorValueColumnName : String</B> </CODE>
+<p class="doc">
+Returns the name of the column that stores the last value generated by the 'table generator' <br>
+Typically for JPA '@TableGenerator/valueColumnName'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.type : String</B> </CODE>
+<p class="doc">
+Returns the recommended type for the attribute<br>
+usually the simple type ( 'int', 'BigDecimal', 'Date' ) <br>
+sometimes the full type ( if the simple type is considered as ambiguous )<br>
+Examples for Java : 'int', 'BigDecimal', 'Date', 'java.util.Date', 'java.sql.Date' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.wrapperType : String</B> </CODE>
+<p class="doc">
+Returns the wrapper type corresponding to the attribute's primitive type<br>
+Examples : 'Float' for 'float', 'Integer' for 'int', 'Boolean' for 'boolean', ... <br>
+The attribute's type is retuned as is if it's not a primitive type<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

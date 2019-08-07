@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> $databases</title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td.doc {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:20px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>											
+<h1> $databases</h1>	
+<p class="desc">								
+Object representing all the databases defined in the 'databases.dbcfg' file<br>
+<br>
+<br>
+Since : 2.1.0<br>
+</p>		
+<table width="100%" border="1" cellspacing="0">		
+<TR class="title">										
+  <TD>Attributes and methods</TD>			
+</TR>		
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getDatabase(int id) : DatabaseInContext</B> </CODE>
+<p class="doc">
+Returns the database for the given id (or null if none)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>id</b> : the database id<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDatabase(int id) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if a database is defined for the given id, else FALSE<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>id</b> : the database id<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.list : List<DatabaseInContext></B> </CODE>
+<p class="doc">
+Returns the list of databases <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.numberOfDatabases : int</B> </CODE>
+<p class="doc">
+Returns the number of databases <br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

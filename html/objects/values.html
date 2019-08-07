@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> $values</title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td.doc {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:20px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>											
+<h1> $values</h1>	
+<p class="otherNames">								Other name(s) : <b>$keyValues</b>,&nbsp;<b>$dataValues</b></p>
+<p class="desc">								
+This object provides a set literal values<br>
+Each literal value is associated with an attribute's name and can be assigned to this attribute<br>
+<br>
+<br>
+Since : 3.0.0<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#set( $values = $fn.buildValues($entity.attributes, 1) )<br>
+&nbsp;&nbsp;&nbsp;count = $values.size()<br>
+&nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp;  Value for attribute "${attribute.name}" = $values.getValue($attribute.name) <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>		
+<table width="100%" border="1" cellspacing="0">		
+<TR class="title">										
+  <TD>Attributes and methods</TD>			
+</TR>		
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.allValues : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the literal values separated by a comma. <br>
+e.g. for Java : ' "AAAA", (short)10, true '  <br>
+ <br>
+Usage example in Velocity template :<br>
+ $values.allValues  <br>
+ or  <br>
+ $values.getAllValues()  <br>
+ <br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.comparisonStatement(String entityVariableName, AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns a comparison statement between the attribute's current value and its associated literal value <br>
+Example of strings returned for Java language :  <br>
+  book.getId() == 100 <br>
+  book.getFirstName().equals("abcd") <br>
+ <br>
+Usage example in Velocity template :<br>
+  $values.comparisonStatement("book", $attribute)   <br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entityVariableName</b> : the variable name used before the 'getter'<br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute instance (used to retrieve the 'getter' and the 'literal value')<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getValue(String attributeName) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the literal value for the given attribute's name <br>
+e.g. for Java : '"AAAA"' or '(short)10' or 'true' etc...  <br>
+ <br>
+Usage example in Velocity template :<br>
+ $values.getValue($attribute.name) <br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributeName</b> : the name of the attribute<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.size() : int</B> </CODE>
+<p class="doc">
+Returns the size of the values list (the number of values)<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON() : String</B> </CODE>
+<p class="doc">
+Returns a string containing ALL the literal values in JSON format. <br>
+NB : this method is usable only with 'JAVASCRIPT values'.<br>
+e.g. : '{"id":1, "name":"AAAA"} <br>
+ <br>
+Usage examples in Velocity template :<br>
+ $values.toJSON()  <br>
+ $values.toJSON("${NEWLINE}")  <br>
+ $values.toJSON("${NEWLINE}${TAB}", "${NEWLINE}")  <br>
+ <br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List attributes) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the literal values in JSON format for the given list of attributes. <br>
+NB : this method is usable only with 'JAVASCRIPT values'.<br>
+e.g. : '{"id":1, "name":"AAAA"} <br>
+ <br>
+Usage example in Velocity template :<br>
+ $values.toJSON($entity.attributes) <br>
+ $values.toJSON($entity.attributes, "${NEWLINE}")  <br>
+ $values.toJSON($entity.attributes, "${NEWLINE}${TAB}", "${NEWLINE}")  <br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List ?, String ?) : String</B> </CODE>
+<p class="doc">
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List ?, String ?, String ?) : String</B> </CODE>
+<p class="doc">
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(String ?) : String</B> </CODE>
+<p class="doc">
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(String ?, String ?) : String</B> </CODE>
+<p class="doc">
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> $database</title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td.doc {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:20px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>											
+<h1> $database</h1>	
+<p class="desc">								
+Object representing a database defined in the 'databases.dbcfg' file<br>
+<br>
+<br>
+Since : 2.1.0<br>
+</p>		
+<table width="100%" border="1" cellspacing="0">		
+<TR class="title">										
+  <TD>Attributes and methods</TD>			
+</TR>		
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.catalog : String</B> </CODE>
+<p class="doc">
+Returns the CATALOG to be used to retrieve the meta-data <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.dialect : String</B> </CODE>
+<p class="doc">
+Returns the 'dialect' of the database. Can be used to identify the Hibernate dialect class <br>
+(e.g. 'org.hibernate.dialect.MySQLDialect', etc)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.driverClass : String</B> </CODE>
+<p class="doc">
+Returns the JDBC driver class to be used to establish a JDBC connection <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.id : int</B> </CODE>
+<p class="doc">
+Returns the database id<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isolationLevel : String</B> </CODE>
+<p class="doc">
+Returns the isolation level <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.jdbcUrl : String</B> </CODE>
+<p class="doc">
+Returns the URL to be used to establish a JDBC connection <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.name : String</B> </CODE>
+<p class="doc">
+Returns the database name<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.password : String</B> </CODE>
+<p class="doc">
+Returns the PASSWORD to be used to establish a JDBC connection <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.poolSize : int</B> </CODE>
+<p class="doc">
+Returns the pool size <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.schema : String</B> </CODE>
+<p class="doc">
+Returns the SCHEMA to be used to retrieve the meta-data <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.type : String</B> </CODE>
+<p class="doc">
+Returns the type name. Usually used to identify the type/vendor of the database <br>
+(e.g. 'DERBY', 'MYSQL', 'ORACLE', etc)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.user : String</B> </CODE>
+<p class="doc">
+Returns the USER to be used to establish a JDBC connection <br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
+<html>								
+<head>								
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
+	<title> $html</title>	
+	<style type="text/css">		
+	h1 {							
+		font-size:28px;				
+		font-family: verdana		
+	}								
+	p.otherNames{					
+		font-size:20px;				
+		font-family: verdana;		
+	}								
+	p.desc {						
+		font-size:12px;				
+		font-family: verdana;		
+	}								
+	p.doc {							
+		margin-left:2cm;			
+	}								
+	td.doc {						
+		font-size:12px;				
+		font-family: verdana;		
+		vertical-align:text-top;	
+		padding-top: 6px;			
+		padding-bottom: 12px;		
+	}								
+	tr.title {						
+		font-family: verdana;		
+		font-size:20px;				
+		font-weight:bold;			
+		background-color: #CCCCFF ;	
+	}								
+	code.simpledesc {				
+		font-size:15px;				
+		color: #000099; 			
+	}								
+	</style>						
+</head>							
+<body>											
+<h1> $html</h1>	
+<p class="desc">								
+Object providing a set of utility functions for HTML language code generation<br>
+<br>
+<br>
+Since : 3.0.0<br>
+</p>		
+<table width="100%" border="1" cellspacing="0">		
+<TR class="title">										
+  <TD>Attributes and methods</TD>			
+</TR>		
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.max(AttributeInContext ?) : String</B> </CODE>
+<p class="doc">
+Returns the HTML5 'max' attribute for maximum values (or void if none)<br>
+e.g : max='10' <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.maxlength(AttributeInContext ?) : String</B> </CODE>
+<p class="doc">
+Returns the HTML5 'maxlength' attribute if any or if computable from type<br>
+(else returns a void string)<br>
+e.g : maxlength='20' <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.min(AttributeInContext ?) : String</B> </CODE>
+<p class="doc">
+Returns the HTML5 'min' attribute for minimum values (or void if none)<br>
+e.g : min='10' <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.type(AttributeInContext ?) : String</B> </CODE>
+<p class="doc">
+Returns the HTML5 'type' attribute for 'input' tag <br>
+The 'type' is determinded from the 'input type' if any or computed from the model type <br>
+e.g : type='text', type='number', type='date', type='time', etc <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>
