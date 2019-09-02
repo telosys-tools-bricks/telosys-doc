@@ -1,7 +1,7 @@
 package org.telosys.doc.objects;
 
+import org.telosys.doc.objects.tooling.DocGenerator;
 import org.telosys.tools.commons.DirUtil;
-import org.telosys.tools.generator.context.doc.DocGenerator;
 
 public class ObjectsDocumentation {
 
