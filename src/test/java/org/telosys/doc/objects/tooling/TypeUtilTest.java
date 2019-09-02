@@ -5,9 +5,6 @@ import java.lang.reflect.Type;
 
 import junit.framework.TestCase;
 
-import org.telosys.tools.generator.context.doc.TypeUtil;
-
-
 public class TypeUtilTest  extends TestCase {
 
 	private String convert(Type type ) {

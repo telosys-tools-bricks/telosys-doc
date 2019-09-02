@@ -11,10 +11,6 @@ import org.telosys.tools.generator.context.FnInContext;
 import org.telosys.tools.generator.context.Java;
 import org.telosys.tools.generator.context.Jpa;
 import org.telosys.tools.generator.context.Today;
-import org.telosys.tools.generator.context.doc.ClassInfo;
-import org.telosys.tools.generator.context.doc.DocBuilder;
-import org.telosys.tools.generator.context.doc.MethodInfo;
-import org.telosys.tools.generator.context.doc.MethodParameter;
 import org.telosys.tools.generator.context.names.ContextName;
 
 
