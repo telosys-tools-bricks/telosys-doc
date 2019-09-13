@@ -1,4 +1,4 @@
-package org.telosys.doc.objects.tooling;
+package org.telosys.doc.objects;
 
 import org.telosys.tools.generator.context.AttributeInContext;
 import org.telosys.tools.generator.context.BeanValidation;
