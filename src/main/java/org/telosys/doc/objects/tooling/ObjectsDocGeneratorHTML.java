@@ -20,6 +20,8 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+import org.telosys.tools.generator.GeneratorVersion;
+
 public class ObjectsDocGeneratorHTML {
 
 	public void generateDocFile(ClassInfo classInfo, String filePath) {
@@ -111,6 +113,8 @@ public class ObjectsDocGeneratorHTML {
 			}
 			writer.println( "</p>");
 		}
+
+		writer.println( "<p class=\"desc\">	Generator version : <b>" + GeneratorVersion.GENERATOR_VERSION + "</b> </p>");
 		
 		//-------- PARAGRAPH "doc" + "deprecated" + "example"
 		writer.println( "<p class=\"desc\">								");

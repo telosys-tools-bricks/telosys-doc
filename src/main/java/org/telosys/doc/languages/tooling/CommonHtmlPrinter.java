@@ -18,6 +18,8 @@ package org.telosys.doc.languages.tooling;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import org.telosys.tools.generic.model.GenericModelVersion;
+
 public abstract class CommonHtmlPrinter {
 
 	private final BufferedWriter writer ;
@@ -57,6 +59,7 @@ public abstract class CommonHtmlPrinter {
 		println();
 		println("<body>");
 		println("<h1>" + title + "</h1>");
+		println("<p>Generic model version : <b>" + GenericModelVersion.VERSION + "</b> </p>");
 	}
 	
 	private void printHtmlStyle() {

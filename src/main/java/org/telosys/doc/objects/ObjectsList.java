@@ -28,7 +28,7 @@ import org.telosys.tools.generator.context.Today;
 import org.telosys.tools.generator.context.ValuesInContext;
 
 /**
- * Provides the list of all the templates objects classes <br>
+ * Provides a list of classes for all objects defined in the generator context <br>
  * This list must be updated if an object is added or removed in the generator context.<br>
  * 
  * @author L. Guerin
@@ -75,4 +75,5 @@ public class ObjectsList {
 	public static final Class<?>[] getObjectsClasses() {
 		return templatesObjectsClasses ;
 	}
+
 }

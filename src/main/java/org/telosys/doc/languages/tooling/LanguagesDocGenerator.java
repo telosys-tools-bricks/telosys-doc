@@ -14,20 +14,6 @@ import org.telosys.tools.generic.model.types.TypeConverter;
 
 public class LanguagesDocGenerator {
 
-//	/**
-//	 * List of all the supported languages with their TypeConverter and LiteralValuesProvider
-//	 */
-//	private static LinkedList<LanguageDocumenter> list = new LinkedList<>();
-//	static {
-//		list.add(new LanguageDocumenter("csharp",     new TypeConverterForCSharp(),     new LiteralValuesProviderForCSharp()) );
-//		list.add(new LanguageDocumenter("go",         new TypeConverterForGo(),         new LiteralValuesProviderForGo()) );
-//		list.add(new LanguageDocumenter("java",       new TypeConverterForJava(),       new LiteralValuesProviderForJava()) );
-//		list.add(new LanguageDocumenter("javascript", new TypeConverterForJavaScript(), new LiteralValuesProviderForJavaScript()) );
-//		list.add(new LanguageDocumenter("php",        new TypeConverterForPHP(),        new LiteralValuesProviderForPHP()) );
-//		list.add(new LanguageDocumenter("python",     new TypeConverterForPython(),     new LiteralValuesProviderForPython()) );
-//		list.add(new LanguageDocumenter("typescript", new TypeConverterForTypeScript(), new LiteralValuesProviderForTypeScript()) );
-//	}
-	
 	/**
 	 * Private constructor
 	 */
