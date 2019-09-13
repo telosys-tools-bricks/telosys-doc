@@ -24,22 +24,22 @@ import java.util.Set;
 
 import org.telosys.tools.commons.FileUtil;
 
-public class DocGenerator {
+public class ObjectsDocGenerator {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		String userDir =  System.getProperty("user.dir") ;
-		System.out.println( "USER DIR : " + userDir ); // "X:\xxx\xxx\workspace\project"
-
-		String destDir = userDir + "/target/doc/html/objects" ;
-		System.out.println( "DEST DIR : " + destDir );	
-		
-		int n = generateHtmlDoc(destDir);
-		System.out.println("Normal end of generation. " + n + " files generated.");
-	}
-	
+//	/**
+//	 * @param args
+//	 */
+//	public static void main(String[] args) {
+//		String userDir =  System.getProperty("user.dir") ;
+//		System.out.println( "USER DIR : " + userDir ); // "X:\xxx\xxx\workspace\project"
+//
+//		String destDir = userDir + "/target/doc/html/objects" ;
+//		System.out.println( "DEST DIR : " + destDir );	
+//		
+//		int n = generateHtmlDoc(destDir);
+//		System.out.println("Normal end of generation. " + n + " files generated.");
+//	}
+//	
 	public static int generateHtmlDoc(String destDir) {
 
 		System.out.println( "HTML documentation generation" );
@@ -69,7 +69,7 @@ public class DocGenerator {
 		
 		List<String>sortedNames = sortList(names);
 		
-		DocGeneratorHTML htmlGenerator = new DocGeneratorHTML();
+		ObjectsDocGeneratorHTML htmlGenerator = new ObjectsDocGeneratorHTML();
 
 		System.out.println("Sorted context names (size=" + sortedNames.size() + ") : " );
 		int c = 0 ;
@@ -84,7 +84,7 @@ public class DocGenerator {
 		return c;
 	}
 	
-	public static <T extends Comparable<? super T>> List<T> sortList(Collection<T> c) {
+	private static <T extends Comparable<? super T>> List<T> sortList(Collection<T> c) {
 		  List<T> list = new ArrayList<T>(c);
 		  java.util.Collections.sort(list);
 		  return list;

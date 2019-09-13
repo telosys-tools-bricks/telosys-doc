@@ -20,7 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-public class DocGeneratorHTML {
+public class ObjectsDocGeneratorHTML {
 
 	public void generateDocFile(ClassInfo classInfo, String filePath) {
 		File file = new File(filePath);
@@ -42,7 +42,7 @@ public class DocGeneratorHTML {
 		writer.close();
 	}
 	
-	public void generateDocFile(PrintWriter writer, ClassInfo classInfo) {
+	private void generateDocFile(PrintWriter writer, ClassInfo classInfo) {
 		printBeginning(writer, classInfo );
 		for ( MethodInfo methodInfo : classInfo.getMethodsInfo() ) {
 			printMethodDoc(writer, methodInfo);

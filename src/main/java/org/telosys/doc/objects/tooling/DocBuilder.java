@@ -18,47 +18,29 @@ package org.telosys.doc.objects.tooling;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.telosys.tools.generator.context.AttributeInContext;
-import org.telosys.tools.generator.context.BeanValidation;
-import org.telosys.tools.generator.context.Const;
-import org.telosys.tools.generator.context.DatabaseInContext;
-import org.telosys.tools.generator.context.DatabasesInContext;
-import org.telosys.tools.generator.context.EmbeddedGenerator;
-import org.telosys.tools.generator.context.EntityInContext;
-import org.telosys.tools.generator.context.EnvInContext;
-import org.telosys.tools.generator.context.FnInContext;
-import org.telosys.tools.generator.context.ForeignKeyColumnInContext;
-import org.telosys.tools.generator.context.ForeignKeyInContext;
-import org.telosys.tools.generator.context.H2InContext;
-import org.telosys.tools.generator.context.HtmlInContext;
-import org.telosys.tools.generator.context.Java;
-import org.telosys.tools.generator.context.JdbcFactoryInContext;
-import org.telosys.tools.generator.context.JdbcInContext;
-import org.telosys.tools.generator.context.JoinColumnInContext;
-import org.telosys.tools.generator.context.Jpa;
-import org.telosys.tools.generator.context.LinkAttributesPairInContext;
-import org.telosys.tools.generator.context.LinkInContext;
-import org.telosys.tools.generator.context.Loader;
-import org.telosys.tools.generator.context.ModelInContext;
-import org.telosys.tools.generator.context.ProjectInContext;
-import org.telosys.tools.generator.context.Target;
-import org.telosys.tools.generator.context.Today;
-import org.telosys.tools.generator.context.ValuesInContext;
 import org.telosys.tools.generator.context.doc.VelocityConstant;
 import org.telosys.tools.generator.context.doc.VelocityMethod;
 import org.telosys.tools.generator.context.doc.VelocityNoDoc;
 import org.telosys.tools.generator.context.doc.VelocityObject;
 import org.telosys.tools.generator.context.doc.VelocityReturnType;
 
+/**
+ * Tool to retrieve all information to be printed in the documentation<br>
+ * for all the objects.<br>
+ * It builds a map with all the ClassInfo for each object name : Map<String,ClassInfo> <br>
+ * 
+ * @author L. Guerin
+ *
+ */
 public class DocBuilder {
 
-	private static List<String> objectClassMethods = new LinkedList<String>() ;
-	{
+	private static List<String> objectClassMethods = new LinkedList<>() ;
+	static {
 		Method[] methods = Object.class.getMethods();
 		for ( Method m : methods ) {
 			objectClassMethods.add(m.getName());
@@ -155,7 +137,7 @@ public class DocBuilder {
 		methodInfo.setReturnType( getVelocityReturnType(method) );
 		
 
-		LinkedList<MethodParameter> parameters = new LinkedList<MethodParameter>();
+		LinkedList<MethodParameter> parameters = new LinkedList<>();
 		//--- Documentation  
 		VelocityMethod docAnnotation = method.getAnnotation(VelocityMethod.class);
 		if ( docAnnotation != null ) {
@@ -185,7 +167,7 @@ public class DocBuilder {
 		return methodInfo ;
 	}
 	
-	public ClassInfo getClassInfo(Class<?> clazz) {
+	protected ClassInfo getClassInfo(Class<?> clazz) {
 		
 		ClassInfo classInfo = new ClassInfo();
 		
@@ -225,43 +207,17 @@ public class DocBuilder {
 		return classInfo ;
 	}
 
-	private final static Class<?>[] velocityClasses = new Class<?>[] {
-		Const.class,
-		EmbeddedGenerator.class,
-		FnInContext.class,
-		// GenerationInContext.class, // ver 2.1.0 // removed in v 3.0.0
-		Java.class, // ver 2.0.7
-		Jpa.class, // ver 2.0.7
-		BeanValidation.class, // ver 2.0.7
-		//JavaBeanClass.class,
-		EntityInContext.class, // replaces JavaBeanClass.class ( ver 2.1.0 )
-		AttributeInContext.class,
-		ForeignKeyInContext.class, // ver 2.0.7
-		ForeignKeyColumnInContext.class, // ver 2.0.7
-		JoinColumnInContext.class, // ver 2.1.0
-		LinkInContext.class,
-		LinkAttributesPairInContext.class, // ver 2.1.0
-		Loader.class,
-		//Model.class, // ver 2.0.7
-		ModelInContext.class, // ver 2.1.0
-		DatabasesInContext.class, // ver 2.1.0
-		DatabaseInContext.class, // ver 2.1.0
-		//ProjectConfiguration.class,
-		ProjectInContext.class, // ver 2.1.0
-		Target.class,
-		Today.class,
-		EnvInContext.class, // ver 2.1.0
-		JdbcInContext.class, // ver 2.1.1
-		JdbcFactoryInContext.class, // ver 2.1.1
-		H2InContext.class, // ver 2.1.1
-		
-		HtmlInContext.class, // v 3.0.0
-		ValuesInContext.class // v 3.0.0
-	};
-	
+	/**
+	 * Build a ClassInfo instance for each object <br>
+	 * and return a Map containing all the ClassInfo instances ( "Object name" --> ClassInfo )
+	 * 
+	 * @return
+	 */
 	public Map<String,ClassInfo> getVelocityClassesInfo() {
 		
-		Map<String,ClassInfo> map = new Hashtable<String, ClassInfo>();
+		Map<String,ClassInfo> map = new HashMap<>();
+		
+		Class<?>[] velocityClasses = ObjectsList.getObjectsClasses() ;
 		
 		//--- Build class information for each Java class used in the Velocity context
 		for ( Class<?> clazz : velocityClasses ) {

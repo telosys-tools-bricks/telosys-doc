@@ -1,6 +1,6 @@
 package org.telosys.doc.objects;
 
-import org.telosys.doc.objects.tooling.DocGenerator;
+import org.telosys.doc.objects.tooling.ObjectsDocGenerator;
 import org.telosys.tools.commons.DirUtil;
 
 public class ObjectsDocumentation {
@@ -24,7 +24,7 @@ public class ObjectsDocumentation {
 		String destDir = userDir + DOC_DIR_IN_PROJECT ;
 		System.out.println( "DEST DIR : " + destDir );	
 		
-		int n = DocGenerator.generateHtmlDoc(destDir);
+		int n = ObjectsDocGenerator.generateHtmlDoc(destDir);
 		
 		System.out.println("Normal end of generation. " + n + " files generated.");
 	}

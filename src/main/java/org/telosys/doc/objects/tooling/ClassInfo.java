@@ -15,7 +15,6 @@
  */
 package org.telosys.doc.objects.tooling;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -24,9 +23,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class contains all information to be printed in the documentation 
+ * 
+ * @author L. Guerin
+ *
+ */
 public class ClassInfo {
 
-	private final static String[] VOID_TEXT = new String[0] ;
+	private static final String[] VOID_TEXT = new String[0] ;
 	
 	private String   name ;
 	
@@ -37,7 +42,6 @@ public class ClassInfo {
 	private boolean  deprecated ;
 	private String[] exampleText ;
 	
-	//private LinkedList<MethodInfo> methodsInfoList ;
 	private Map<String,MethodInfo> methodsInfoMap  ;
 	
 	public ClassInfo() {
@@ -48,8 +52,7 @@ public class ClassInfo {
 		since = "" ;
 		deprecated = false ;
 		exampleText = VOID_TEXT ;
-		//methodsInfoList = new LinkedList<MethodInfo>();
-		methodsInfoMap  = new HashMap<String,MethodInfo>();
+		methodsInfoMap  = new HashMap<>();
 	}
 	
 	public String getJavaClassName() {
@@ -102,20 +105,12 @@ public class ClassInfo {
 	}
 	
 	protected void addMethodInfo(MethodInfo methodInfo) {
-		//methodsInfoList.add(methodInfo);
 		methodsInfoMap.put(methodInfo.getSignature(), methodInfo);
 	}
 
-	public static <T extends Comparable<? super T>> List<T> sortList(Collection<T> c) {
-		  List<T> list = new ArrayList<T>(c);
-		  java.util.Collections.sort(list);
-		  return list;
-	}
-	
 	public List<MethodInfo> getMethodsInfo() {
-		//return methodsInfoList ;
 		Collection<MethodInfo> methods = methodsInfoMap.values();
-		List<MethodInfo> list = new LinkedList<MethodInfo>();
+		List<MethodInfo> list = new LinkedList<>();
 		for ( MethodInfo m : methods ) {
 			list.add(m);
 		}
@@ -128,10 +123,8 @@ public class ClassInfo {
 	}
 
 	public int getMethodsCount() {
-		//return ( methodsInfoList != null ? methodsInfoList.size() : 0 ) ;
 		return ( methodsInfoMap != null ? methodsInfoMap.size() : 0 ) ;
 	}
-
 
 	@Override
 	public String toString() {
@@ -142,6 +135,4 @@ public class ClassInfo {
 				+ "\n nb methodsInfo=" + methodsInfoMap.size()
 				;
 	}
-	
-	
 }
