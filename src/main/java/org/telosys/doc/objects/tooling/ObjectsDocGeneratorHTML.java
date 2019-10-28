@@ -87,6 +87,9 @@ public class ObjectsDocGeneratorHTML {
 		writer.println( "		font-weight:bold;			");
 		writer.println( "		background-color: #CCCCFF ;	");
 		writer.println( "	}								");
+		writer.println( "	code.example {			        ");
+		writer.println( "		font-size:14px;				");
+		writer.println( "	}								");
 		writer.println( "	code.simpledesc {				");
 		writer.println( "		font-size:15px;				");
 		writer.println( "		color: #000099; 			");
@@ -135,7 +138,7 @@ public class ObjectsDocGeneratorHTML {
 		if ( exampleText != null && exampleText.length > 0 ) {
 			writer.println( "<br>" );
 			writer.println( "<b>Example : </b><br>" );
-			writer.println( "<code>" );
+			writer.println( "<code class=\"example\">" );
 			for ( String s : exampleText ) {
 				writer.println( "&nbsp;&nbsp;&nbsp;" + s + "<br>" );
 			}
