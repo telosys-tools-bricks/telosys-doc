@@ -18,6 +18,8 @@ package org.telosys.doc.objects.tooling;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -26,29 +28,16 @@ import org.telosys.tools.commons.FileUtil;
 
 public class ObjectsDocGenerator {
 
-//	/**
-//	 * @param args
-//	 */
-//	public static void main(String[] args) {
-//		String userDir =  System.getProperty("user.dir") ;
-//		System.out.println( "USER DIR : " + userDir ); // "X:\xxx\xxx\workspace\project"
-//
-//		String destDir = userDir + "/target/doc/html/objects" ;
-//		System.out.println( "DEST DIR : " + destDir );	
-//		
-//		int n = generateHtmlDoc(destDir);
-//		System.out.println("Normal end of generation. " + n + " files generated.");
-//	}
-//	
+	private static final String TOC_FILENAME = "doc-objects.html" ;
+	
 	public static int generateHtmlDoc(String destDir) {
 
 		System.out.println( "HTML documentation generation" );
 		System.out.println( "Destination directory : " + destDir );
 		File fileDir = new File(destDir);
-		if ( ! fileDir.exists() )
-		{
+		if ( ! fileDir.exists() ) {
 		    System.out.println("Creating directory : " + destDir);
-		    if( fileDir.mkdirs() ){    
+		    if( fileDir.mkdirs() ) {    
 		    	System.out.println("Created");  
 		    }
 		    else {
@@ -67,8 +56,10 @@ public class ObjectsDocGenerator {
 			System.out.println(" . " + name );
 		}
 		
-		List<String>sortedNames = sortList(names);
+		List<String> sortedNames = sortList(names);
+		Set<String> uniqueNames = new HashSet<>();
 		
+		// Generate object html doc file ( one for each object )
 		ObjectsDocGeneratorHTML htmlGenerator = new ObjectsDocGeneratorHTML();
 
 		System.out.println("Sorted context names (size=" + sortedNames.size() + ") : " );
@@ -79,8 +70,18 @@ public class ObjectsDocGenerator {
 			String fullFileName = FileUtil.buildFilePath(destDir, shortFileName);
 			System.out.println(" . " + name + " (" + classInfo.getContextName() + ") --> " + fullFileName );
 			htmlGenerator.generateDocFile(classInfo, fullFileName);
+			uniqueNames.add(classInfo.getContextName());
 			c++;
 		}
+		
+		List<String> sortedUniqueNames = new ArrayList<>(uniqueNames);
+		Collections.sort(sortedUniqueNames);
+		
+		// Generate the Table Of Contents 
+		ObjectsTOCGeneratorHTML tocGenerator = new ObjectsTOCGeneratorHTML();
+		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
+		tocGenerator.generateTOCFile(tocFullFileName, sortedUniqueNames);
+
 		return c;
 	}
 	
