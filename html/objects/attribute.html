@@ -32,6 +32,9 @@
 		font-weight:bold;			
 		background-color: #CCCCFF ;	
 	}								
+	code.example {			        
+		font-size:14px;				
+	}								
 	code.simpledesc {				
 		font-size:15px;				
 		color: #000099; 			
@@ -49,7 +52,7 @@ Each attribute is retrieved from the entity class <br>
 <br>
 <br>
 <b>Example : </b><br>
-<code>
+<code class="example">
 &nbsp;&nbsp;&nbsp;<br>
 &nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.attributes )<br>
 &nbsp;&nbsp;&nbsp;    $attribute.name : $attribute.type<br>

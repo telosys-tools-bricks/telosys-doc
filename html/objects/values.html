@@ -32,6 +32,9 @@
 		font-weight:bold;			
 		background-color: #CCCCFF ;	
 	}								
+	code.example {			        
+		font-size:14px;				
+	}								
 	code.simpledesc {				
 		font-size:15px;				
 		color: #000099; 			
@@ -50,7 +53,7 @@ Each literal value is associated with an attribute's name and can be assigned to
 Since : 3.0.0<br>
 <br>
 <b>Example : </b><br>
-<code>
+<code class="example">
 &nbsp;&nbsp;&nbsp;<br>
 &nbsp;&nbsp;&nbsp;#set( $values = $fn.buildValues($entity.attributes, 1) )<br>
 &nbsp;&nbsp;&nbsp;count = $values.size()<br>

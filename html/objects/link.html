@@ -32,6 +32,9 @@
 		font-weight:bold;			
 		background-color: #CCCCFF ;	
 	}								
+	code.example {			        
+		font-size:14px;				
+	}								
 	code.simpledesc {				
 		font-size:15px;				
 		color: #000099; 			
@@ -48,7 +51,7 @@ Each link is retrieved from the entity class <br>
 <br>
 <br>
 <b>Example : </b><br>
-<code>
+<code class="example">
 &nbsp;&nbsp;&nbsp;<br>
 &nbsp;&nbsp;&nbsp;#foreach( $link in $entity.selectedLinks )<br>
 &nbsp;&nbsp;&nbsp;    private $link.formattedFieldType(10) $link.formattedFieldName(12);<br>

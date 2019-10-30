@@ -32,6 +32,9 @@
 		font-weight:bold;			
 		background-color: #CCCCFF ;	
 	}								
+	code.example {			        
+		font-size:14px;				
+	}								
 	code.simpledesc {				
 		font-size:15px;				
 		color: #000099; 			
@@ -48,7 +51,7 @@ This object provides all information about a database foreign key column<br>
 Since : 2.0.7<br>
 <br>
 <b>Example : </b><br>
-<code>
+<code class="example">
 &nbsp;&nbsp;&nbsp;<br>
 &nbsp;&nbsp;&nbsp;#foreach( $fkcol in $fk.columns )<br>
 &nbsp;&nbsp;&nbsp;    $fkcol.columnName - $fkcol.targetColumnName <br>
