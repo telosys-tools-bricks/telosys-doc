@@ -56,7 +56,7 @@ public class ObjectsTOCGeneratorHTML {
 		
 		writer.println( "<head>								" );
 		writer.println( "	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">	" );
-		writer.println( "	<title> $" + TITLE + "</title>	");
+		writer.println( "	<title>" + TITLE + "</title>	");
 		writer.println( "	<style type=\"text/css\">		");
 /***
 		writer.println( "	h1 {							");

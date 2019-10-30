@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.telosys.doc.commons.DestinationFolder;
 import org.telosys.tools.commons.FileUtil;
 
 public class ObjectsDocGenerator {
@@ -33,19 +34,7 @@ public class ObjectsDocGenerator {
 	public static int generateHtmlDoc(String destDir) {
 
 		System.out.println( "HTML documentation generation" );
-		System.out.println( "Destination directory : " + destDir );
-		File fileDir = new File(destDir);
-		if ( ! fileDir.exists() ) {
-		    System.out.println("Creating directory : " + destDir);
-		    if( fileDir.mkdirs() ) {    
-		    	System.out.println("Created");  
-		    }
-		    else {
-		    	System.out.println("ERROR : Cannot create directory !");
-		    	return -1 ;
-		    }
-		}
-		
+		File fileDir = DestinationFolder.prepare(destDir);
 		DocBuilder docBuilder = new DocBuilder();
 		
 		Map<String,ClassInfo> classesInfo = docBuilder.getVelocityClassesInfo() ;

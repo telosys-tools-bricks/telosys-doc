@@ -6,14 +6,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import org.telosys.doc.commons.DestinationFolder;
 import org.telosys.doc.languages.LanguagesList;
-import org.telosys.tools.commons.DirUtil;
+import org.telosys.tools.commons.FileUtil;
 import org.telosys.tools.generic.model.types.LiteralValuesProvider;
 import org.telosys.tools.generic.model.types.TypeConverter;
 
 
 public class LanguagesDocGenerator {
 
+	private static final String TOC_FILENAME = "doc-languages.html" ;
+	
 	/**
 	 * Private constructor
 	 */
@@ -29,32 +32,37 @@ public class LanguagesDocGenerator {
 		System.out.println( "Destination directory : " + destDir );	
 		
 		System.out.println("Starting code generation...");
-		int n = generateAllHtmlFiles(destDir);		
+		int n = generateAllHtmlFiles(destDir);
+		
 		System.out.println("Normal end of generation : " + n + " files generated.");
 	
 	}
 	
 	private static int generateAllHtmlFiles(String destDir) {
-		if ( DirUtil.isValidDirectory(new File(destDir) ) ) {
-			int n = 0 ;
-			List<LanguageDocumenter> list = LanguagesList.getLanguages();
-			for ( LanguageDocumenter ld : list ) {
-				String htmlFileName = buildHtmlFileName(destDir, ld.getLanguageName());
-				generatedHtmlFile(htmlFileName, ld.getTypeConverter(), ld.getLiteralValuesProvider());
-				n++;
-			}
-			return n;
+		File destination = DestinationFolder.prepare(destDir);
+
+		// Generate all the documentation pages
+		int n = 0 ;
+		List<LanguageDocumenter> list = LanguagesList.getLanguages();
+		for ( LanguageDocumenter ld : list ) {
+			String htmlFileName = buildHtmlFileName(destDir, ld.getLanguageName());
+			generatedHtmlFile(htmlFileName, ld.getTypeConverter(), ld.getLiteralValuesProvider());
+			n++;
 		}
-		else {
-			throw new RuntimeException("Destination folder does not exist : " + destDir );
-		}
+		
+		// Generate the Table Of Contents 
+		String tocFullFileName = FileUtil.buildFilePath(destination.getParent(), TOC_FILENAME);
+		LanguagesTOCGeneratorHTML tocGenerator = new LanguagesTOCGeneratorHTML(tocFullFileName);
+		tocGenerator.generateTOCFile();
+
+		return n;
 	}
 	
 	private static String buildHtmlFileName(String destDir, String languageName) {
 		return destDir + "/language-" + languageName + ".html" ;
 	}
 	
-	public static void generatedHtmlFile(String fileName, TypeConverter typeConverter, LiteralValuesProvider literalValuesProvider ) {
+	private static void generatedHtmlFile(String fileName, TypeConverter typeConverter, LiteralValuesProvider literalValuesProvider ) {
 		
 		System.out.println("Print doc : " + fileName );
 		

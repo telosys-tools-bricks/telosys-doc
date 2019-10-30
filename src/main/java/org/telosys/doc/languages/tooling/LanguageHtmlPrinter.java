@@ -30,13 +30,13 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 	private final TypeConverter          typeConverter ;
 	private final LiteralValuesProvider  literalValuesProvider ;
 	
-	public LanguageHtmlPrinter(TypeConverter typeConverter, LiteralValuesProvider literalValuesProvider, BufferedWriter writer ) {
+	protected LanguageHtmlPrinter(TypeConverter typeConverter, LiteralValuesProvider literalValuesProvider, BufferedWriter writer ) {
 		super(writer);
 		this.typeConverter = typeConverter ;
 		this.literalValuesProvider = literalValuesProvider ;
 	}
 	
-	public void printDoc() {
+	protected void printDoc() {
 		//String title = "Code generation specificities for \"" + typeConverter.getLanguageName() + "\" language"; 
 		String title = "\"" + typeConverter.getLanguageName() + "\" language specificities"; 
 		printHtmlHeader(title);
