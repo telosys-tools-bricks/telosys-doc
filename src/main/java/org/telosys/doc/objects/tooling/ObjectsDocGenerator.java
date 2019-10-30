@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.telosys.doc.commons.DestinationFolder;
+import org.telosys.doc.commons.ItemLink;
 import org.telosys.tools.commons.FileUtil;
 
 public class ObjectsDocGenerator {
@@ -63,13 +64,18 @@ public class ObjectsDocGenerator {
 			c++;
 		}
 		
+		// Generate the Table Of Contents 
 		List<String> sortedUniqueNames = new ArrayList<>(uniqueNames);
 		Collections.sort(sortedUniqueNames);
-		
-		// Generate the Table Of Contents 
-		ObjectsTOCGeneratorHTML tocGenerator = new ObjectsTOCGeneratorHTML();
+		ItemLink[] itemLinks = new ItemLink[sortedUniqueNames.size()];
+		int i = 0 ;
+		for ( String s : sortedUniqueNames ) {
+			itemLinks[i++] = new ItemLink(s, s);
+		}
 		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
-		tocGenerator.generateTOCFile(tocFullFileName, sortedUniqueNames);
+		ObjectsTOCGeneratorHTML tocGenerator = new ObjectsTOCGeneratorHTML(tocFullFileName, itemLinks);
+//		tocGenerator.generateTOCFile(tocFullFileName, sortedUniqueNames);
+		tocGenerator.generateTOCFile();
 
 		return c;
 	}
