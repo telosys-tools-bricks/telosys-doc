@@ -27,6 +27,8 @@ import java.util.Set;
 import org.telosys.doc.commons.DestinationFolder;
 import org.telosys.doc.commons.ItemLink;
 import org.telosys.tools.commons.FileUtil;
+import org.telosys.tools.generator.context.doc.tooling.ClassInfo;
+import org.telosys.tools.generator.context.doc.tooling.DocBuilder;
 
 public class ObjectsDocGenerator {
 

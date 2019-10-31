@@ -21,6 +21,9 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
 import org.telosys.tools.generator.GeneratorVersion;
+import org.telosys.tools.generator.context.doc.tooling.ClassInfo;
+import org.telosys.tools.generator.context.doc.tooling.MethodInfo;
+import org.telosys.tools.generator.context.doc.tooling.MethodParameter;
 
 public class ObjectsDocGeneratorHTML {
 
