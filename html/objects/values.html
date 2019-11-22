@@ -132,14 +132,13 @@ Returns the size of the values list (the number of values)<br>
 <TD class="doc" ><CODE class="simpledesc"> <B>.toJSON() : String</B> </CODE>
 <p class="doc">
 Returns a string containing ALL the literal values in JSON format. <br>
-NB : this method is usable only with 'JAVASCRIPT values'.<br>
 e.g. : '{"id":1, "name":"AAAA"} <br>
  <br>
-Usage examples in Velocity template :<br>
- $values.toJSON()  <br>
- $values.toJSON("${NEWLINE}")  <br>
- $values.toJSON("${NEWLINE}${TAB}", "${NEWLINE}")  <br>
- <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON() <br>
+</code>
 <br>
 <b>Since : </b>3.0.0<br>
 </p>
@@ -149,59 +148,89 @@ Usage examples in Velocity template :<br>
 <TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List attributes) : String</B> </CODE>
 <p class="doc">
 Returns a string containing the literal values in JSON format for the given list of attributes. <br>
-NB : this method is usable only with 'JAVASCRIPT values'.<br>
 e.g. : '{"id":1, "name":"AAAA"} <br>
- <br>
-Usage example in Velocity template :<br>
- $values.toJSON($entity.attributes) <br>
- $values.toJSON($entity.attributes, "${NEWLINE}")  <br>
- $values.toJSON($entity.attributes, "${NEWLINE}${TAB}", "${NEWLINE}")  <br>
- <br>
 <br>
 <b>Parameters : </b><br>
 &nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.attributes ) <br>
+</code>
 <br>
 <b>Since : </b>3.0.0<br>
 </p>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List ?, String ?) : String</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List attributes, String separator) : String</B> </CODE>
 <p class="doc">
+Returns a string containing the literal values in JSON format for the given list of attributes. <br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put before each value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.attributes, "${NEWLINE}${TAB}" ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
 </p>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List ?, String ?, String ?) : String</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List attributes, String separator1, String separator2) : String</B> </CODE>
 <p class="doc">
+Returns a string containing the literal values in JSON format for the given list of attributes. <br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
+&nbsp;&nbsp;&nbsp;<b>separator1</b> : the separator to be put before each value<br>
+&nbsp;&nbsp;&nbsp;<b>separator2</b> : the separator to be put before the ending '}'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.attributes, "${NEWLINE}${TAB}", "${NEWLINE}" ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
 </p>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(String ?) : String</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(String separator) : String</B> </CODE>
 <p class="doc">
+Returns a string containing ALL the literal values in JSON format. <br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put before each value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( "${NEWLINE}${TAB}" ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
 </p>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(String ?, String ?) : String</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(String separator1, String separator2) : String</B> </CODE>
 <p class="doc">
+Returns a string containing ALL the literal values in JSON format. <br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>separator1</b> : the separator to be put before each value<br>
+&nbsp;&nbsp;&nbsp;<b>separator2</b> : the separator to be put before the ending '}'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( "${NEWLINE}${TAB}", "${NEWLINE}" ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
 </p>
 </TD>
 </TR>
