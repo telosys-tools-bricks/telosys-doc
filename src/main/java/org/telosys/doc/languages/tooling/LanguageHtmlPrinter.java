@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.telosys.tools.generic.model.types.AttributeTypeInfo;
 import org.telosys.tools.generic.model.types.LanguageType;
+import org.telosys.tools.generic.model.types.LiteralValue;
 import org.telosys.tools.generic.model.types.LiteralValuesProvider;
 import org.telosys.tools.generic.model.types.NeutralType;
 import org.telosys.tools.generic.model.types.TypeConverter;
@@ -235,8 +236,8 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 
 		println("<tbody>");
 		for ( LanguageType languageType : getAllLanguageTypes() ) {
-			String literalValue = literalValuesProvider.generateLiteralValue(languageType, 3, 1);
-			printLiteralValueRow(languageType, literalValue);
+			LiteralValue literalValue = literalValuesProvider.generateLiteralValue(languageType, 3, 1);
+			printLiteralValueRow(languageType, literalValue.getCurrentLanguageValue());
 		}		
 		println("</tbody>");
 		println("</table>");
