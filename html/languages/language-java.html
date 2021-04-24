@@ -17,7 +17,7 @@
 
 <body>
 <h1>"Java" language specificities</h1>
-<p>Generic model version : <b>3.1.2</b> </p>
+<p>Generic model version : <b>3.3.0</b> </p>
 <hr/><br>
 <p>Java is the default target language <br>therefore it is <b>not necessary</b> to call  <b>'#set( $env.language = 'Java' )'</b> in the templates files.<br>
 <br>
@@ -31,25 +31,25 @@ The language type conversion has an impact on :<ul class="code" ><li> $attribute
  <col style="width: 16%; background-color: GhostWhite ; "> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;">
 </colgroup>
 <thead>
- <tr> <th> Model type </th> <th> Default </th>  <th> @UnsignedType </th> <th> @NotNull </th> <th> @PrimitiveType </th> <th> @ObjectType </th> <th> @SqlType </th></tr>
+ <tr> <th> Model type </th> <th> Default </th>  <th> @UnsignedType </th> <th> @NotNull </th> <th> @PrimitiveType </th> <th> @ObjectType </th></tr>
 </thead>
 <tbody>
- <tr> <td>string</td> <td>String</td> <td>String</td> <td>String</td> <td>String</td> <td>String</td> <td>String</td> </tr>
- <tr> <td>byte</td> <td>Byte</td> <td>Byte</td> <td>byte</td> <td>byte</td> <td>Byte</td> <td>Byte</td> </tr>
- <tr> <td>short</td> <td>Short</td> <td>Short</td> <td>short</td> <td>short</td> <td>Short</td> <td>Short</td> </tr>
- <tr> <td>int</td> <td>Integer</td> <td>Integer</td> <td>int</td> <td>int</td> <td>Integer</td> <td>Integer</td> </tr>
- <tr> <td>long</td> <td>Long</td> <td>Long</td> <td>long</td> <td>long</td> <td>Long</td> <td>Long</td> </tr>
- <tr> <td>decimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> </tr>
- <tr> <td>float</td> <td>Float</td> <td>Float</td> <td>float</td> <td>float</td> <td>Float</td> <td>Float</td> </tr>
- <tr> <td>double</td> <td>Double</td> <td>Double</td> <td>double</td> <td>double</td> <td>Double</td> <td>Double</td> </tr>
- <tr> <td>boolean</td> <td>Boolean</td> <td>Boolean</td> <td>boolean</td> <td>boolean</td> <td>Boolean</td> <td>Boolean</td> </tr>
- <tr> <td>date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> </tr>
- <tr> <td>time</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Time</td> </tr>
- <tr> <td>timestamp</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Timestamp</td> </tr>
- <tr> <td>binary</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>Blob</td> </tr>
+ <tr> <td>string</td> <td>String</td> <td>String</td> <td>String</td> <td>String</td> <td>String</td> </tr>
+ <tr> <td>byte</td> <td>Byte</td> <td>Byte</td> <td>byte</td> <td>byte</td> <td>Byte</td> </tr>
+ <tr> <td>short</td> <td>Short</td> <td>Short</td> <td>short</td> <td>short</td> <td>Short</td> </tr>
+ <tr> <td>int</td> <td>Integer</td> <td>Integer</td> <td>int</td> <td>int</td> <td>Integer</td> </tr>
+ <tr> <td>long</td> <td>Long</td> <td>Long</td> <td>long</td> <td>long</td> <td>Long</td> </tr>
+ <tr> <td>decimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> </tr>
+ <tr> <td>float</td> <td>Float</td> <td>Float</td> <td>float</td> <td>float</td> <td>Float</td> </tr>
+ <tr> <td>double</td> <td>Double</td> <td>Double</td> <td>double</td> <td>double</td> <td>Double</td> </tr>
+ <tr> <td>boolean</td> <td>Boolean</td> <td>Boolean</td> <td>boolean</td> <td>boolean</td> <td>Boolean</td> </tr>
+ <tr> <td>date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> </tr>
+ <tr> <td>time</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> </tr>
+ <tr> <td>timestamp</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> <td>Date</td> </tr>
+ <tr> <td>binary</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> </tr>
 </tbody>
 </table>
-<h2>Remarks</h2><p class="code" >'@UnsignedType' : <br>&nbsp;  has no effect (all numeric types are signed in Java)<br>'@NotNull' : <br>&nbsp;  switches to primitive type if possible (in order to avoid 'null' value) <br>'@PrimitiveType' : <br>&nbsp;  switches to primitive type if possible (short, int, boolean, etc) <br>'@ObjectType' : <br>&nbsp;  switches primitive types to standard wrapper types (Short, Integer, Long, Float, etc)  <br>'@SqlType' : <br>&nbsp;  switches to 'java.sql.*' types (Time, Blob, etc) if possible (or standard wrapper types if no SQL type)   <br></p><br>
+<h2>Remarks</h2><p class="code" >'@UnsignedType' : <br>&nbsp;  has no effect (all numeric types are signed in Java)<br>'@NotNull' : <br>&nbsp;  switches to primitive type if possible (in order to avoid 'null' value) <br>'@PrimitiveType' : <br>&nbsp;  switches to primitive type if possible (short, int, boolean, etc) <br>'@ObjectType' : <br>&nbsp;  switches primitive types to standard wrapper types (Short, Integer, Long, Float, etc)  <br></p><br>
 <hr/>
 <h2>Literals for TRUE, FALSE and NULL </h2>
 <table style=""> 
@@ -87,13 +87,9 @@ The language type conversion has an impact on :<ul class="code" ><li> $attribute
  <tr> <td>boolean</td> <td>Boolean</td> <td>java.lang.Boolean</td> <td>Boolean.valueOf(true)</td> </tr>
  <tr> <td>boolean</td> <td>boolean</td> <td>boolean</td> <td>true</td> </tr>
  <tr> <td>date</td> <td>Date</td> <td>java.util.Date</td> <td>java.sql.Date.valueOf("2001-06-22")</td> </tr>
- <tr> <td>date</td> <td>Date</td> <td>java.sql.Date</td> <td>java.sql.Date.valueOf("2001-06-22")</td> </tr>
  <tr> <td>time</td> <td>Date</td> <td>java.util.Date</td> <td>java.sql.Time.valueOf("01:46:52")</td> </tr>
- <tr> <td>time</td> <td>Time</td> <td>java.sql.Time</td> <td>java.sql.Time.valueOf("01:46:52")</td> </tr>
  <tr> <td>timestamp</td> <td>Date</td> <td>java.util.Date</td> <td>java.sql.Timestamp.valueOf("2001-05-21 01:46:52")</td> </tr>
- <tr> <td>timestamp</td> <td>Timestamp</td> <td>java.sql.Timestamp</td> <td>java.sql.Timestamp.valueOf("2001-05-21 01:46:52")</td> </tr>
  <tr> <td>binary</td> <td>byte[]</td> <td>byte[]</td> <td>null</td> </tr>
- <tr> <td>binary</td> <td>Blob</td> <td>java.sql.Blob</td> <td>null</td> </tr>
 </tbody>
 </table>
 <br>

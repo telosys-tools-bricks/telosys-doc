@@ -17,7 +17,7 @@
 
 <body>
 <h1>"C#" language specificities</h1>
-<p>Generic model version : <b>3.1.2</b> </p>
+<p>Generic model version : <b>3.3.0</b> </p>
 <hr/><br>
 <p>To define <b>C#</b> as the target language call &nbsp;<span class="code">#set( $env.language = 'C#' )</span>&nbsp; in the templates files.<br>
 <br>
@@ -31,25 +31,25 @@ The language type conversion has an impact on :<ul class="code" ><li> $attribute
  <col style="width: 16%; background-color: GhostWhite ; "> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;">
 </colgroup>
 <thead>
- <tr> <th> Model type </th> <th> Default </th>  <th> @UnsignedType </th> <th> @NotNull </th> <th> @PrimitiveType </th> <th> @ObjectType </th> <th> @SqlType </th></tr>
+ <tr> <th> Model type </th> <th> Default </th>  <th> @UnsignedType </th> <th> @NotNull </th> <th> @PrimitiveType </th> <th> @ObjectType </th></tr>
 </thead>
 <tbody>
- <tr> <td>string</td> <td>string</td> <td>string</td> <td>string</td> <td>string</td> <td>String</td> <td>string</td> </tr>
- <tr> <td>byte</td> <td>sbyte</td> <td>byte</td> <td>sbyte</td> <td>sbyte</td> <td>SByte</td> <td>sbyte</td> </tr>
- <tr> <td>short</td> <td>short</td> <td>ushort</td> <td>short</td> <td>short</td> <td>Int16</td> <td>short</td> </tr>
- <tr> <td>int</td> <td>int</td> <td>uint</td> <td>int</td> <td>int</td> <td>Int32</td> <td>int</td> </tr>
- <tr> <td>long</td> <td>long</td> <td>ulong</td> <td>long</td> <td>long</td> <td>Int64</td> <td>long</td> </tr>
- <tr> <td>decimal</td> <td>decimal</td> <td>decimal</td> <td>decimal</td> <td>decimal</td> <td>Decimal</td> <td>decimal</td> </tr>
- <tr> <td>float</td> <td>float</td> <td>float</td> <td>float</td> <td>float</td> <td>Single</td> <td>float</td> </tr>
- <tr> <td>double</td> <td>double</td> <td>double</td> <td>double</td> <td>double</td> <td>Double</td> <td>double</td> </tr>
- <tr> <td>boolean</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>Boolean</td> <td>bool</td> </tr>
- <tr> <td>date</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> </tr>
- <tr> <td>time</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> </tr>
- <tr> <td>timestamp</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> </tr>
- <tr> <td>binary</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> </tr>
+ <tr> <td>string</td> <td>string</td> <td>string</td> <td>string</td> <td>string</td> <td>String</td> </tr>
+ <tr> <td>byte</td> <td>sbyte</td> <td>byte</td> <td>sbyte</td> <td>sbyte</td> <td>SByte</td> </tr>
+ <tr> <td>short</td> <td>short</td> <td>ushort</td> <td>short</td> <td>short</td> <td>Int16</td> </tr>
+ <tr> <td>int</td> <td>int</td> <td>uint</td> <td>int</td> <td>int</td> <td>Int32</td> </tr>
+ <tr> <td>long</td> <td>long</td> <td>ulong</td> <td>long</td> <td>long</td> <td>Int64</td> </tr>
+ <tr> <td>decimal</td> <td>decimal</td> <td>decimal</td> <td>decimal</td> <td>decimal</td> <td>Decimal</td> </tr>
+ <tr> <td>float</td> <td>float</td> <td>float</td> <td>float</td> <td>float</td> <td>Single</td> </tr>
+ <tr> <td>double</td> <td>double</td> <td>double</td> <td>double</td> <td>double</td> <td>Double</td> </tr>
+ <tr> <td>boolean</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>Boolean</td> </tr>
+ <tr> <td>date</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> </tr>
+ <tr> <td>time</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> </tr>
+ <tr> <td>timestamp</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> <td>DateTime</td> </tr>
+ <tr> <td>binary</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> </tr>
 </tbody>
 </table>
-<h2>Remarks</h2><p class="code" >'@UnsignedType'  has effect only for byte, short, int, long <br>'@ObjectType'  switches to .Net types ( System.Int64, System.Boolean, etc) <br><br>'@NotNull'  has no effect <br>'@PrimitiveType'  has no effect <br>'@SqlType'  has no effect <br></p><br>
+<h2>Remarks</h2><p class="code" >'@UnsignedType'  has effect only for byte, short, int, long <br>'@ObjectType'  switches to .Net types ( System.Int64, System.Boolean, etc) <br><br>'@NotNull'  has no effect <br>'@PrimitiveType'  has no effect <br></p><br>
 <hr/>
 <h2>Literals for TRUE, FALSE and NULL </h2>
 <table style=""> 

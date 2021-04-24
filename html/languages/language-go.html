@@ -17,7 +17,7 @@
 
 <body>
 <h1>"Go" language specificities</h1>
-<p>Generic model version : <b>3.1.2</b> </p>
+<p>Generic model version : <b>3.3.0</b> </p>
 <hr/><br>
 <p>To define <b>Go</b> as the target language call &nbsp;<span class="code">#set( $env.language = 'Go' )</span>&nbsp; in the templates files.<br>
 <br>
@@ -31,25 +31,25 @@ The language type conversion has an impact on :<ul class="code" ><li> $attribute
  <col style="width: 16%; background-color: GhostWhite ; "> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;"> <col style="width: 14%;">
 </colgroup>
 <thead>
- <tr> <th> Model type </th> <th> Default </th>  <th> @UnsignedType </th> <th> @NotNull </th> <th> @PrimitiveType </th> <th> @ObjectType </th> <th> @SqlType </th></tr>
+ <tr> <th> Model type </th> <th> Default </th>  <th> @UnsignedType </th> <th> @NotNull </th> <th> @PrimitiveType </th> <th> @ObjectType </th></tr>
 </thead>
 <tbody>
- <tr> <td>string</td> <td>string</td> <td>string</td> <td>string</td> <td>string</td> <td>string</td> <td>string</td> </tr>
- <tr> <td>byte</td> <td>byte</td> <td>uint8</td> <td>byte</td> <td>byte</td> <td>byte</td> <td>byte</td> </tr>
- <tr> <td>short</td> <td>int16</td> <td>uint16</td> <td>int16</td> <td>int16</td> <td>int16</td> <td>int16</td> </tr>
- <tr> <td>int</td> <td>int32</td> <td>uint32</td> <td>int32</td> <td>int32</td> <td>int32</td> <td>int32</td> </tr>
- <tr> <td>long</td> <td>int64</td> <td>uint64</td> <td>int64</td> <td>int64</td> <td>int64</td> <td>int64</td> </tr>
- <tr> <td>decimal</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> </tr>
- <tr> <td>float</td> <td>float32</td> <td>float32</td> <td>float32</td> <td>float32</td> <td>float32</td> <td>float32</td> </tr>
- <tr> <td>double</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> </tr>
- <tr> <td>boolean</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>bool</td> </tr>
- <tr> <td>date</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> </tr>
- <tr> <td>time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> </tr>
- <tr> <td>timestamp</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> </tr>
- <tr> <td>binary</td> <td>[]byte</td> <td>[]byte</td> <td>[]byte</td> <td>[]byte</td> <td>[]byte</td> <td>[]byte</td> </tr>
+ <tr> <td>string</td> <td>string</td> <td>string</td> <td>string</td> <td>string</td> <td>string</td> </tr>
+ <tr> <td>byte</td> <td>byte</td> <td>uint8</td> <td>byte</td> <td>byte</td> <td>byte</td> </tr>
+ <tr> <td>short</td> <td>int16</td> <td>uint16</td> <td>int16</td> <td>int16</td> <td>int16</td> </tr>
+ <tr> <td>int</td> <td>int32</td> <td>uint32</td> <td>int32</td> <td>int32</td> <td>int32</td> </tr>
+ <tr> <td>long</td> <td>int64</td> <td>uint64</td> <td>int64</td> <td>int64</td> <td>int64</td> </tr>
+ <tr> <td>decimal</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> </tr>
+ <tr> <td>float</td> <td>float32</td> <td>float32</td> <td>float32</td> <td>float32</td> <td>float32</td> </tr>
+ <tr> <td>double</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> <td>float64</td> </tr>
+ <tr> <td>boolean</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>bool</td> </tr>
+ <tr> <td>date</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> </tr>
+ <tr> <td>time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> </tr>
+ <tr> <td>timestamp</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> <td>time.Time</td> </tr>
+ <tr> <td>binary</td> <td>[]byte</td> <td>[]byte</td> <td>[]byte</td> <td>[]byte</td> <td>[]byte</td> </tr>
 </tbody>
 </table>
-<h2>Remarks</h2><p class="code" >'@UnsignedType'  has effect only for byte, short, int, long <br><br>'@NotNull'  has no effect <br>'@PrimitiveType'  has no effect <br>'@ObjectType'  has no effect  <br>'@SqlType'  has no effect <br></p><br>
+<h2>Remarks</h2><p class="code" >'@UnsignedType'  has effect only for byte, short, int, long <br><br>'@NotNull'  has no effect <br>'@PrimitiveType'  has no effect <br>'@ObjectType'  has no effect  <br></p><br>
 <hr/>
 <h2>Literals for TRUE, FALSE and NULL </h2>
 <table style=""> 

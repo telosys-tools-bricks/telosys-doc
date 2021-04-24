@@ -44,7 +44,7 @@
 <body>											
 <h1> $values</h1>	
 <p class="otherNames">								Other name(s) : <b>$keyValues</b>,&nbsp;<b>$dataValues</b></p>
-<p class="desc">	Generator version : <b>3.1.2</b> </p>
+<p class="desc">	Generator version : <b>3.3.0</b> </p>
 <p class="desc">								
 This object provides a set literal values<br>
 Each literal value is associated with an attribute's name and can be assigned to this attribute<br>
@@ -129,9 +129,44 @@ Returns the size of the values list (the number of values)<br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toFormattedJSON() : String</B> </CODE>
+<p class="doc">
+Returns a JSON string containing all the attributes with their literal values. <br>
+The resulting JSON is formatted (one line for each attribute) <br>
+ <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toFormattedJSON() <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toFormattedJSON(List attributes) : String</B> </CODE>
+<p class="doc">
+Returns a JSON string containing the given attributes with their literal values. <br>
+The resulting JSON is formatted (one line for each attribute) <br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toFormattedJSON( $entity.keyAttributes ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.toJSON() : String</B> </CODE>
 <p class="doc">
-Returns a string containing ALL the literal values in JSON format. <br>
+Returns a JSON string containing all the attributes with their literal values. <br>
 e.g. : '{"id":1, "name":"AAAA"} <br>
  <br>
 <br>
@@ -147,15 +182,16 @@ e.g. : '{"id":1, "name":"AAAA"} <br>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List attributes) : String</B> </CODE>
 <p class="doc">
-Returns a string containing the literal values in JSON format for the given list of attributes. <br>
+Returns a JSON string containing the given attributes with their literal values. <br>
 e.g. : '{"id":1, "name":"AAAA"} <br>
+ <br>
 <br>
 <b>Parameters : </b><br>
 &nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
 <br>
 <b>Example : </b><br>
 <code>
-&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.attributes ) <br>
+&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.keyAttributes ) <br>
 </code>
 <br>
 <b>Since : </b>3.0.0<br>
@@ -173,7 +209,7 @@ Returns a string containing the literal values in JSON format for the given list
 <br>
 <b>Example : </b><br>
 <code>
-&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.attributes, "${NEWLINE}${TAB}" ) <br>
+&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.nonKeyAttributes, "${NEWLINE}${TAB}" ) <br>
 </code>
 <br>
 <b>Since : </b>3.0.0<br>
@@ -192,7 +228,7 @@ Returns a string containing the literal values in JSON format for the given list
 <br>
 <b>Example : </b><br>
 <code>
-&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.attributes, "${NEWLINE}${TAB}", "${NEWLINE}" ) <br>
+&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.nonKeyAttributes, "${NEWLINE}${TAB}", "${NEWLINE}" ) <br>
 </code>
 <br>
 <b>Since : </b>3.0.0<br>
@@ -228,6 +264,41 @@ Returns a string containing ALL the literal values in JSON format. <br>
 <b>Example : </b><br>
 <code>
 &nbsp;&nbsp;&nbsp;$values.toJSON( "${NEWLINE}${TAB}", "${NEWLINE}" ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toURI() : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the values in URI format (with '/' separator) <br>
+e.g. : '/12/ABC<br>
+ <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toURI() <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toURI(List ?) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the given attributes values in URI format (with '/' separator) <br>
+e.g. : '/12/ABC<br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toURI( $entity.keyAttributes ) <br>
 </code>
 <br>
 <b>Since : </b>3.0.0<br>

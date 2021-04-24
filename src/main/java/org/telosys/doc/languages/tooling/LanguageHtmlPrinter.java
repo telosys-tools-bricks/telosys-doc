@@ -107,7 +107,7 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 		print(" <th> @NotNull </th>" ); 
 		print(" <th> @PrimitiveType </th>" ); 
 		print(" <th> @ObjectType </th>" );  
-		print(" <th> @SqlType </th>" );  
+		//print(" <th> @SqlType </th>" );  
 		println("</tr>");
 	    println("</thead>");
 
@@ -128,7 +128,7 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 		list.add( getSimpleType(neutralType, AttributeTypeInfo.NOT_NULL) );
 		list.add( getSimpleType(neutralType, AttributeTypeInfo.PRIMITIVE_TYPE) );
 		list.add( getSimpleType(neutralType, AttributeTypeInfo.OBJECT_TYPE) );
-		list.add( getSimpleType(neutralType, AttributeTypeInfo.SQL_TYPE) );
+		//list.add( getSimpleType(neutralType, AttributeTypeInfo.SQL_TYPE) );
 		
 		return list;
 	}
@@ -187,7 +187,7 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.NOT_NULL ) ) ;
 		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.PRIMITIVE_TYPE ) ) ;
 		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.OBJECT_TYPE ) ) ;
-		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.SQL_TYPE ) ) ;
+//		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.SQL_TYPE ) ) ;
 	}
 	private void addIfNotInList(List<LanguageType> list, LanguageType languageType) {
 		if ( ! list.contains(languageType) ) {

@@ -43,7 +43,7 @@
 </head>							
 <body>											
 <h1> $link</h1>	
-<p class="desc">	Generator version : <b>3.1.2</b> </p>
+<p class="desc">	Generator version : <b>3.3.0</b> </p>
 <p class="desc">								
 This object provides all information about an entity link<br>
 Each link is retrieved from the entity class <br>
@@ -109,15 +109,6 @@ Returns the 'fetch type' ( 'DEFAULT' or 'EAGER' or 'LAZY' )<br>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.fieldFullType : String</B> </CODE>
-<p class="doc">
-Returns the field 'full type' for the link ( eg 'java.util.List' ) <br>
-for OneToMany/ManyToMany : the collection full type ( 'java.util.List', ...)<br>
-for ManyToOne/OneToOne : the targeted entity full type ( 'my.package.Person', 'my.package.Customer', ... ) <br>
-</p>
-</TD>
-</TR>
-<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.fieldName : String</B> </CODE>
 <p class="doc">
 Returns the field name for the link (attribute name in the entity class)<br>
@@ -125,19 +116,10 @@ Returns the field name for the link (attribute name in the entity class)<br>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.fieldSimpleType : String</B> </CODE>
-<p class="doc">
-Returns the field 'simple type' for the link <br>
-for OneToMany/ManyToMany : the collection short type ( 'List', ...)<br>
-for ManyToOne/OneToOne : the targeted entity short type ( 'Person', 'Customer', ... ) <br>
-</p>
-</TD>
-</TR>
-<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.fieldType : String</B> </CODE>
 <p class="doc">
 Returns the type of the link <br>
-eg : List, List<Person>, Person, ...<br>
+eg : Person, List<Person>,  ...<br>
 </p>
 </TD>
 </TR>

@@ -44,10 +44,10 @@
 <body>											
 <h1> $attribute</h1>	
 <p class="otherNames">								Other name(s) : <b>$attrib</b>,&nbsp;<b>$field</b></p>
-<p class="desc">	Generator version : <b>3.1.2</b> </p>
+<p class="desc">	Generator version : <b>3.3.0</b> </p>
 <p class="desc">								
 This object provides all information about an entity attribute<br>
-Each attribute is retrieved from the entity class <br>
+Each attribute is obtained from its entity class <br>
 <br>
 <br>
 <br>
@@ -80,7 +80,7 @@ Returns the value to use for a boolean when is TRUE (eg to be stored in a databa
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.databaseComment : String</B> </CODE>
 <p class="doc">
-Returns the database comment for the attribute<br>
+Returns the database comment for the attribute (or a void string if none)<br>
 <br>
 <b>Since : </b>2.1.1<br>
 </p>
@@ -102,7 +102,7 @@ Typically the column name for a relational database<br>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.databaseSize : int</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseSize : String</B> </CODE>
 <p class="doc">
 Returns the database size for the attribute<br>
 </p>
@@ -158,6 +158,24 @@ Returns the default value for the attribute<br>
 <TD class="doc" ><CODE class="simpledesc"> <B>.entity : EntityInContext</B> </CODE>
 <p class="doc">
 Returns the entity owning the attribute <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fkParts : List of 'fkPart' objects</B> </CODE>
+<p class="doc">
+Returns the parts of Foreign Keys for which the attribute is implied. <br>
+Each 'FK part' provides the referenced entity and attribute (with table and colunm)<br>
+An empty list is returned if the attribute does not participate in any FK.<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $fkPart in $attrib.fkParts )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
@@ -233,23 +251,33 @@ even for a boolean<br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDatabaseComment() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute has a database comment (not null and not void)<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.hasDatabaseDefaultValue() : boolean</B> </CODE>
 <p class="doc">
-Returns TRUE if the attribute has a database default value<br>
+Returns TRUE if the attribute has a database default value (not null and not void)<br>
+If the attribute is auto-incremented then always returns false<br>
 </p>
 </TD>
 </TR>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.hasDateAfterValidation() : boolean</B> </CODE>
 <p class="doc">
-Returns TRUE if the attribute must be validated as a date after a given date value<br>
+Returns TRUE if the attribute must be validated as a date AFTER a given date value<br>
 </p>
 </TD>
 </TR>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.hasDateBeforeValidation() : boolean</B> </CODE>
 <p class="doc">
-Returns TRUE if the attribute must be validated as a date before a given date value<br>
+Returns TRUE if the attribute must be validated as a date BEFORE a given date value<br>
 </p>
 </TD>
 </TR>
@@ -270,14 +298,32 @@ Returns TRUE if the attribute must be validated as a date in the past<br>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.hasDefaultValue() : boolean</B> </CODE>
 <p class="doc">
-Returns TRUE if there's a default value for the attribute<br>
+Returns TRUE if there's a default value for the attribute (not void)<br>
 </p>
 </TD>
 </TR>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.hasInitialValue() : boolean</B> </CODE>
 <p class="doc">
-Returns TRUE if there's an initial value for the attribute<br>
+Returns TRUE if there's an initial value for the attribute (not void)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasInputType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if there's an 'input type' defined for the attribute (not void)<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasLabel() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if there's an 'label' defined for the attribute (not void)<br>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
@@ -294,6 +340,18 @@ Typically for JPA '@SequenceGenerator'  <br>
 <p class="doc">
 Returns TRUE if the attribute is a 'generated value' using a 'table generator' <br>
 Typically for JPA '@TableGenerator'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasTag(String ?) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the attribute has a tag with the given name<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
@@ -749,6 +807,24 @@ Typically for JPA '@TableGenerator/table'  <br>
 <p class="doc">
 Returns the name of the column that stores the last value generated by the 'table generator' <br>
 Typically for JPA '@TableGenerator/valueColumnName'  <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValue(String ?) : String</B> </CODE>
+<p class="doc">
+Returns the value held by the given tag name<br>
+If the tag is not defined the returned value is a void string<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$attrib.tagValue('mytag') <br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
