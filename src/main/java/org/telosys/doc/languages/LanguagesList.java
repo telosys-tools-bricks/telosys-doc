@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.telosys.doc.languages.tooling.LanguageDocumenter;
+import org.telosys.tools.generic.model.types.LiteralValuesProviderForCPlusPlus;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForCSharp;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForGo;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForJava;
@@ -11,6 +12,7 @@ import org.telosys.tools.generic.model.types.LiteralValuesProviderForJavaScript;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForPHP;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForPython;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForTypeScript;
+import org.telosys.tools.generic.model.types.TypeConverterForCPlusPlus;
 import org.telosys.tools.generic.model.types.TypeConverterForCSharp;
 import org.telosys.tools.generic.model.types.TypeConverterForGo;
 import org.telosys.tools.generic.model.types.TypeConverterForJava;
@@ -28,6 +30,7 @@ public class LanguagesList {
 	 */
 	private static LinkedList<LanguageDocumenter> list = new LinkedList<>();
 	static {
+		list.add(new LanguageDocumenter("c++",        new TypeConverterForCPlusPlus(),  new LiteralValuesProviderForCPlusPlus()) );
 		list.add(new LanguageDocumenter("csharp",     new TypeConverterForCSharp(),     new LiteralValuesProviderForCSharp()) );
 		list.add(new LanguageDocumenter("go",         new TypeConverterForGo(),         new LiteralValuesProviderForGo()) );
 		list.add(new LanguageDocumenter("java",       new TypeConverterForJava(),       new LiteralValuesProviderForJava()) );
