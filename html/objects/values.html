@@ -1,56 +1,21 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
-<html>								
-<head>								
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
-	<title> $values</title>	
-	<style type="text/css">		
-	h1 {							
-		font-size:28px;				
-		font-family: verdana		
-	}								
-	p.otherNames{					
-		font-size:20px;				
-		font-family: verdana;		
-	}								
-	p.desc {						
-		font-size:12px;				
-		font-family: verdana;		
-	}								
-	p.doc {							
-		margin-left:2cm;			
-	}								
-	td.doc {						
-		font-size:12px;				
-		font-family: verdana;		
-		vertical-align:text-top;	
-		padding-top: 6px;			
-		padding-bottom: 12px;		
-	}								
-	tr.title {						
-		font-family: verdana;		
-		font-size:20px;				
-		font-weight:bold;			
-		background-color: #CCCCFF ;	
-	}								
-	code.example {			        
-		font-size:14px;				
-	}								
-	code.simpledesc {				
-		font-size:15px;				
-		color: #000099; 			
-	}								
-	</style>						
-</head>							
-<body>											
-<h1> $values</h1>	
-<p class="otherNames">								Other name(s) : <b>$keyValues</b>,&nbsp;<b>$dataValues</b></p>
-<p class="desc">	Generator version : <b>3.3.0</b> </p>
-<p class="desc">								
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $values</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:20px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $values</h1>
+<p class="otherNames">Other name(s) : <b>$keyValues</b>,&nbsp;<b>$dataValues</b></p>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
 This object provides a set literal values<br>
 Each literal value is associated with an attribute's name and can be assigned to this attribute<br>
 <br>
-<br>
-Since : 3.0.0<br>
 <br>
 <b>Example : </b><br>
 <code class="example">
@@ -61,11 +26,13 @@ Since : 3.0.0<br>
 &nbsp;&nbsp;&nbsp;  Value for attribute "${attribute.name}" = $values.getValue($attribute.name) <br>
 &nbsp;&nbsp;&nbsp;#end<br>
 </code>
-</p>		
-<table width="100%" border="1" cellspacing="0">		
-<TR class="title">										
-  <TD>Attributes and methods</TD>			
-</TR>		
+<br>
+Since : 3.0.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.allValues : String</B> </CODE>
 <p class="doc">
@@ -287,14 +254,14 @@ e.g. : '/12/ABC<br>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.toURI(List ?) : String</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toURI(List attributes) : String</B> </CODE>
 <p class="doc">
 Returns a string containing the given attributes values in URI format (with '/' separator) <br>
 e.g. : '/12/ABC<br>
  <br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the URI string<br>
 <br>
 <b>Example : </b><br>
 <code>

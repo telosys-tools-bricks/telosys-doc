@@ -34,6 +34,9 @@ public class ObjectsDocGenerator {
 
 	private static final String TOC_FILENAME = "doc-objects.html" ;
 	
+	private ObjectsDocGenerator() {
+	}
+	
 	public static int generateHtmlDoc(String destDir) {
 
 		System.out.println( "HTML documentation generation" );
@@ -76,14 +79,13 @@ public class ObjectsDocGenerator {
 		}
 		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
 		ObjectsTOCGeneratorHTML tocGenerator = new ObjectsTOCGeneratorHTML(tocFullFileName, itemLinks);
-//		tocGenerator.generateTOCFile(tocFullFileName, sortedUniqueNames);
 		tocGenerator.generateTOCFile();
 
 		return c;
 	}
 	
 	private static <T extends Comparable<? super T>> List<T> sortList(Collection<T> c) {
-		  List<T> list = new ArrayList<T>(c);
+		  List<T> list = new ArrayList<>(c);
 		  java.util.Collections.sort(list);
 		  return list;
 	}

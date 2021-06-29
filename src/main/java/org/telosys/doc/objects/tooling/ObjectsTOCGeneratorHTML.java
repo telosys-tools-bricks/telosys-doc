@@ -22,7 +22,7 @@ import org.telosys.doc.commons.ItemLink;
 
 public class ObjectsTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 
-	private static final String TITLE = "Telosys templates objects";
+	private static final String TITLE = "Telosys objects reference";
 		
 	public ObjectsTOCGeneratorHTML(String fullFileName, ItemLink[] sortedLinks ) {
 		super(fullFileName, TITLE, sortedLinks);
@@ -30,12 +30,21 @@ public class ObjectsTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 
 	@Override
 	protected void printTextBeforeList(PrintWriter writer) {
-		writer.println( "Templates use predefined objects stored in the Velocity Context by the generator.<br>" );
-		writer.println( "<br>" );
-		writer.println( "Some objects are always available ($entity, $today, etc),<br>");
-		writer.println( "others are retrieved from existing objects ($attribute, $link).<br>");
-		writer.println( "<br>" );
-		writer.println( "All these objects are documented here : <br>");
+//		writer.println( "Templates use predefined objects stored in the Velocity Context by the generator.<br>" );
+//		writer.println( "<br>" );
+//		writer.println( "Some objects are always available ($entity, $today, etc),<br>");
+//		writer.println( "others are retrieved from existing objects ($attribute, $link).<br>");
+//		writer.println( "<br>" );
+//		writer.println( "All these objects are documented here : <br>");
+		
+		writer.println( "Telosys provides a set of predefined objects usable in the templates :<br>" );
+		writer.println( "<ul>" );
+		writer.println( "<li> Objects giving access to the current model ( $model, $entity, $attribute, $link, etc )</li>" );
+		writer.println( "<li> Utility functions and tools ( $fn, $loader )</li>" );
+		writer.println( "<li> Generation environment ( $env, $project, $target, etc )</li>" );
+		writer.println( "<li> Functions dedicated to certain types of generation ($java, $h2, $jpa, etc)</li>" );
+		writer.println( "</ul>" );
+		writer.println( "The reference documentation for each object is available in the following pages :" );
 	}
 
 	@Override

@@ -1,67 +1,33 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
-<html>								
-<head>								
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
-	<title> $link</title>	
-	<style type="text/css">		
-	h1 {							
-		font-size:28px;				
-		font-family: verdana		
-	}								
-	p.otherNames{					
-		font-size:20px;				
-		font-family: verdana;		
-	}								
-	p.desc {						
-		font-size:12px;				
-		font-family: verdana;		
-	}								
-	p.doc {							
-		margin-left:2cm;			
-	}								
-	td.doc {						
-		font-size:12px;				
-		font-family: verdana;		
-		vertical-align:text-top;	
-		padding-top: 6px;			
-		padding-bottom: 12px;		
-	}								
-	tr.title {						
-		font-family: verdana;		
-		font-size:20px;				
-		font-weight:bold;			
-		background-color: #CCCCFF ;	
-	}								
-	code.example {			        
-		font-size:14px;				
-	}								
-	code.simpledesc {				
-		font-size:15px;				
-		color: #000099; 			
-	}								
-	</style>						
-</head>							
-<body>											
-<h1> $link</h1>	
-<p class="desc">	Generator version : <b>3.3.0</b> </p>
-<p class="desc">								
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $link</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:20px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $link</h1>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
 This object provides all information about an entity link<br>
 Each link is retrieved from the entity class <br>
-<br>
 <br>
 <br>
 <b>Example : </b><br>
 <code class="example">
 &nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;#foreach( $link in $entity.selectedLinks )<br>
+&nbsp;&nbsp;&nbsp;#foreach( $link in $entity.links )<br>
 &nbsp;&nbsp;&nbsp;    private $link.formattedFieldType(10) $link.formattedFieldName(12);<br>
 &nbsp;&nbsp;&nbsp;#end<br>
 </code>
-</p>		
-<table width="100%" border="1" cellspacing="0">		
-<TR class="title">										
-  <TD>Attributes and methods</TD>			
-</TR>		
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.attributes : List of '$linkAttribute' (origin-target association) </B> </CODE>
 <p class="doc">
@@ -98,6 +64,16 @@ eg : 'OneToMany', 'ManyToOne', 'OneToOne', 'ManyToMany'<br>
 <p class="doc">
 Returns the 'cascade type' ( 'ALL', 'MERGE', 'MERGE PERSIST', 'PERSIST REFRESH', 'REMOVE' )<br>
 A string containing all the selected cascade options<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.entity : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the entity to which the link belongs <br>
+<br>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
@@ -184,6 +160,29 @@ Returns the unique id of the link in the repository (id used by the tool)<br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.insertable : String</B> </CODE>
+<p class="doc">
+Returns the 'insertable' flag value as string<br>
+( 'true' or 'false' or 'undefined' )<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.insertableIs(boolean value) : boolean</B> </CODE>
+<p class="doc">
+Returns true if 'insertable' flag equals the given value<br>
+The flag can be 'undefined' then then neither true nor false<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : the boolean value<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.isCardinalityManyToMany() : boolean</B> </CODE>
 <p class="doc">
 Returns TRUE if the link has a 'ManyToMany' cardinality<br>
@@ -247,6 +246,23 @@ Returns true if the 'cascade options' contains 'REMOVE' <br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCollectionType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link is a collection<br>
+In other words, if its cardinality is 'OneToMany' or 'ManyToMany'<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isEmbedded() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link is marked as 'embedded' <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.isFetchDEFAULT() : boolean</B> </CODE>
 <p class="doc">
 Returns true if the 'fetch type' is 'DEFAULT' <br>
@@ -299,6 +315,15 @@ Returns TRUE if the link is the 'Owning Side' of the relationship between 2 enti
 <TD class="doc" ><CODE class="simpledesc"> <B>.isSelected() : boolean</B> </CODE>
 <p class="doc">
 Returns TRUE if the link is selected (checkbox checked in the GUI)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isTransient() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link is marked as 'transient' <br>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
@@ -380,6 +405,29 @@ eg : 'Book', 'Customer', ...<br>
 <TD class="doc" ><CODE class="simpledesc"> <B>.targetTableName : String</B> </CODE>
 <p class="doc">
 Returns the name of the target table (table referenced by the link)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.updatable : String</B> </CODE>
+<p class="doc">
+Returns the 'updatable' flag value as string<br>
+( 'true' or 'false' or 'undefined' )<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.updatableIs(boolean value) : boolean</B> </CODE>
+<p class="doc">
+Returns true if 'updatable' flag equals the given value<br>
+The flag can be 'undefined' then then neither true nor false<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : the boolean value<br>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>

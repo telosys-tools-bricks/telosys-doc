@@ -26,6 +26,44 @@ import org.telosys.tools.generator.context.doc.tooling.MethodInfo;
 import org.telosys.tools.generator.context.doc.tooling.MethodParameter;
 
 public class ObjectsDocGeneratorHTML {
+	
+	private static final String CSS =  
+			" h1 {"+
+			"   font-size:28px;"+
+			"   font-family: verdana;"+
+			" } "+
+			" p.otherNames { "+
+			"   font-size:20px; "+
+			"   font-family: verdana;"+
+			" } "+
+			" p.desc { "+
+			"   font-size:12px; "+
+			"   font-family: verdana; "+
+			" } "+
+			" p.doc { "+
+			"   margin-left:2cm; "+
+			" } "+
+			" td.doc { "+
+			"   font-size:12px; "+
+			"   font-family: verdana; "+
+			"   vertical-align:text-top; "+
+			"   padding-top: 6px; "+
+			"   padding-bottom: 12px; "+
+			" }"+
+			" tr.title {"+
+			"   font-family: verdana;"+
+			"   font-size:20px;"+
+			"   font-weight:bold;"+
+			"   background-color: #CCCCFF ;"+
+			" }"+
+			" code.example {"+
+			"   font-size:14px;"+
+			" }"+
+			" code.simpledesc {"+
+			"   font-size:15px;"+
+			"   color: #000099;"+
+			" }";
+			
 
 	public void generateDocFile(ClassInfo classInfo, String filePath) {
 		File file = new File(filePath);
@@ -36,9 +74,7 @@ public class ObjectsDocGeneratorHTML {
 		PrintWriter writer ;
 		try {
 			writer = new PrintWriter(filePath, "UTF-8");
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
-		} catch (UnsupportedEncodingException e) {
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			throw new RuntimeException(e);
 		}
 		
@@ -55,60 +91,27 @@ public class ObjectsDocGeneratorHTML {
 		printEnd(writer);
 	}
 	
+	private void printHead( PrintWriter writer, ClassInfo classInfo) {
+		writer.println( "<head>" );
+		writer.println( " <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\"> " );
+		writer.println( " <title> $" + classInfo.getContextName() + "</title>");
+		writer.println( " <style type=\"text/css\">");
+		writer.println( CSS );
+		writer.println( " </style>");
+		writer.println( "</head>");
+	}
 	private void printBeginning( PrintWriter writer, ClassInfo classInfo) {
-		writer.println(	"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">		" );
-		writer.println( "<html>								" );
-		writer.println( "<head>								" );
-		writer.println( "	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">	" );
-		writer.println( "	<title> $" + classInfo.getContextName() + "</title>	");
-		writer.println( "	<style type=\"text/css\">		");
-		writer.println( "	h1 {							");
-		writer.println( "		font-size:28px;				");
-		writer.println( "		font-family: verdana		");
-		writer.println( "	}								");
-		writer.println( "	p.otherNames{					");
-		writer.println( "		font-size:20px;				");
-		writer.println( "		font-family: verdana;		");
-		writer.println( "	}								");
-		writer.println( "	p.desc {						");
-		writer.println( "		font-size:12px;				");
-		writer.println( "		font-family: verdana;		");
-		writer.println( "	}								");
-		writer.println( "	p.doc {							");
-		writer.println( "		margin-left:2cm;			");
-		writer.println( "	}								");
-		writer.println( "	td.doc {						");
-		writer.println( "		font-size:12px;				");
-		writer.println( "		font-family: verdana;		");
-		writer.println( "		vertical-align:text-top;	");
-		writer.println( "		padding-top: 6px;			");
-		writer.println( "		padding-bottom: 12px;		");
-		writer.println( "	}								");
-		writer.println( "	tr.title {						");
-		writer.println( "		font-family: verdana;		");
-		writer.println( "		font-size:20px;				");
-		writer.println( "		font-weight:bold;			");
-		writer.println( "		background-color: #CCCCFF ;	");
-		writer.println( "	}								");
-		writer.println( "	code.example {			        ");
-		writer.println( "		font-size:14px;				");
-		writer.println( "	}								");
-		writer.println( "	code.simpledesc {				");
-		writer.println( "		font-size:15px;				");
-		writer.println( "		color: #000099; 			");
-		writer.println( "	}								");
-		writer.println( "	</style>						");
-		writer.println( "</head>							");
-		
-
-		writer.println( "<body>											");
-		writer.println( "<h1> $" + classInfo.getContextName() + "</h1>	");
+		writer.println(	"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\"> " );
+		writer.println( "<html>" );
+		printHead(writer, classInfo);
+		writer.println( "<body>");
+		writer.println( "<h1> $" + classInfo.getContextName() + "</h1>");
 		
 		//-------- PARAGRAPH "Other names"
 		String[] otherNames = classInfo.getOtherContextName();
 		if ( otherNames != null && otherNames.length > 0 ) {
 			int i = 0 ;
-			writer.print( "<p class=\"otherNames\">								");
+			writer.print( "<p class=\"otherNames\">");
 			writer.print( "Other name(s) : ");
 			for ( String otherName : classInfo.getOtherContextName() ) {
 				if ( i > 0 ) {
@@ -120,21 +123,19 @@ public class ObjectsDocGeneratorHTML {
 			writer.println( "</p>");
 		}
 
-		writer.println( "<p class=\"desc\">	Generator version : <b>" + GeneratorVersion.GENERATOR_VERSION + "</b> </p>");
+		writer.println( "<p class=\"desc\"> ( doc for Telosys generator version " 
+				+ GeneratorVersion.GENERATOR_VERSION + " ) </p>");
+		
+		writer.println( "<hr>");
 		
 		//-------- PARAGRAPH "doc" + "deprecated" + "example"
-		writer.println( "<p class=\"desc\">								");
+		writer.println( "<p class=\"desc\">");
 		
 		for ( String s : classInfo.getDocText()  ) {
 			writer.println( s + "<br>" );
 		}
-		writer.println( "<br>" );
-		if ( classInfo.getSince() != null ) {
-			if ( classInfo.getSince().trim().length() > 0 ) {
-				writer.println( "Since : " + classInfo.getSince() + "<br>" );
-			}
-		}
 		if ( classInfo.isDeprecated()  ) {
+			writer.println( "<br>" );
 			writer.println( "DEPRECATED (!) <br>" );
 		}
 		String[] exampleText = classInfo.getExampleText();
@@ -148,14 +149,19 @@ public class ObjectsDocGeneratorHTML {
 			writer.println( "</code>" );
 		}
 
-		writer.println( "</p>		");
+		if ( classInfo.getSince() != null && classInfo.getSince().trim().length() > 0 ) {
+			writer.println( "<br>" );
+			writer.println( "Since : " + classInfo.getSince() + "<br>" );
+		}
+
+		writer.println( "</p>");
 		
 		//-------- TABLE "Attributes and Methods"
 
-		writer.println( "<table width=\"100%\" border=\"1\" cellspacing=\"0\">		");		
-		writer.println( "<TR class=\"title\">										");
-		writer.println( "  <TD>Attributes and methods</TD>			");
-		writer.println( "</TR>		");
+		writer.println( "<table width=\"100%\" border=\"1\" cellspacing=\"0\">");		
+		writer.println( "<TR class=\"title\">");
+		writer.println( "  <TD>Attributes and methods</TD>");
+		writer.println( "</TR>");
 
 	}
 	

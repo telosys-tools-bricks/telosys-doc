@@ -1,50 +1,17 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
-<html>								
-<head>								
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
-	<title> $entity</title>	
-	<style type="text/css">		
-	h1 {							
-		font-size:28px;				
-		font-family: verdana		
-	}								
-	p.otherNames{					
-		font-size:20px;				
-		font-family: verdana;		
-	}								
-	p.desc {						
-		font-size:12px;				
-		font-family: verdana;		
-	}								
-	p.doc {							
-		margin-left:2cm;			
-	}								
-	td.doc {						
-		font-size:12px;				
-		font-family: verdana;		
-		vertical-align:text-top;	
-		padding-top: 6px;			
-		padding-bottom: 12px;		
-	}								
-	tr.title {						
-		font-family: verdana;		
-		font-size:20px;				
-		font-weight:bold;			
-		background-color: #CCCCFF ;	
-	}								
-	code.example {			        
-		font-size:14px;				
-	}								
-	code.simpledesc {				
-		font-size:15px;				
-		color: #000099; 			
-	}								
-	</style>						
-</head>							
-<body>											
-<h1> $entity</h1>	
-<p class="desc">	Generator version : <b>3.3.0</b> </p>
-<p class="desc">								
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $entity</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:20px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $entity</h1>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
 Entity class for the current generation <br>
 <br>
 Provides all information available for an entity as defined in the model : <br>
@@ -53,11 +20,11 @@ Provides all information available for an entity as defined in the model : <br>
 <br>
 <br>
 Since : 2.0.0<br>
-</p>		
-<table width="100%" border="1" cellspacing="0">		
-<TR class="title">										
-  <TD>Attributes and methods</TD>			
-</TR>		
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.attributes : List of 'attribute' objects</B> </CODE>
 <p class="doc">
@@ -341,6 +308,27 @@ Returns TRUE if this entity has at least one attribute tagged as 'long text'<br>
 &nbsp;&nbsp;&nbsp;...<br>
 &nbsp;&nbsp;&nbsp;#end<br>
 </code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isJoinEntity() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity is a 'join entity' <br>
+( typically if the entity is a 'join table' in the database )<br>
+An entity is considered as a 'join entity' if : <br>
+ - the entity has 2 Foreign Keys<br>
+ - all attributes are part of the Primary Key <br>
+ - all attributes are part of a Foreign Key<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.isJoinEntity() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>

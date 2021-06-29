@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
-	<title>Telosys templates objects</title>	
+	<title>Telosys objects reference</title>	
 	<style type="text/css">		
 	p.desc {						
 		font-size:12px;				
@@ -14,15 +14,17 @@
 	</style>						
 </head>							
 <body>	
-<h1>Telosys templates objects</h1>	
+<h1>Telosys objects reference</h1>	
 <p class="desc">	Generator version : <b>3.3.0</b> </p>
 <p>
-Templates use predefined objects stored in the Velocity Context by the generator.<br>
-<br>
-Some objects are always available ($entity, $today, etc),<br>
-others are retrieved from existing objects ($attribute, $link).<br>
-<br>
-All these objects are documented here : <br>
+Telosys provides a set of predefined objects usable in the templates :<br>
+<ul>
+<li> Objects giving access to the current model ( $model, $entity, $attribute, $link, etc )</li>
+<li> Utility functions and tools ( $fn, $loader )</li>
+<li> Generation environment ( $env, $project, $target, etc )</li>
+<li> Functions dedicated to certain types of generation ($java, $h2, $jpa, etc)</li>
+</ul>
+The reference documentation for each object is available in the following pages :
 <ul>
 <li> <a href="objects/attribute.html" >$attribute</a></a> </li>
 <li> <a href="objects/beanValidation.html" >$beanValidation</a></a> </li>
@@ -46,6 +48,7 @@ All these objects are documented here : <br>
 <li> <a href="objects/linkAttribute.html" >$linkAttribute</a></a> </li>
 <li> <a href="objects/loader.html" >$loader</a></a> </li>
 <li> <a href="objects/model.html" >$model</a></a> </li>
+<li> <a href="objects/now.html" >$now</a></a> </li>
 <li> <a href="objects/project.html" >$project</a></a> </li>
 <li> <a href="objects/target.html" >$target</a></a> </li>
 <li> <a href="objects/today.html" >$today</a></a> </li>

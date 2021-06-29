@@ -1,54 +1,20 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
-<html>								
-<head>								
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
-	<title> $attribute</title>	
-	<style type="text/css">		
-	h1 {							
-		font-size:28px;				
-		font-family: verdana		
-	}								
-	p.otherNames{					
-		font-size:20px;				
-		font-family: verdana;		
-	}								
-	p.desc {						
-		font-size:12px;				
-		font-family: verdana;		
-	}								
-	p.doc {							
-		margin-left:2cm;			
-	}								
-	td.doc {						
-		font-size:12px;				
-		font-family: verdana;		
-		vertical-align:text-top;	
-		padding-top: 6px;			
-		padding-bottom: 12px;		
-	}								
-	tr.title {						
-		font-family: verdana;		
-		font-size:20px;				
-		font-weight:bold;			
-		background-color: #CCCCFF ;	
-	}								
-	code.example {			        
-		font-size:14px;				
-	}								
-	code.simpledesc {				
-		font-size:15px;				
-		color: #000099; 			
-	}								
-	</style>						
-</head>							
-<body>											
-<h1> $attribute</h1>	
-<p class="otherNames">								Other name(s) : <b>$attrib</b>,&nbsp;<b>$field</b></p>
-<p class="desc">	Generator version : <b>3.3.0</b> </p>
-<p class="desc">								
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $attribute</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:20px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $attribute</h1>
+<p class="otherNames">Other name(s) : <b>$attrib</b>,&nbsp;<b>$field</b></p>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
 This object provides all information about an entity attribute<br>
 Each attribute is obtained from its entity class <br>
-<br>
 <br>
 <br>
 <b>Example : </b><br>
@@ -58,11 +24,13 @@ Each attribute is obtained from its entity class <br>
 &nbsp;&nbsp;&nbsp;    $attribute.name : $attribute.type<br>
 &nbsp;&nbsp;&nbsp;#end<br>
 </code>
-</p>		
-<table width="100%" border="1" cellspacing="0">		
-<TR class="title">										
-  <TD>Attributes and methods</TD>			
-</TR>		
+<br>
+Since : 2.0.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.booleanFalseValue : String</B> </CODE>
 <p class="doc">
@@ -344,12 +312,17 @@ Typically for JPA '@TableGenerator'  <br>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.hasTag(String ?) : boolean</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasTag(String tagName) : boolean</B> </CODE>
 <p class="doc">
 Returns TRUE if the attribute has a tag with the given name<br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to check the existence<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$attrib.hasTag('mytag') <br>
+</code>
 <br>
 <b>Since : </b>3.3.0<br>
 </p>
@@ -369,6 +342,29 @@ Returns the 'input type' defined for the attribute<br>
 Typically for HTML 5 : 'number', 'date', ...<br>
 <br>
 <b>Since : </b>2.0.3<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.insertable : String</B> </CODE>
+<p class="doc">
+Returns the 'insertable' flag value as string<br>
+( 'true' or 'false' or 'undefined' )<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.insertableIs(boolean value) : boolean</B> </CODE>
+<p class="doc">
+Returns true if 'insertable' flag equals the given value<br>
+The flag can be 'undefined' then then neither true nor false<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : the boolean value<br>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
@@ -616,14 +612,11 @@ Returns TRUE if the attribute's neutral type is 'timestamp' <br>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.isUsedInLinks() : boolean</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isTransient() : boolean</B> </CODE>
 <p class="doc">
-</p>
-</TD>
-</TR>
-<TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.isUsedInSelectedLinks() : boolean</B> </CODE>
-<p class="doc">
+Returns TRUE if the attribute is marked as 'transient' <br>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
@@ -770,6 +763,19 @@ e.g. for a Java object type : BigDecimal, Date, Integer, .. <br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlType : String</B> </CODE>
+<p class="doc">
+Returns the database SQL type corresponding to the attribute<br>
+for example : INTEGER, VARCHAR(24), NUMBER, CHAR(3), etc...<br>
+Returns the 'sqlType' if explicitly defined or tries to infer it from the neutral type<br>
+The Sql Type inference is based on 'env.database' (PostgreSQL, MySQL, etc)<br>
+or 'env.databaseTypesMapping' (specific types mapping)<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.tableGeneratorName : String</B> </CODE>
 <p class="doc">
 Returns the name of the 'table generator' <br>
@@ -811,13 +817,13 @@ Typically for JPA '@TableGenerator/valueColumnName'  <br>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.tagValue(String ?) : String</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValue(String tagName) : String</B> </CODE>
 <p class="doc">
 Returns the value held by the given tag name<br>
-If the tag is not defined the returned value is a void string<br>
+If the tag is undefined or has no value, the returned value is an empty string<br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>?</b> : <br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to get the value<br>
 <br>
 <b>Example : </b><br>
 <code>
@@ -835,6 +841,29 @@ Returns the recommended type for the attribute<br>
 usually the simple type ( 'int', 'BigDecimal', 'Date' ) <br>
 sometimes the full type ( if the simple type is considered as ambiguous )<br>
 Examples for Java : 'int', 'BigDecimal', 'Date', 'java.util.Date', 'java.sql.Date' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.updatable : String</B> </CODE>
+<p class="doc">
+Returns the 'updatable' flag value as string<br>
+( 'true' or 'false' or 'undefined' )<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.updatableIs(boolean value) : boolean</B> </CODE>
+<p class="doc">
+Returns true if 'updatable' flag equals the given value<br>
+The flag can be 'undefined' then then neither true nor false<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : the boolean value<br>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>

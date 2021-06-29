@@ -1,59 +1,26 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">		
-<html>								
-<head>								
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">	
-	<title> $fn</title>	
-	<style type="text/css">		
-	h1 {							
-		font-size:28px;				
-		font-family: verdana		
-	}								
-	p.otherNames{					
-		font-size:20px;				
-		font-family: verdana;		
-	}								
-	p.desc {						
-		font-size:12px;				
-		font-family: verdana;		
-	}								
-	p.doc {							
-		margin-left:2cm;			
-	}								
-	td.doc {						
-		font-size:12px;				
-		font-family: verdana;		
-		vertical-align:text-top;	
-		padding-top: 6px;			
-		padding-bottom: 12px;		
-	}								
-	tr.title {						
-		font-family: verdana;		
-		font-size:20px;				
-		font-weight:bold;			
-		background-color: #CCCCFF ;	
-	}								
-	code.example {			        
-		font-size:14px;				
-	}								
-	code.simpledesc {				
-		font-size:15px;				
-		color: #000099; 			
-	}								
-	</style>						
-</head>							
-<body>											
-<h1> $fn</h1>	
-<p class="desc">	Generator version : <b>3.3.0</b> </p>
-<p class="desc">								
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $fn</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:20px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $fn</h1>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
 Object providing a set of utility functions <br>
 <br>
 <br>
 Since : 2.0.3<br>
-</p>		
-<table width="100%" border="1" cellspacing="0">		
-<TR class="title">										
-  <TD>Attributes and methods</TD>			
-</TR>		
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.argumentsList(List fields) : String</B> </CODE>
 <p class="doc">
@@ -287,6 +254,23 @@ changing the first letter to upper case<br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.className(Object object) : String</B> </CODE>
+<p class="doc">
+Returns the class name (CanonicalName) for the given object (or 'null' if undefined)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>object</b> : object reference for which to get the class name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$fn.className($var)<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.concatLists(List list1, List list2) : List<?></B> </CODE>
 <p class="doc">
 Concatenates 2 lists ( add all the elements of the second list at the end of the first one ) <br>
@@ -313,6 +297,64 @@ Replaces special characters (&, <, >, etc) by their corresponding XML notation <
 <br>
 <b>Parameters : </b><br>
 &nbsp;&nbsp;&nbsp;<b>s</b> : the string to be escaped<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.file(String filePath) : FileInContext</B> </CODE>
+<p class="doc">
+Returns a file object for the given file path<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>filePath</b> : the file path (relative or absolute)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;## relative path : for a file located in the current project : <br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.file('myfile.csv') )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.file('dir/foo.txt') )<br>
+&nbsp;&nbsp;&nbsp;## absolute path : for a file located anywhere : <br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.file('C:\Temp\values.csv') )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.file('/tmp/values.csv') )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fileFromBundle(String filePath) : FileInContext</B> </CODE>
+<p class="doc">
+Returns a file object for the given file path located in the current bundle folder<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>filePath</b> : the file path (in the current bundle folder)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromBundle('myfile.csv') )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromBundle('dir/foo.txt') )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fileFromModel(String filePath) : FileInContext</B> </CODE>
+<p class="doc">
+Returns a file object for the given file path located in the current model folder<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>filePath</b> : the file path (in the current model folder)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromModel('myfile.csv') )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromModel('dir/foo.txt') )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
@@ -389,12 +431,12 @@ Returns true if the given string is not 'blank' <br>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.isNotVoid(Object collection) : boolean</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isNotVoid(Object list/map/array) : boolean</B> </CODE>
 <p class="doc">
-Returns TRUE if the given List/Array is NOT VOID<br>
+Returns TRUE if the given list/map/array is NOT VOID<br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>collection</b> : List or Array<br>
+&nbsp;&nbsp;&nbsp;<b>list/map/array</b> : <br>
 <br>
 <b>Example : </b><br>
 <code>
@@ -406,12 +448,12 @@ Returns TRUE if the given List/Array is NOT VOID<br>
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.isVoid(Object collection) : boolean</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isVoid(Object list/map/array) : boolean</B> </CODE>
 <p class="doc">
-Returns TRUE if the given List/Array is VOID<br>
+Returns TRUE if the given list/map/array is VOID<br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>collection</b> : List or Array<br>
+&nbsp;&nbsp;&nbsp;<b>list/map/array</b> : <br>
 <br>
 <b>Example : </b><br>
 <code>
@@ -419,6 +461,50 @@ Returns TRUE if the given List/Array is VOID<br>
 </code>
 <br>
 <b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.join(Collection collection, String separator) : String</B> </CODE>
+<p class="doc">
+Returns a string built by joining all the elements of the given collection<br>
+the 'separator' is added between each element<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>collection</b> : the collection (any kind of objects<br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator string (void string if no separator required)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $v = $fn.join( $myList, "," ) ) <br>
+&nbsp;&nbsp;&nbsp;#set ( $v = $fn.join( $myList, "" ) ) <br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.joinWithPrefixSuffix(Collection collection, String separator, String prefix, String suffix) : String</B> </CODE>
+<p class="doc">
+Returns a string built by joining all the elements of the given collection<br>
+the 'separator' is added between each element<br>
+the 'prefix' is added before each element<br>
+the 'suffix' is added after each element<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>collection</b> : the collection (any kind of objects<br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator string (or void)<br>
+&nbsp;&nbsp;&nbsp;<b>prefix</b> : the prefix string (or void)<br>
+&nbsp;&nbsp;&nbsp;<b>suffix</b> : the suffix string (or void)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $v = $fn.joinWithPrefixSuffix( $myList, ";", "[", "]" ) ) <br>
+&nbsp;&nbsp;&nbsp;#set ( $v = $fn.joinWithPrefixSuffix( $myList, ", ", "", ".class" ) ) <br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
@@ -433,12 +519,42 @@ Adds a double quote character at the beginning and at the end of the given strin
 </TD>
 </TR>
 <TR>
-<TD class="doc" ><CODE class="simpledesc"> <B>.size(Object collection) : int</B> </CODE>
+<TD class="doc" ><CODE class="simpledesc"> <B>.replaceInList(List list, Object oldElement, Object newElement) : void</B> </CODE>
 <p class="doc">
-Returns the SIZE of the given List or Array<br>
+Replaces all occurrences of an element with another in the given list<br>
 <br>
 <b>Parameters : </b><br>
-&nbsp;&nbsp;&nbsp;<b>collection</b> : List or Array<br>
+&nbsp;&nbsp;&nbsp;<b>list</b> : the list containing the elements<br>
+&nbsp;&nbsp;&nbsp;<b>oldElement</b> : the element to be replaced<br>
+&nbsp;&nbsp;&nbsp;<b>newElement</b> : the new element replacing the original<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set($list = ['a', 'b', 'cc', 'b', 'dd']) <br>
+&nbsp;&nbsp;&nbsp;$fn.replaceInList($list, 'b', 'BBB')##<br>
+&nbsp;&nbsp;&nbsp; result : [a, BBB, cc, BBB, dd]<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#set($foo = [1, 0, 3, 0, 4, 0]) <br>
+&nbsp;&nbsp;&nbsp;$fn.replaceInList($foo, 0, 9)##<br>
+&nbsp;&nbsp;&nbsp; result : [1, 9, 3, 9, 4, 9]<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#set($foo = [1, 'aa', 3.2, 'zz', true, 5]) <br>
+&nbsp;&nbsp;&nbsp;$fn.replaceInList($foo, 'zz', 99)##<br>
+&nbsp;&nbsp;&nbsp; result : [1, aa, 3.2, 99, true, 5] <br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.size(Object list/map/array) : int</B> </CODE>
+<p class="doc">
+Returns the SIZE of the given list/map/array<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>list/map/array</b> : <br>
 <br>
 <b>Example : </b><br>
 <code>
@@ -467,6 +583,23 @@ Returns N tabulation characters <br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toList(String[] array) : List<String></B> </CODE>
+<p class="doc">
+Returns a list of strings from the given array of strings<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>array</b> : the array of strings ( String[] )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $mylist = $fn.toList( $mystring.split(",") ) ) <br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.toLowerCase(String s) : String</B> </CODE>
 <p class="doc">
 Converts  all of the characters in the given string to lower case<br>
@@ -487,6 +620,30 @@ Converts  all of the characters in the given string to upper case<br>
 &nbsp;&nbsp;&nbsp;<b>s</b> : the string to be converted<br>
 <br>
 <b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.trimAll(List list) : void</B> </CODE>
+<p class="doc">
+Trims all string occurrences in the given list<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>list</b> : the list containing the elements<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set($list = ['a', '  b', ' c c ', 'd  ']) <br>
+&nbsp;&nbsp;&nbsp;$fn.trimAll($list)##<br>
+&nbsp;&nbsp;&nbsp; result : [a, b, c c, d ]<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#set($foo = [1, ' a ', 3.2, '  zz' ]) <br>
+&nbsp;&nbsp;&nbsp;$fn.trimAll($foo)##<br>
+&nbsp;&nbsp;&nbsp; result : [1, a, 3.2, zz] <br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>

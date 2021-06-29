@@ -11,6 +11,7 @@ import org.telosys.tools.generic.model.types.LiteralValuesProviderForJava;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForJavaScript;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForPHP;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForPython;
+import org.telosys.tools.generic.model.types.LiteralValuesProviderForScala;
 import org.telosys.tools.generic.model.types.LiteralValuesProviderForTypeScript;
 import org.telosys.tools.generic.model.types.TypeConverterForCPlusPlus;
 import org.telosys.tools.generic.model.types.TypeConverterForCSharp;
@@ -19,6 +20,7 @@ import org.telosys.tools.generic.model.types.TypeConverterForJava;
 import org.telosys.tools.generic.model.types.TypeConverterForJavaScript;
 import org.telosys.tools.generic.model.types.TypeConverterForPHP;
 import org.telosys.tools.generic.model.types.TypeConverterForPython;
+import org.telosys.tools.generic.model.types.TypeConverterForScala;
 import org.telosys.tools.generic.model.types.TypeConverterForTypeScript;
 
 public class LanguagesList {
@@ -37,6 +39,7 @@ public class LanguagesList {
 		list.add(new LanguageDocumenter("javascript", new TypeConverterForJavaScript(), new LiteralValuesProviderForJavaScript()) );
 		list.add(new LanguageDocumenter("php",        new TypeConverterForPHP(),        new LiteralValuesProviderForPHP()) );
 		list.add(new LanguageDocumenter("python",     new TypeConverterForPython(),     new LiteralValuesProviderForPython()) );
+		list.add(new LanguageDocumenter("scala",      new TypeConverterForScala(),      new LiteralValuesProviderForScala()) );
 		list.add(new LanguageDocumenter("typescript", new TypeConverterForTypeScript(), new LiteralValuesProviderForTypeScript()) );
 	}
 	
