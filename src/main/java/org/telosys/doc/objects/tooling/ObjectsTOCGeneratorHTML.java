@@ -19,6 +19,7 @@ import java.io.PrintWriter;
 
 import org.telosys.doc.commons.AbstractTOCGeneratorHTML;
 import org.telosys.doc.commons.ItemLink;
+import org.telosys.tools.generator.GeneratorVersion;
 
 public class ObjectsTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 
@@ -26,17 +27,12 @@ public class ObjectsTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 		
 	public ObjectsTOCGeneratorHTML(String fullFileName, ItemLink[] sortedLinks ) {
 		super(fullFileName, TITLE, sortedLinks);
+		String desc = "Documentation for Telosys generator version " + GeneratorVersion.GENERATOR_VERSION ;
+		setDescription(desc);
 	}
 
 	@Override
 	protected void printTextBeforeList(PrintWriter writer) {
-//		writer.println( "Templates use predefined objects stored in the Velocity Context by the generator.<br>" );
-//		writer.println( "<br>" );
-//		writer.println( "Some objects are always available ($entity, $today, etc),<br>");
-//		writer.println( "others are retrieved from existing objects ($attribute, $link).<br>");
-//		writer.println( "<br>" );
-//		writer.println( "All these objects are documented here : <br>");
-		
 		writer.println( "Telosys provides a set of predefined objects usable in the templates :<br>" );
 		writer.println( "<ul>" );
 		writer.println( "<li> Objects giving access to the current model ( $model, $entity, $attribute, $link, etc )</li>" );
@@ -49,7 +45,16 @@ public class ObjectsTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 
 	@Override
 	protected String getItemLink(String page, String text) {
-		return "<a href=\"objects/" + page + ".html\" >$" + text + "</a>";
+		String href = "" ;
+		if ( isIndexFile() ) {
+			// in same directory
+			href = page + ".html" ;
+		}
+		else {
+			// in "objects" directory
+			href = "objects/" + page + ".html" ;
+		}
+		return "<a href=\"" + href + "\" >$" + text + "</a>";
 	}
 
 	@Override

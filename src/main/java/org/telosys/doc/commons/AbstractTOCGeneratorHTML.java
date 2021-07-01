@@ -20,8 +20,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-import org.telosys.tools.generator.GeneratorVersion;
-
 public abstract class AbstractTOCGeneratorHTML {
 
 	protected abstract void printTextBeforeList(PrintWriter writer) ;
@@ -34,12 +32,21 @@ public abstract class AbstractTOCGeneratorHTML {
 	private final String fullFileName ;
 	private final String title ;
 	private final ItemLink[] sortedLinks ;
+	private String desc = null;
 
-	public AbstractTOCGeneratorHTML(String fullFileName, String title, ItemLink[] sortedLinks) {
+	protected AbstractTOCGeneratorHTML(String fullFileName, String title, ItemLink[] sortedLinks) {
 		super();
 		this.fullFileName = fullFileName;
 		this.title = title;
 		this.sortedLinks = sortedLinks;
+	}
+
+	public void setDescription(String desc) {
+		this.desc = desc;
+	}
+
+	public boolean isIndexFile() {
+		return fullFileName.endsWith("index.html");
 	}
 
 	public void generateTOCFile() {
@@ -51,9 +58,7 @@ public abstract class AbstractTOCGeneratorHTML {
 		PrintWriter writer ;
 		try {
 			writer = new PrintWriter(fullFileName, "UTF-8");
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
-		} catch (UnsupportedEncodingException e) {
+		} catch (FileNotFoundException|UnsupportedEncodingException e) {
 			throw new RuntimeException(e);
 		}
 
@@ -64,40 +69,40 @@ public abstract class AbstractTOCGeneratorHTML {
 	}
 	
 	private void printPage( PrintWriter writer) {
-		writer.println(	"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">		" );
+		writer.println(	"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">" );
 		writer.println( "<html>" );
 		
 		writer.println( "<head>" );
-		writer.println( "	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">	" );
-		writer.println( "	<title>" + title + "</title>	");
-		writer.println( "	<style type=\"text/css\">		");
-		writer.println( "	p.desc {						");
-		writer.println( "		font-size:12px;				");
-		writer.println( "		font-family: verdana;		");
-		writer.println( "	}								");
-		writer.println( "	code.example {				");
-		writer.println( "		font-size:14px;				");
-		writer.println( "	}								");
-		writer.println( "	</style>						");
-		writer.println( "</head>							");
+		writer.println( "  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">" );
+		writer.println( "  <title>" + title + "</title>");
+		writer.println( "  <style type=\"text/css\">");
+		writer.println( "    p.desc {");
+		writer.println( "      font-size:12px;");
+		writer.println( "      font-family: verdana;");
+		writer.println( "    }");
+		writer.println( "    code.example { ");
+		writer.println( "      font-size:14px;");
+		writer.println( "    }");
+		writer.println( "  </style>");
+		writer.println( "</head>");
 
-		writer.println( "<body>	");
-		writer.println( "<h1>" + title + "</h1>	");
-		writer.println( "<p class=\"desc\">	Generator version : <b>" + GeneratorVersion.GENERATOR_VERSION + "</b> </p>");
-		writer.println( "<p>" );
-
+		writer.println( "<body>");
+		writer.println( "<h1>" + title + "</h1>");
+		if ( desc != null ) {
+			writer.println( "<p class=\"desc\">" + desc + "</p>");
+		}
+		
 		printTextBeforeList(writer);
 		
 		//--- Print TOC items list
 		writer.println( "<ul>" );
 		for ( ItemLink link : sortedLinks ) {
-			writer.println( "<li> " + getItemLink(link.getPage(), link.getText() ) + "</a> </li>" );
+			writer.println( "<li> " + getItemLink(link.getPage(), link.getText() ) + " </li>" );
 		}
 		writer.println( "</ul>" );
 		
 		printTextAfterList(writer);
 		
-		writer.println( "</p>" );
 		writer.println( "</body>" );
 		writer.println( "</html>" );
 	}

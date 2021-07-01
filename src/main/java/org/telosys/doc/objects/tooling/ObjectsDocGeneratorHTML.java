@@ -33,7 +33,7 @@ public class ObjectsDocGeneratorHTML {
 			"   font-family: verdana;"+
 			" } "+
 			" p.otherNames { "+
-			"   font-size:20px; "+
+			"   font-size:14px; "+
 			"   font-family: verdana;"+
 			" } "+
 			" p.desc { "+

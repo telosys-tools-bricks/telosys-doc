@@ -32,23 +32,29 @@ import org.telosys.tools.generator.context.doc.tooling.DocBuilder;
 
 public class ObjectsDocGenerator {
 
-	private static final String TOC_FILENAME = "doc-objects.html" ;
+	private static final String TOC_FILENAME   = "doc-objects.html" ;
+	private static final String INDEX_FILENAME = "index.html" ;
 	
 	private ObjectsDocGenerator() {
 	}
 	
+	/**
+	 * Generates Telosys objects reference documentation in the given directory
+	 * @param destDir
+	 * @return
+	 */
 	public static int generateHtmlDoc(String destDir) {
 
-		System.out.println( "HTML documentation generation" );
+		log( "HTML documentation generation" );
 		File fileDir = DestinationFolder.prepare(destDir);
 		DocBuilder docBuilder = new DocBuilder();
 		
 		Map<String,ClassInfo> classesInfo = docBuilder.getVelocityClassesInfo() ;
 
 		Set<String> names = classesInfo.keySet();
-		System.out.println("ClassInfo names (size=" + names.size() + ") : " );
+		log("ClassInfo names (size=" + names.size() + ") : " );
 		for ( String name : names ) {
-			System.out.println(" . " + name );
+			log(" . " + name );
 		}
 		
 		List<String> sortedNames = sortList(names);
@@ -57,19 +63,46 @@ public class ObjectsDocGenerator {
 		// Generate object html doc file ( one for each object )
 		ObjectsDocGeneratorHTML htmlGenerator = new ObjectsDocGeneratorHTML();
 
-		System.out.println("Sorted context names (size=" + sortedNames.size() + ") : " );
+		log("Sorted context names (size=" + sortedNames.size() + ") : " );
 		int c = 0 ;
 		for ( String name : sortedNames ) {
 			ClassInfo classInfo = classesInfo.get(name);
 			String shortFileName = classInfo.getContextName() + ".html" ;
 			String fullFileName = FileUtil.buildFilePath(destDir, shortFileName);
-			System.out.println(" . " + name + " (" + classInfo.getContextName() + ") --> " + fullFileName );
+			log(" . " + name + " (" + classInfo.getContextName() + ") --> " + fullFileName );
 			htmlGenerator.generateDocFile(classInfo, fullFileName);
 			uniqueNames.add(classInfo.getContextName());
 			c++;
 		}
 		
-		// Generate the Table Of Contents 
+		// Generate the Table Of Contents file in the parent directory
+//		List<String> sortedUniqueNames = new ArrayList<>(uniqueNames);
+//		Collections.sort(sortedUniqueNames);
+//		ItemLink[] itemLinks = new ItemLink[sortedUniqueNames.size()];
+//		int i = 0 ;
+//		for ( String s : sortedUniqueNames ) {
+//			itemLinks[i++] = new ItemLink(s, s);
+//		}
+//		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
+//		ObjectsTOCGeneratorHTML tocGenerator = new ObjectsTOCGeneratorHTML(tocFullFileName, itemLinks);
+//		tocGenerator.generateTOCFile();
+		
+		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
+		generateTOC(tocFullFileName, uniqueNames);
+		
+		// Generate the index file in the same directory
+		String indexFullFileName = FileUtil.buildFilePath(fileDir.getPath(), INDEX_FILENAME);
+		generateTOC(indexFullFileName, uniqueNames);
+
+		return c;
+	}
+	
+	/**
+	 * Generates Table Of Content file
+	 * @param tocFullFileName
+	 * @param uniqueNames
+	 */
+	private static void generateTOC(String tocFullFileName, Set<String> uniqueNames) {
 		List<String> sortedUniqueNames = new ArrayList<>(uniqueNames);
 		Collections.sort(sortedUniqueNames);
 		ItemLink[] itemLinks = new ItemLink[sortedUniqueNames.size()];
@@ -77,16 +110,17 @@ public class ObjectsDocGenerator {
 		for ( String s : sortedUniqueNames ) {
 			itemLinks[i++] = new ItemLink(s, s);
 		}
-		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
 		ObjectsTOCGeneratorHTML tocGenerator = new ObjectsTOCGeneratorHTML(tocFullFileName, itemLinks);
 		tocGenerator.generateTOCFile();
-
-		return c;
 	}
 	
 	private static <T extends Comparable<? super T>> List<T> sortList(Collection<T> c) {
 		  List<T> list = new ArrayList<>(c);
 		  java.util.Collections.sort(list);
 		  return list;
+	}
+	
+	private static void log(String msg) {
+		System.out.println(msg);
 	}
 }

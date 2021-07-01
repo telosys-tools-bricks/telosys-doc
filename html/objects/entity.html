@@ -4,7 +4,7 @@
  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
  <title> $entity</title>
  <style type="text/css">
- h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:20px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
  </style>
 </head>
 <body>
@@ -281,6 +281,20 @@ Returns TRUE if this entity has a composite primary key <br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasLinks() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has at least one link <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasLinks() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.hasPrimaryKey() : boolean</B> </CODE>
 <p class="doc">
 Returns TRUE if this entity has a primary key <br>
@@ -461,6 +475,20 @@ Returns a list of all the links defined for the current entity<br>
 &nbsp;&nbsp;&nbsp;...<br>
 &nbsp;&nbsp;&nbsp;#end<br>
 </code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.linksCount : int</B> </CODE>
+<p class="doc">
+Returns the number of links defined in the entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.linksCount<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>
