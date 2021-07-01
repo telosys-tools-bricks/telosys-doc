@@ -26,21 +26,38 @@ import org.telosys.tools.generic.model.types.TypeConverterForTypeScript;
 public class LanguagesList {
 
 	private LanguagesList() {}
-	
+
 	/**
 	 * List of all the supported languages with their TypeConverter and LiteralValuesProvider
 	 */
 	private static LinkedList<LanguageDocumenter> list = new LinkedList<>();
 	static {
-		list.add(new LanguageDocumenter("c++",        new TypeConverterForCPlusPlus(),  new LiteralValuesProviderForCPlusPlus()) );
-		list.add(new LanguageDocumenter("csharp",     new TypeConverterForCSharp(),     new LiteralValuesProviderForCSharp()) );
-		list.add(new LanguageDocumenter("go",         new TypeConverterForGo(),         new LiteralValuesProviderForGo()) );
-		list.add(new LanguageDocumenter("java",       new TypeConverterForJava(),       new LiteralValuesProviderForJava()) );
-		list.add(new LanguageDocumenter("javascript", new TypeConverterForJavaScript(), new LiteralValuesProviderForJavaScript()) );
-		list.add(new LanguageDocumenter("php",        new TypeConverterForPHP(),        new LiteralValuesProviderForPHP()) );
-		list.add(new LanguageDocumenter("python",     new TypeConverterForPython(),     new LiteralValuesProviderForPython()) );
-		list.add(new LanguageDocumenter("scala",      new TypeConverterForScala(),      new LiteralValuesProviderForScala()) );
-		list.add(new LanguageDocumenter("typescript", new TypeConverterForTypeScript(), new LiteralValuesProviderForTypeScript()) );
+		list.add(new LanguageDocumenter("c++",   "C++", 
+				new TypeConverterForCPlusPlus(),  new LiteralValuesProviderForCPlusPlus()) );
+		
+		list.add(new LanguageDocumenter("csharp", "C# (Microsoft CSharp)",
+				new TypeConverterForCSharp(),     new LiteralValuesProviderForCSharp()) );
+		
+		list.add(new LanguageDocumenter("go",     "Go (Golang)",
+				new TypeConverterForGo(),         new LiteralValuesProviderForGo()) );
+		
+		list.add(new LanguageDocumenter("java",   "Java", 
+				new TypeConverterForJava(),       new LiteralValuesProviderForJava()) );
+		
+		list.add(new LanguageDocumenter("javascript",  "JavaScript",  
+				new TypeConverterForJavaScript(), new LiteralValuesProviderForJavaScript()) );
+		
+		list.add(new LanguageDocumenter("php",    "PHP",           
+				new TypeConverterForPHP(),        new LiteralValuesProviderForPHP()) );
+		
+		list.add(new LanguageDocumenter("python",  "Python",       
+				new TypeConverterForPython(),     new LiteralValuesProviderForPython()) );
+		
+		list.add(new LanguageDocumenter("scala",  "Scala",           
+				new TypeConverterForScala(),      new LiteralValuesProviderForScala()) );
+		
+		list.add(new LanguageDocumenter("typescript", "TypeScript",
+				new TypeConverterForTypeScript(), new LiteralValuesProviderForTypeScript()) );
 	}
 	
 	public static final List<LanguageDocumenter> getLanguages() {

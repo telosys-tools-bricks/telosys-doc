@@ -4,9 +4,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.telosys.doc.commons.DestinationFolder;
+import org.telosys.doc.commons.ItemLink;
 import org.telosys.doc.commons.Logger;
 import org.telosys.doc.languages.LanguagesList;
 import org.telosys.tools.commons.FileUtil;
@@ -53,7 +55,13 @@ public class LanguagesDocGenerator {
 		
 		// Generate the Table Of Contents 
 		String tocFullFileName = FileUtil.buildFilePath(destination.getParent(), TOC_FILENAME);
-		LanguagesTOCGeneratorHTML tocGenerator = new LanguagesTOCGeneratorHTML(tocFullFileName);
+		
+		List<ItemLink> itemLinks = new LinkedList<>();
+		for ( LanguageDocumenter ld : LanguagesList.getLanguages() ) {
+			itemLinks.add( new ItemLink(ld.getLinkText(), ld.getHtmlPage()) ); 
+		}
+
+		LanguagesTOCGeneratorHTML tocGenerator = new LanguagesTOCGeneratorHTML(tocFullFileName, itemLinks);
 		tocGenerator.generateTOCFile();
 
 		return n;

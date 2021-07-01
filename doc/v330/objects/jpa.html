@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $jpa</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $jpa</h1>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
+Object providing a set of utility functions for JPA (Java Persistence API) code generation<br>
+<br>
+<br>
+Since : 2.0.7<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.embeddedIdAnnotations(int leftMargin, AttributeInContext field) : String</B> </CODE>
+<p class="doc">
+Returns the JPA annotations for an 'embedded id' (with a left margin)<br>
+( there's no '@Id' for an embedded id )<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>leftMargin</b> : the left margin (number of blanks)<br>
+&nbsp;&nbsp;&nbsp;<b>field</b> : the field to be annotated<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jpa.embeddedIdAnnotations( 4, $field )<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.entityAnnotations(int leftMargin, EntityInContext entity) : String</B> </CODE>
+<p class="doc">
+Returns a multiline String containing all the Java JPA annotations required for the current entity<br>
+with the given left marging before each line<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>leftMargin</b> : the left margin (number of blanks)<br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity to be annotated<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jpa.entityAnnotations(4, $entity)<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fieldAnnotations(int leftMargin, AttributeInContext field) : String</B> </CODE>
+<p class="doc">
+Returns the JPA annotations for the given field (with a left margin)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>leftMargin</b> : the left margin (number of blanks)<br>
+&nbsp;&nbsp;&nbsp;<b>field</b> : the field to be annotated<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jpa.fieldAnnotations( 4, $field )<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.genTargetEntity : boolean</B> </CODE>
+<p class="doc">
+Defines if 'targetEntity' must be generated in @ManyToMany, @OneToMany, etc<br>
+Can be set to 'true' or 'false' (default value is 'false') <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $jpa.genTargetEntity = true )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.imports(EntityInContext entity) : List of 'String'</B> </CODE>
+<p class="doc">
+Returns a list of all the Java classes required by the current entity for JPA<br>
+( this version always returns 'javax.persistence.*' )<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $import in $jpa.imports($entity) )<br>
+&nbsp;&nbsp;&nbsp;import $import;<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.joinColumnInsertable : String</B> </CODE>
+<p class="doc">
+Defines the value for 'insertable' attribute in '@JoinColumn' annotation<br>
+Can be set to 'true' or 'false' (default value is 'nothing') <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $jpa.joinColumnInsertable = true )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.joinColumnUpdatable : String</B> </CODE>
+<p class="doc">
+Defines the value for 'updatable' attribute in '@JoinColumn' annotation<br>
+Can be set to 'true' or 'false' (default value is 'nothing') <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $jpa.joinColumnUpdatable = true )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.linkAnnotations(int leftMargin, LinkInContext link) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the JPA annotations for the given link<br>
+@ManyToOne, @OneToMany, etc<br>
+@JoinColumns / @JoinColumn <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>leftMargin</b> : the left margin (number of blanks)<br>
+&nbsp;&nbsp;&nbsp;<b>link</b> : the link from which the JPA annotations will be generated<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jpa.linkAnnotations( 4, $link )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.linkAnnotations(int leftMargin, LinkInContext link, List alreadyMappedFields) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the JPA annotations for the given link<br>
+The list of mapped fields is used to determine if a JoinColumn is already mapped as a field<br>
+If a JoinColumn is based on a field already mapped then 'insertable=false, updatable=false' is set<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>leftMargin</b> : the left margin (number of blanks)<br>
+&nbsp;&nbsp;&nbsp;<b>link</b> : the link to be annotated<br>
+&nbsp;&nbsp;&nbsp;<b>alreadyMappedFields</b> : list of all the fields already mapped by JPA as 'simple fields'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jpa.linkAnnotations( 4, $link, $listOfMappedFields )<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.linkCardinalityAnnotation(int leftMargin, LinkInContext link) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the JPA cardinality annotation for the given link<br>
+( e.g. @ManyToOne, @OneToMany, etc )<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>leftMargin</b> : the left margin (number of blanks)<br>
+&nbsp;&nbsp;&nbsp;<b>link</b> : the link from which the JPA annotation will be generated<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jpa.linkCardinalityAnnotation(4,$link)<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.linkJoinAnnotation(int leftMargin, LinkInContext link) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the JPA JoinColumn(s) annotations for the given link<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>leftMargin</b> : the left margin (number of blanks)<br>
+&nbsp;&nbsp;&nbsp;<b>link</b> : the link from which the JPA annotation will be generated<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jpa.linkJoinAnnotation(4,$link)<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.linkJoinAnnotation(int leftMargin, LinkInContext link, List alreadyMappedFields) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the JPA JoinColumn(s) annotations for the given link<br>
+The list of mapped fields is used to determine if a JoinColumn is already mapped as a field<br>
+If a JoinColumn is based on a field already mapped then 'insertable=false, updatable=false' is set<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>leftMargin</b> : the left margin (number of blanks)<br>
+&nbsp;&nbsp;&nbsp;<b>link</b> : the link from which the JPA annotation will be generated<br>
+&nbsp;&nbsp;&nbsp;<b>alreadyMappedFields</b> : list of all the fields already mapped by JPA as 'simple fields'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jpa.linkJoinAnnotation( 4, $link, $listOfMappedFields )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.manyToManyFetchType : FetchType</B> </CODE>
+<p class="doc">
+Defines default FETCH-TYPE ('LAZY' or 'EAGER') for 'ManyToMany' cardinality <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $jpa.manyToManyFetchType = 'EAGER' )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.manyToOneFetchType : FetchType</B> </CODE>
+<p class="doc">
+Defines default FETCH-TYPE ('LAZY' or 'EAGER') for 'ManyToOne' cardinality <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $jpa.manyToOneFetchType = 'LAZY' )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.oneToManyFetchType : FetchType</B> </CODE>
+<p class="doc">
+Defines default FETCH-TYPE ('LAZY' or 'EAGER') for 'OneToMany' cardinality <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $jpa.oneToManyFetchType = 'EAGER' )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.oneToOneFetchType : FetchType</B> </CODE>
+<p class="doc">
+Defines default FETCH-TYPE ('LAZY' or 'EAGER') for 'OneToOne' cardinality <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $jpa.oneToOneFetchType = 'LAZY' )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

@@ -20,12 +20,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.telosys.doc.commons.DestinationFolder;
 import org.telosys.doc.commons.ItemLink;
+import org.telosys.doc.commons.Logger;
 import org.telosys.tools.commons.FileUtil;
 import org.telosys.tools.generator.context.doc.tooling.ClassInfo;
 import org.telosys.tools.generator.context.doc.tooling.DocBuilder;
@@ -94,10 +96,9 @@ public class ObjectsDocGenerator {
 	private static void generateTOC(String tocFullFileName, Set<String> uniqueNames) {
 		List<String> sortedUniqueNames = new ArrayList<>(uniqueNames);
 		Collections.sort(sortedUniqueNames);
-		ItemLink[] itemLinks = new ItemLink[sortedUniqueNames.size()];
-		int i = 0 ;
+		List<ItemLink> itemLinks = new LinkedList<>();
 		for ( String s : sortedUniqueNames ) {
-			itemLinks[i++] = new ItemLink(s, s);
+			itemLinks.add(new ItemLink(s, s) ); // same string for "object name" and "page name"
 		}
 		ObjectsTOCGeneratorHTML tocGenerator = new ObjectsTOCGeneratorHTML(tocFullFileName, itemLinks);
 		tocGenerator.generateTOCFile();
@@ -110,6 +111,6 @@ public class ObjectsDocGenerator {
 	}
 	
 	private static void log(String msg) {
-		System.out.println(msg);
+		Logger.log(msg);
 	}
 }

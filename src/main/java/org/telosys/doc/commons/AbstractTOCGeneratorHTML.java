@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 public abstract class AbstractTOCGeneratorHTML {
 
@@ -31,10 +32,10 @@ public abstract class AbstractTOCGeneratorHTML {
 
 	private final String fullFileName ;
 	private final String title ;
-	private final ItemLink[] sortedLinks ;
+	private final List<ItemLink> sortedLinks ;
 	private String desc = null;
 
-	protected AbstractTOCGeneratorHTML(String fullFileName, String title, ItemLink[] sortedLinks) {
+	protected AbstractTOCGeneratorHTML(String fullFileName, String title, List<ItemLink> sortedLinks) {
 		super();
 		this.fullFileName = fullFileName;
 		this.title = title;
@@ -102,6 +103,8 @@ public abstract class AbstractTOCGeneratorHTML {
 		writer.println( "</ul>" );
 		
 		printTextAfterList(writer);
+
+		writer.println( "<br><br>" );
 		
 		writer.println( "</body>" );
 		writer.println( "</html>" );

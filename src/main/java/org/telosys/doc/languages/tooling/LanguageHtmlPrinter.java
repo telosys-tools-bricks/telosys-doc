@@ -38,7 +38,6 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 	}
 	
 	protected void printDoc() {
-		//String title = "Code generation specificities for \"" + typeConverter.getLanguageName() + "\" language"; 
 		String title = "\"" + typeConverter.getLanguageName() + "\" language specificities"; 
 		printHtmlHeader(title);
 		print("<hr/>");		
@@ -69,8 +68,6 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 		println("<br>");
 		print("The information below shows the behavior of the generator when '" + typeConverter.getLanguageName() 
 				+ "' is the current target language.");
-//		println("<br>");
-//		println("<br>");
 		print("</p>" );	
 		println("<br>");		
 	}
@@ -100,14 +97,13 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 		println("</colgroup>");
 
 		println("<thead>");
-		print(" <tr>");
+		print("<tr>");
 		print(" <th> Model type </th>" ); 
 		print(" <th> Default </th> " );
 		print(" <th> @UnsignedType </th>" ); 
 		print(" <th> @NotNull </th>" ); 
 		print(" <th> @PrimitiveType </th>" ); 
 		print(" <th> @ObjectType </th>" );  
-		//print(" <th> @SqlType </th>" );  
 		println("</tr>");
 	    println("</thead>");
 
@@ -128,7 +124,6 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 		list.add( getSimpleType(neutralType, AttributeTypeInfo.NOT_NULL) );
 		list.add( getSimpleType(neutralType, AttributeTypeInfo.PRIMITIVE_TYPE) );
 		list.add( getSimpleType(neutralType, AttributeTypeInfo.OBJECT_TYPE) );
-		//list.add( getSimpleType(neutralType, AttributeTypeInfo.SQL_TYPE) );
 		
 		return list;
 	}
@@ -187,7 +182,6 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.NOT_NULL ) ) ;
 		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.PRIMITIVE_TYPE ) ) ;
 		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.OBJECT_TYPE ) ) ;
-//		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.SQL_TYPE ) ) ;
 	}
 	private void addIfNotInList(List<LanguageType> list, LanguageType languageType) {
 		if ( ! list.contains(languageType) ) {
@@ -246,8 +240,6 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 
 	private void printLiteralValueRow(LanguageType languageType, String literalValue) {
 		
-//		literalValuesProvider.getLiteralNull();
-//		literalValuesProvider.getEqualsStatement(value, languageType)
 		print(" <tr>" );
 		print(" <td>" + languageType.getNeutralType() + "</td>");
 		print(" <td>" + languageType.getSimpleType() + "</td>");

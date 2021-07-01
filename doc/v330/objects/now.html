@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $now</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $now</h1>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
+Object providing the current system date and time in different formats<br>
+<br>
+Since : 3.3.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.date : String</B> </CODE>
+<p class="doc">
+Returns the current date with the default format 'yyyy-MM-dd' <br>
+example : '2019-07-14' <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$now.date<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.datetime : String</B> </CODE>
+<p class="doc">
+Returns the current date and time with the default format 'yyyy-MM-dd HH:mm:ss' <br>
+example : '2019-07-14 14:55:34' <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$now.datetime<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.format(String format) : String</B> </CODE>
+<p class="doc">
+Returns the current date/time formatted with the given format<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>format</b> : the desired format<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$now.format('yyyy-MM')<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.time : String</B> </CODE>
+<p class="doc">
+Returns the current time with the default format 'HH:mm:ss' <br>
+example : '14:55:34' <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$now.time<br>
+</code>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

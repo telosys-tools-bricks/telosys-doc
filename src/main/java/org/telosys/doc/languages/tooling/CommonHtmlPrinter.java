@@ -24,7 +24,7 @@ public abstract class CommonHtmlPrinter {
 
 	private final BufferedWriter writer ;
 	
-	public CommonHtmlPrinter( BufferedWriter writer ) {
+	protected CommonHtmlPrinter( BufferedWriter writer ) {
 		this.writer = writer ;
 	}
 
@@ -69,7 +69,6 @@ public abstract class CommonHtmlPrinter {
 		println("  th, td { padding: 15px; text-align: left; }" );
 		println("  th { font-family: Courier New; font-weight: bold; background-color: #4CAF50; color: white; }" );
 		println("  td { font-family: Courier New; font-weight: bold; }" );
-		//println("  p { font-family: Courier New; font-weight: bold; }" );
 		println("  p.code { font-family: Courier New; font-weight: bold; }" );
 		println("  span.code { font-family: Courier New; font-weight: bold; }" );
 		println("  ul.code { font-family: Courier New; font-weight: bold; }" );

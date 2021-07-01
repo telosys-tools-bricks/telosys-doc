@@ -16,6 +16,7 @@
 package org.telosys.doc.languages.tooling;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import org.telosys.doc.commons.AbstractTOCGeneratorHTML;
 import org.telosys.doc.commons.ItemLink;
@@ -24,18 +25,8 @@ public class LanguagesTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 
 	private static final String TITLE = "Telosys target languages";
 	
-	private static final ItemLink[] SORTED_LINKS = new ItemLink[] {
-			new ItemLink("C# (Microsoft CSharp)",  "language-csharp"),
-			new ItemLink("Go (Golang)",            "language-go"),
-			new ItemLink("Java",                   "language-java"),
-			new ItemLink("JavaScript",             "language-javascript"),
-			new ItemLink("PHP",                    "language-php"),
-			new ItemLink("Python",                 "language-python"),
-			new ItemLink("TypeScript",             "language-typescript")
-	};
-	
-	public LanguagesTOCGeneratorHTML(String fullFileName) {
-		super(fullFileName, TITLE, SORTED_LINKS);
+	public LanguagesTOCGeneratorHTML(String fullFileName, List<ItemLink> itemLinks) {
+		super(fullFileName, TITLE, itemLinks);
 	}
 
 	@Override

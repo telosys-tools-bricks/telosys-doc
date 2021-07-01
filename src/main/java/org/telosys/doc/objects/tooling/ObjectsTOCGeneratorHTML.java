@@ -16,6 +16,7 @@
 package org.telosys.doc.objects.tooling;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import org.telosys.doc.commons.AbstractTOCGeneratorHTML;
 import org.telosys.doc.commons.ItemLink;
@@ -25,7 +26,7 @@ public class ObjectsTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 
 	private static final String TITLE = "Telosys objects reference";
 		
-	public ObjectsTOCGeneratorHTML(String fullFileName, ItemLink[] sortedLinks ) {
+	public ObjectsTOCGeneratorHTML(String fullFileName, List<ItemLink> sortedLinks ) {
 		super(fullFileName, TITLE, sortedLinks);
 		String desc = "Documentation for Telosys generator version " + GeneratorVersion.GENERATOR_VERSION ;
 		setDescription(desc);

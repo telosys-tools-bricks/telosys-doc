@@ -1,0 +1,683 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $fn</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $fn</h1>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
+Object providing a set of utility functions <br>
+<br>
+<br>
+Since : 2.0.3<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.argumentsList(List fields) : String</B> </CODE>
+<p class="doc">
+Returns a string containing a list of field names separated by a comma<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>fields</b> : list of fields to be added in the arguments list<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$fn.argumentsList( $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp;Returns : 'id, firstName, lastName, age' <br>
+</code>
+<br>
+<b>Since : </b>2.0.5<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.argumentsListWithGetter(String object, List fields) : String</B> </CODE>
+<p class="doc">
+Returns a string containing a list of fields getters separated by a comma<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>object</b> : name of the object providing the getters<br>
+&nbsp;&nbsp;&nbsp;<b>fields</b> : list of fields to be added in the arguments list<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$fn.argumentsListWithGetter( 'person', $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp;Returns : 'person.getId(), person.getFirstName(), person.getLastName(), person.getAge()' <br>
+</code>
+<br>
+<b>Since : </b>2.0.5<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.argumentsListWithType(List fields) : String</B> </CODE>
+<p class="doc">
+Returns a string containing a list of fields (type and name) separated by a comma<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>fields</b> : list of fields to be added in the arguments list<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$fn.argumentsListWithType( $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp;Result example for Java language : 'int id, String firstName, String lastName, int age' <br>
+&nbsp;&nbsp;&nbsp;Result example for Go language : 'id int32, firstName string, lastName string, age uint' <br>
+</code>
+<br>
+<b>Since : </b>2.0.5<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.argumentsListWithWrapperType(List fields) : String</B> </CODE>
+<p class="doc">
+Returns a string containing a list of fields (wrapper type and name) separated by a comma<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>fields</b> : list of fields to be added in the arguments list<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$fn.argumentsListWithWrapperType( $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp;Returns : 'Integer id, String firstName, String lastName, Integer age' <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.backslash(String s, String c) : String</B> </CODE>
+<p class="doc">
+Protects each occurrence of the given char with a backslash in the given string <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>s</b> : the string to be processed<br>
+&nbsp;&nbsp;&nbsp;<b>c</b> : the character to be protected with a backslash<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.buildIntValues(Collection collection) : List<Integer></B> </CODE>
+<p class="doc">
+Builds a list of N integer consecutive values starting with 1<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>collection</b> : the collection determining the number of values (collection size)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $values = $fn.buildIntValues($entity.attributes) ) <br>
+&nbsp;&nbsp;&nbsp;Values size = $values.size() <br>
+&nbsp;&nbsp;&nbsp;#foreach( $v in $values )<br>
+&nbsp;&nbsp;&nbsp; . value = $v<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;#set($last = ( $values.size() - 1) )<br>
+&nbsp;&nbsp;&nbsp;#foreach ( $i in [0..$last] )<br>
+&nbsp;&nbsp;&nbsp; . value($i) = $values.get($i)<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.buildIntValues(Collection collection, int int) : List<Integer></B> </CODE>
+<p class="doc">
+Builds a list of N integer consecutive values starting with the given value<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>collection</b> : the collection determining the number of values (collection size)<br>
+&nbsp;&nbsp;&nbsp;<b>int</b> : the first value of the list<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $values = $fn.buildIntValues($entity.attributes, 0) ) <br>
+&nbsp;&nbsp;&nbsp;Values size = $values.size() <br>
+&nbsp;&nbsp;&nbsp;#foreach( $v in $values )<br>
+&nbsp;&nbsp;&nbsp; . value = $v<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;#set($last = ( $values.size() - 1) )<br>
+&nbsp;&nbsp;&nbsp;#foreach ( $i in [0..$last] )<br>
+&nbsp;&nbsp;&nbsp; . value($i) = $values.get($i)<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.buildIntValues(int int) : List<Integer></B> </CODE>
+<p class="doc">
+Builds a list of N integer consecutive values starting with 1<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>int</b> : the number of values to be created<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $values = $fn.buildIntValues(5) ) ## 5 values from 1 to 5<br>
+&nbsp;&nbsp;&nbsp;Values size = $values.size() <br>
+&nbsp;&nbsp;&nbsp;#foreach( $v in $values )<br>
+&nbsp;&nbsp;&nbsp; . value = $v<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;#set($last = ( $values.size() - 1) )<br>
+&nbsp;&nbsp;&nbsp;#foreach ( $i in [0..$last] )<br>
+&nbsp;&nbsp;&nbsp; . value($i) = $values.get($i)<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.buildIntValues(int int, int int) : List<Integer></B> </CODE>
+<p class="doc">
+Builds a list of N integer consecutive values starting with the given value<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>int</b> : the number of values to be created<br>
+&nbsp;&nbsp;&nbsp;<b>int</b> : the first value of the list<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $values = $fn.buildIntValues(10,0) ) ## 10 values from 0 to 9<br>
+&nbsp;&nbsp;&nbsp;Values size = $values.size() <br>
+&nbsp;&nbsp;&nbsp;#foreach( $v in $values )<br>
+&nbsp;&nbsp;&nbsp; . value = $v<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;#set($last = ( $values.size() - 1) )<br>
+&nbsp;&nbsp;&nbsp;#foreach ( $i in [0..$last] )<br>
+&nbsp;&nbsp;&nbsp; . value($i) = $values.get($i)<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.buildValues(List attributes, int step) : ValuesInContext</B> </CODE>
+<p class="doc">
+Builds a list of literal values.<br>
+Returns a list with one literal value for each attribute according with the attribute type.<br>
+e.g. : 12 for an integer, true for a boolean,  230L for a long, 'ABC' for a string, etc <br>
+Each value can be retrieved by its attribute's name, e.g. $values.getValue($attribute.name)<br>
+A list of all values separated by a comma is returned by $values.allValues<br>
+Those values are typically used to populate attributes in test cases<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes requiring a literal value<br>
+&nbsp;&nbsp;&nbsp;<b>step</b> : a step (from 1 to N) used to change the values builded<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $values = $fn.buildValues($entity.attributes, 1) )<br>
+&nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp; Literal value for $attribute.name : $values.getValue($attribute.name)<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp; All values : $values.allValues<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.capitalize(String string) : String</B> </CODE>
+<p class="doc">
+Capitalizes the given string<br>
+changing the first letter to upper case<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>string</b> : the string to be capitalized<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$fn.capitalize($var)<br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.className(Object object) : String</B> </CODE>
+<p class="doc">
+Returns the class name (CanonicalName) for the given object (or 'null' if undefined)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>object</b> : object reference for which to get the class name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$fn.className($var)<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.concatLists(List list1, List list2) : List<?></B> </CODE>
+<p class="doc">
+Concatenates 2 lists ( add all the elements of the second list at the end of the first one ) <br>
+The 2 given lists remain unchanged. The result is stored in a new list.<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>list1</b> : List of objects<br>
+&nbsp;&nbsp;&nbsp;<b>list2</b> : List of objects to be added at the end of list1<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $list3 = $fn.concatLists( $list1, $list2 )  <br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.escapeXml(String s) : String</B> </CODE>
+<p class="doc">
+Returns the XML string for the given string<br>
+Replaces special characters (&, <, >, etc) by their corresponding XML notation <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>s</b> : the string to be escaped<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.file(String filePath) : FileInContext</B> </CODE>
+<p class="doc">
+Returns a file object for the given file path<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>filePath</b> : the file path (relative or absolute)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;## relative path : for a file located in the current project : <br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.file('myfile.csv') )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.file('dir/foo.txt') )<br>
+&nbsp;&nbsp;&nbsp;## absolute path : for a file located anywhere : <br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.file('C:\Temp\values.csv') )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.file('/tmp/values.csv') )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fileFromBundle(String filePath) : FileInContext</B> </CODE>
+<p class="doc">
+Returns a file object for the given file path located in the current bundle folder<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>filePath</b> : the file path (in the current bundle folder)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromBundle('myfile.csv') )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromBundle('dir/foo.txt') )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fileFromModel(String filePath) : FileInContext</B> </CODE>
+<p class="doc">
+Returns a file object for the given file path located in the current model folder<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>filePath</b> : the file path (in the current model folder)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromModel('myfile.csv') )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromModel('dir/foo.txt') )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.firstCharToUpperCase(String s) : String</B> </CODE>
+<p class="doc">
+Converts the first character to upper case<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>s</b> : the string to be converted<br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.get(String objectName, Object defaultValue) : Any kind of object </B> </CODE>
+<p class="doc">
+Returns the object stored with the given name in the Velocity Context<br>
+If there's no object for the given name the default value is returned<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>objectName</b> : the name (or key) in the Velocity Context<br>
+&nbsp;&nbsp;&nbsp;<b>defaultValue</b> : the value to be returned if the object is not defined<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$fn.get('groupId','defaultValue') <br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isBlank(String s) : boolean</B> </CODE>
+<p class="doc">
+Returns true if the given string is 'blank' <br>
+(true if the string is null or void or only composed of blanks)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>s</b> : the string to be tested<br>
+<br>
+<b>Since : </b>2.0.3<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isDefined(String objectName) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the given object name is defined in the Velocity Context<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>objectName</b> : the name (or key) in the Velocity Context<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $fn.isDefined('myvar') ) <br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isNotBlank(String s) : boolean</B> </CODE>
+<p class="doc">
+Returns true if the given string is not 'blank' <br>
+(true if the string is not null, not void and not only composed of blanks)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>s</b> : the string to be tested<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isNotVoid(Object list/map/array) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the given list/map/array is NOT VOID<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>list/map/array</b> : <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $fn.isNotVoid( $entity.attributes ) ) <br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isVoid(Object list/map/array) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the given list/map/array is VOID<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>list/map/array</b> : <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $fn.isVoid( $entity.attributes ) ) <br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.join(Collection collection, String separator) : String</B> </CODE>
+<p class="doc">
+Returns a string built by joining all the elements of the given collection<br>
+the 'separator' is added between each element<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>collection</b> : the collection (any kind of objects<br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator string (void string if no separator required)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $v = $fn.join( $myList, "," ) ) <br>
+&nbsp;&nbsp;&nbsp;#set ( $v = $fn.join( $myList, "" ) ) <br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.joinWithPrefixSuffix(Collection collection, String separator, String prefix, String suffix) : String</B> </CODE>
+<p class="doc">
+Returns a string built by joining all the elements of the given collection<br>
+the 'separator' is added between each element<br>
+the 'prefix' is added before each element<br>
+the 'suffix' is added after each element<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>collection</b> : the collection (any kind of objects<br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator string (or void)<br>
+&nbsp;&nbsp;&nbsp;<b>prefix</b> : the prefix string (or void)<br>
+&nbsp;&nbsp;&nbsp;<b>suffix</b> : the suffix string (or void)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $v = $fn.joinWithPrefixSuffix( $myList, ";", "[", "]" ) ) <br>
+&nbsp;&nbsp;&nbsp;#set ( $v = $fn.joinWithPrefixSuffix( $myList, ", ", "", ".class" ) ) <br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.quote(String s) : String</B> </CODE>
+<p class="doc">
+Adds a double quote character at the beginning and at the end of the given string <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>s</b> : the string to be quoted<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.replaceInList(List list, Object oldElement, Object newElement) : void</B> </CODE>
+<p class="doc">
+Replaces all occurrences of an element with another in the given list<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>list</b> : the list containing the elements<br>
+&nbsp;&nbsp;&nbsp;<b>oldElement</b> : the element to be replaced<br>
+&nbsp;&nbsp;&nbsp;<b>newElement</b> : the new element replacing the original<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set($list = ['a', 'b', 'cc', 'b', 'dd']) <br>
+&nbsp;&nbsp;&nbsp;$fn.replaceInList($list, 'b', 'BBB')##<br>
+&nbsp;&nbsp;&nbsp; result : [a, BBB, cc, BBB, dd]<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#set($foo = [1, 0, 3, 0, 4, 0]) <br>
+&nbsp;&nbsp;&nbsp;$fn.replaceInList($foo, 0, 9)##<br>
+&nbsp;&nbsp;&nbsp; result : [1, 9, 3, 9, 4, 9]<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#set($foo = [1, 'aa', 3.2, 'zz', true, 5]) <br>
+&nbsp;&nbsp;&nbsp;$fn.replaceInList($foo, 'zz', 99)##<br>
+&nbsp;&nbsp;&nbsp; result : [1, aa, 3.2, 99, true, 5] <br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.size(Object list/map/array) : int</B> </CODE>
+<p class="doc">
+Returns the SIZE of the given list/map/array<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>list/map/array</b> : <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;Number of attribute = $fn.size( $entity.attributes )  <br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tab : String</B> </CODE>
+<p class="doc">
+Returns a single tabulation character <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tab(int n) : String</B> </CODE>
+<p class="doc">
+Returns N tabulation characters <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>n</b> : the number of tabulations to be returned<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toList(String[] array) : List<String></B> </CODE>
+<p class="doc">
+Returns a list of strings from the given array of strings<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>array</b> : the array of strings ( String[] )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set ( $mylist = $fn.toList( $mystring.split(",") ) ) <br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toLowerCase(String s) : String</B> </CODE>
+<p class="doc">
+Converts  all of the characters in the given string to lower case<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>s</b> : the string to be converted<br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toUpperCase(String s) : String</B> </CODE>
+<p class="doc">
+Converts  all of the characters in the given string to upper case<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>s</b> : the string to be converted<br>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.trimAll(List list) : void</B> </CODE>
+<p class="doc">
+Trims all string occurrences in the given list<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>list</b> : the list containing the elements<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set($list = ['a', '  b', ' c c ', 'd  ']) <br>
+&nbsp;&nbsp;&nbsp;$fn.trimAll($list)##<br>
+&nbsp;&nbsp;&nbsp; result : [a, b, c c, d ]<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#set($foo = [1, ' a ', 3.2, '  zz' ]) <br>
+&nbsp;&nbsp;&nbsp;$fn.trimAll($foo)##<br>
+&nbsp;&nbsp;&nbsp; result : [1, a, 3.2, zz] <br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.uncapitalize(String string) : String</B> </CODE>
+<p class="doc">
+Uncapitalizes the given string<br>
+changing the first letter to lower case<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>string</b> : the string to be uncapitalized<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$fn.uncapitalize($var) <br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.unquote(String s) : String</B> </CODE>
+<p class="doc">
+Removes the double quote character at the beginning and at the end of the given string (if any)<br>
+If the string is not quoted it is returned as is<br>
+If there's a quote character only at the beginning or at the end the string is returned as is<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>s</b> : the string to be unquoted<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

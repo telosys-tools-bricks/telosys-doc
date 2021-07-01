@@ -6,8 +6,8 @@ import org.telosys.doc.objects.ObjectsDocumentation;
 
 public class AllDocumentation {
 
-	
 	/**
+	 * Main entry point to generate all the documetation
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -21,6 +21,4 @@ public class AllDocumentation {
 		Logger.log("-------------------------------------");
 		
 	}
-	
-	//------------------------------------------------------------------------------
 }

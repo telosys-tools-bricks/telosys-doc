@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $fk</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $fk</h1>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
+This object provides all information about a database foreign key<br>
+Each foreign key is retrieved from the entity class <br>
+<br>
+<br>
+<b>Example : </b><br>
+<code class="example">
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#foreach( $fk in $entity.databaseForeignKeys )<br>
+&nbsp;&nbsp;&nbsp;    $fk.name <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+Since : 2.0.7<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.columns : List of 'Foreign Key Column' objects ( List of '$fkcol' )</B> </CODE>
+<p class="doc">
+Returns all the columns composing the foreign key<br>
+(sorted in the original database order)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $fkcol in $fk.columns ) <br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.columnsCount : int</B> </CODE>
+<p class="doc">
+Returns the number of columns composing the foreign key<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.deferrable : String</B> </CODE>
+<p class="doc">
+Returns the 'DEFERRABILITY' status ( 'NOT DEFERRABLE', 'INITIALLY IMMEDIATE', 'INITIALLY DEFERRED'  ) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.deferrableCode : int</B> </CODE>
+<p class="doc">
+Returns the 'DEFERRABILITY' status code ( MetaData Code : 5,6,7 ) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.deleteRule : String</B> </CODE>
+<p class="doc">
+Returns the 'ON DELETE' rule ( 'NO ACTION', 'RESTRICT', 'SET NULL', 'SET DEFAULT', 'CASCADE'  ) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.deleteRuleCode : int</B> </CODE>
+<p class="doc">
+Returns the 'ON DELETE' rule code ( MetaData Code : 0,1,2,3,4 ) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.name : String</B> </CODE>
+<p class="doc">
+Returns the name of the Foreign Key<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedTableName : String</B> </CODE>
+<p class="doc">
+Returns the name of the referenced table (the table referenced by the foreign key)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tableName : String</B> </CODE>
+<p class="doc">
+Returns the name of the table holding the foreign key<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.updateRule : String</B> </CODE>
+<p class="doc">
+Returns the 'ON UPDATE' rule ( 'NO ACTION', 'RESTRICT', 'SET NULL', 'SET DEFAULT', 'CASCADE' ) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.updateRuleCode : int</B> </CODE>
+<p class="doc">
+Returns the 'ON UPDATE' rule code ( MetaData Code : 0,1,2,3,4 ) <br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

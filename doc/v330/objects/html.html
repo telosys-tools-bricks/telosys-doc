@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $html</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $html</h1>
+<p class="desc"> ( doc for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
+Object providing a set of utility functions for HTML language code generation<br>
+<br>
+<br>
+Since : 3.0.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.max(AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns the HTML5 'max' attribute for maximum values (or void if none)<br>
+e.g : max='10' <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute holding the 'max' information<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$html.max($attribute) <br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.maxlength(AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns the HTML5 'maxlength' attribute if any or if computable from type<br>
+(else returns a void string)<br>
+e.g : maxlength='20' <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute holding the 'maxlength' information<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$html.maxlength($attribute) <br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.min(AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns the HTML5 'min' attribute for minimum values (or void if none)<br>
+e.g : min='10' <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute holding the 'min' information<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$html.min($attribute) <br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.type(AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns the HTML5 'type' attribute for 'input' tag <br>
+The 'type' is determinded from the 'input type' if any or computed from the model type <br>
+e.g : type='text', type='number', type='date', type='time', etc <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute holding the 'type' information<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$html.type($attribute) <br>
+</code>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>
