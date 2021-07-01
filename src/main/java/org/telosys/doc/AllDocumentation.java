@@ -1,5 +1,6 @@
 package org.telosys.doc;
 
+import org.telosys.doc.commons.Logger;
 import org.telosys.doc.languages.LanguagesDocumentation;
 import org.telosys.doc.objects.ObjectsDocumentation;
 
@@ -11,13 +12,13 @@ public class AllDocumentation {
 	 */
 	public static void main(String[] args) {
 		
-		System.out.println("GENERATING OBJECTS DOCUMENTATION...");
+		Logger.log("GENERATING OBJECTS DOCUMENTATION...");
 		ObjectsDocumentation.genDoc();
-		System.out.println("-------------------------------------");
+		Logger.log("-------------------------------------");
 		
-		System.out.println("GENERATING LANGUAGES DOCUMENTATION...");
+		Logger.log("GENERATING LANGUAGES DOCUMENTATION...");
 		LanguagesDocumentation.genDoc();
-		System.out.println("-------------------------------------");
+		Logger.log("-------------------------------------");
 		
 	}
 	

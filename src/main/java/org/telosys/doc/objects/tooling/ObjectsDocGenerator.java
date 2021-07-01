@@ -76,17 +76,6 @@ public class ObjectsDocGenerator {
 		}
 		
 		// Generate the Table Of Contents file in the parent directory
-//		List<String> sortedUniqueNames = new ArrayList<>(uniqueNames);
-//		Collections.sort(sortedUniqueNames);
-//		ItemLink[] itemLinks = new ItemLink[sortedUniqueNames.size()];
-//		int i = 0 ;
-//		for ( String s : sortedUniqueNames ) {
-//			itemLinks[i++] = new ItemLink(s, s);
-//		}
-//		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
-//		ObjectsTOCGeneratorHTML tocGenerator = new ObjectsTOCGeneratorHTML(tocFullFileName, itemLinks);
-//		tocGenerator.generateTOCFile();
-		
 		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
 		generateTOC(tocFullFileName, uniqueNames);
 		

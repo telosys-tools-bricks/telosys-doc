@@ -8,12 +8,12 @@ public class DestinationFolder {
 	}
 	
 	public static File prepare(String destDir) {
-		System.out.println( "Destination directory : " + destDir );
+		Logger.log( "Destination directory : " + destDir );
 		File fileDir = new File(destDir);
 		if ( ! fileDir.exists() ) {
-		    System.out.println("Creating directory : " + destDir);
+			Logger.log("Creating directory : " + destDir);
 		    if( fileDir.mkdirs() ) {    
-		    	System.out.println("Created");
+		    	Logger.log("Created");
 		    }
 		    else {
 		    	throw new RuntimeException("Cannot create directory '" + destDir + "'");
