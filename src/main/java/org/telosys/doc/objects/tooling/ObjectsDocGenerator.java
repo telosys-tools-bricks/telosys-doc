@@ -17,8 +17,6 @@ package org.telosys.doc.objects.tooling;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,6 +34,7 @@ public class ObjectsDocGenerator {
 
 	private static final String TOC_FILENAME   = "doc-objects.html" ;
 	private static final String INDEX_FILENAME = "index.html" ;
+	private static final boolean DETAILED_LOG = false ;
 	
 	private ObjectsDocGenerator() {
 	}
@@ -47,70 +46,109 @@ public class ObjectsDocGenerator {
 	 */
 	public static int generateHtmlDoc(String destDir) {
 
-		log( "HTML documentation generation" );
+		log( "Objects documentation generation" );
+		log( "Objects doc - STEP 1 : preparation" );
 		File fileDir = DestinationFolder.prepare(destDir);
+		
 		DocBuilder docBuilder = new DocBuilder();
-		
 		Map<String,ClassInfo> classesInfo = docBuilder.getVelocityClassesInfo() ;
-
-		Set<String> names = classesInfo.keySet();
-		log("ClassInfo names (size=" + names.size() + ") : " );
-		for ( String name : names ) {
-			log(" . " + name );
-		}
+		if ( DETAILED_LOG ) printClassesInfo(classesInfo);
 		
-		List<String> sortedNames = sortList(names);
-		Set<String> uniqueNames = new HashSet<>();
+		Set<String> uniqueNames = buildUniqueNames(classesInfo);
+		if ( DETAILED_LOG ) printUniqueNames(uniqueNames);
+		
+		List<String> sortedNames = buildSortedNames(uniqueNames);
+		if ( DETAILED_LOG ) printSortedNames(sortedNames);
+		
+		// Generate object html doc file ( one for each object )
+		log( "Objects doc - STEP 2 : objects pages generation" );
+		int c = generatePages(destDir, sortedNames, classesInfo);
+		
+		// Generate the Table Of Contents file in the parent directory
+		log( "Objects doc - STEP 3 : table of content generation" );
+		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
+		generateTOC(tocFullFileName, sortedNames);
+		
+		// Generate the index file in the same directory
+		log( "Objects doc - STEP 4 : index generation" );
+		String indexFullFileName = FileUtil.buildFilePath(fileDir.getPath(), INDEX_FILENAME);
+		generateTOC(indexFullFileName, sortedNames);
+
+		return c;
+	}
+	
+	private static int generatePages(String destDir, List<String> names, Map<String,ClassInfo> classesInfo) { 
 		
 		// Generate object html doc file ( one for each object )
 		ObjectsDocGeneratorHTML htmlGenerator = new ObjectsDocGeneratorHTML();
 
-		log("Sorted context names (size=" + sortedNames.size() + ") : " );
+		log("Names (size=" + names.size() + ") : " );
 		int c = 0 ;
-		for ( String name : sortedNames ) {
+		for ( String name : names ) {
 			ClassInfo classInfo = classesInfo.get(name);
 			String shortFileName = classInfo.getContextName() + ".html" ;
 			String fullFileName = FileUtil.buildFilePath(destDir, shortFileName);
 			log(" . " + name + " (" + classInfo.getContextName() + ") --> " + fullFileName );
 			htmlGenerator.generateDocFile(classInfo, fullFileName);
-			uniqueNames.add(classInfo.getContextName());
 			c++;
 		}
-		
-		// Generate the Table Of Contents file in the parent directory
-		String tocFullFileName = FileUtil.buildFilePath(fileDir.getParent(), TOC_FILENAME);
-		generateTOC(tocFullFileName, uniqueNames);
-		
-		// Generate the index file in the same directory
-		String indexFullFileName = FileUtil.buildFilePath(fileDir.getPath(), INDEX_FILENAME);
-		generateTOC(indexFullFileName, uniqueNames);
-
 		return c;
 	}
 	
 	/**
 	 * Generates Table Of Content file
 	 * @param tocFullFileName
-	 * @param uniqueNames
+	 * @param sortedNames
 	 */
-	private static void generateTOC(String tocFullFileName, Set<String> uniqueNames) {
-		List<String> sortedUniqueNames = new ArrayList<>(uniqueNames);
-		Collections.sort(sortedUniqueNames);
+	private static void generateTOC(String tocFullFileName, List<String> sortedNames) {
 		List<ItemLink> itemLinks = new LinkedList<>();
-		for ( String s : sortedUniqueNames ) {
+		for ( String s : sortedNames ) {
 			itemLinks.add(new ItemLink(s, s) ); // same string for "object name" and "page name"
 		}
+		log(" . " + tocFullFileName);
 		ObjectsTOCGeneratorHTML tocGenerator = new ObjectsTOCGeneratorHTML(tocFullFileName, itemLinks);
 		tocGenerator.generateTOCFile();
 	}
 	
-	private static <T extends Comparable<? super T>> List<T> sortList(Collection<T> c) {
-		  List<T> list = new ArrayList<>(c);
-		  java.util.Collections.sort(list);
-		  return list;
+	private static Set<String> buildUniqueNames(Map<String,ClassInfo> map) {
+		Set<String> uniqueNames = new HashSet<>();
+		for ( ClassInfo classInfo : map.values() ) {
+			uniqueNames.add(classInfo.getContextName());
+		}
+		return uniqueNames;
+	}
+
+	private static List<String> buildSortedNames(Set<String> names) {
+		List<String> list = new ArrayList<>(names);
+		java.util.Collections.sort(list);
+		return list;
 	}
 	
 	private static void log(String msg) {
 		Logger.log(msg);
 	}
+
+	private static void printClassesInfo(Map<String,ClassInfo> classesInfo) {
+		Set<String> names = classesInfo.keySet();
+		log("ClassInfo names ( Map / size=" + names.size() + ") : " );
+		for ( String name : names ) {
+			ClassInfo info = classesInfo.get(name);
+			log(" . '" + name + "' : $" + info.getContextName() + " (" + info.getJavaClassName() + ")");
+		}
+	}
+
+	private static void printUniqueNames(Set<String> uniqueNames) {
+		log("Uniques names (size=" + uniqueNames.size() + ") : " );
+		for ( String name : uniqueNames ) {
+			log(" . '" + name + "' " );
+		}
+	}
+	
+	private static void printSortedNames(List<String> list) {
+		log("Sorted names (size=" + list.size() + ") : " );
+		for ( String name : list ) {
+			log(" . '" + name + "' " );
+		}
+	}
+	
 }
