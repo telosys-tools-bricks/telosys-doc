@@ -1,9 +1,9 @@
 package org.telosys.doc.objects;
 
 import org.telosys.doc.DocVersion;
+import org.telosys.doc.commons.DestinationFolder;
 import org.telosys.doc.commons.Logger;
 import org.telosys.doc.objects.tooling.ObjectsDocGenerator;
-import org.telosys.tools.commons.DirUtil;
 
 public class ObjectsDocumentation {
 
@@ -22,13 +22,8 @@ public class ObjectsDocumentation {
 	
 	public static void genDoc() {
 		Logger.log("Objects doc generation... ");
-		String userDir = DirUtil.getUserWorkingDirectory(); // retrieved from the "user.dir" system property
-		Logger.log( "USER DIR : " + userDir ); 	// USER DIR is "X:\xxx\xxx\workspace\project"
-		String destDir = userDir + DOC_DIR_IN_PROJECT ;
-		Logger.log( "DEST DIR : " + destDir );	
-		
-		int n = ObjectsDocGenerator.generateHtmlDoc(destDir);
-		
+		String destDir = DestinationFolder.getFullDestinationDir(DOC_DIR_IN_PROJECT);
+		int n = ObjectsDocGenerator.generateHtmlDoc(destDir);		
 		Logger.log("End of objects doc generation. " + n + " files generated.");
 	}
 	

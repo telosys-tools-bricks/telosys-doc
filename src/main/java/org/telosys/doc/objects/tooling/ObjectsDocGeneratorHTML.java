@@ -20,7 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-import org.telosys.tools.generator.GeneratorVersion;
+import org.telosys.doc.DocVersion;
 import org.telosys.tools.generator.context.doc.tooling.ClassInfo;
 import org.telosys.tools.generator.context.doc.tooling.MethodInfo;
 import org.telosys.tools.generator.context.doc.tooling.MethodParameter;
@@ -123,8 +123,8 @@ public class ObjectsDocGeneratorHTML {
 			writer.println( "</p>");
 		}
 
-		writer.println( "<p class=\"desc\"> ( doc for Telosys generator version " 
-				+ GeneratorVersion.GENERATOR_VERSION + " ) </p>");
+		writer.println( "<p class=\"desc\"> ( documentation for Telosys generator version " 
+				+ DocVersion.DOC_VERSION + " ) </p>");
 		
 		writer.println( "<hr>");
 		

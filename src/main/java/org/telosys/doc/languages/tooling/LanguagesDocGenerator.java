@@ -75,7 +75,7 @@ public class LanguagesDocGenerator {
 	 * @param tocFullFileName
 	 */
 	private static void generateTOC(String tocFullFileName) {
-		log( "File : " + tocFullFileName);
+		log( " . " + tocFullFileName);
 		List<ItemLink> itemLinks = new LinkedList<>();
 		for ( LanguageDocumenter ld : LanguagesList.getLanguages() ) {
 			itemLinks.add( new ItemLink(ld.getLinkText(), ld.getHtmlPage()) ); 
@@ -91,7 +91,7 @@ public class LanguagesDocGenerator {
 	
 	private static void generatePageFile(String fileName, TypeConverter typeConverter, LiteralValuesProvider literalValuesProvider ) {
 		
-		Logger.log("Print doc : " + fileName );
+		Logger.log(" . " + fileName );
 		
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
