@@ -51,7 +51,16 @@ public class LanguagesTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 
 	@Override
 	protected String getItemLink(String page, String text) {
-		return "<a href=\"languages/" + page + ".html\" >" + text + "</a>" ;
+		String href = "" ;
+		if ( isIndexFile() ) {
+			// in same directory
+			href = page + ".html" ;
+		}
+		else {
+			// in subdirectory
+			href = "languages/" + page + ".html" ;
+		}
+		return "<a href=\"" + href + "\" >" + text + "</a>";
 	}
 
 	@Override

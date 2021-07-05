@@ -18,8 +18,9 @@ import org.telosys.tools.generic.model.types.TypeConverter;
 
 public class LanguagesDocGenerator {
 
-	private static final String TOC_FILENAME = "doc-languages.html" ;
-	
+	private static final String TOC_FILENAME   = "doc-languages.html" ;
+	private static final String INDEX_FILENAME = "index.html" ;
+
 	/**
 	 * Private constructor
 	 */
@@ -27,35 +28,54 @@ public class LanguagesDocGenerator {
 	}
 	
 	/**
-	 * Generates the documentation files in the given directory
+	 * Generates Telosys target languages documentation in the given directory
 	 * @param destDir destination directory
 	 * @return
 	 */
 	public static int generateHtmlDoc(String destDir) {
-		Logger.log( "Destination directory : " + destDir );	
-		
-		Logger.log("Starting code generation...");
-		int n = generateAllHtmlFiles(destDir);
-		
-		Logger.log("Normal end of generation : " + n + " files generated.");
-		return n ;
-	}
-	
-	private static int generateAllHtmlFiles(String destDir) {
+		log( "Languages documentation generation" );
+		log( "Languages doc - STEP 1 : preparation" );
 		File destination = DestinationFolder.prepare(destDir);
 
 		// Generate all the documentation pages
+		log( "Languages doc - STEP 2 : pages generation" );
+		int n = generatePages(destDir);
+		
+		// Generate the Table Of Contents 
+		log( "Languages doc - STEP 3 : table of content generation" );
+		String tocFullFileName = FileUtil.buildFilePath(destination.getParent(), TOC_FILENAME);
+		generateTOC(tocFullFileName);
+		
+		// Generate the index file in the same directory
+		log( "Languages doc - STEP 4 : index generation" );
+		String indexFullFileName = FileUtil.buildFilePath(destination.getPath(), INDEX_FILENAME);
+		generateTOC(indexFullFileName);
+		
+		return n;
+	}
+	
+	/**
+	 * Generates all documentation pages (1 page per language)
+	 * @param destDir
+	 * @return
+	 */
+	private static int generatePages(String destDir) { 
 		int n = 0 ;
 		List<LanguageDocumenter> list = LanguagesList.getLanguages();
 		for ( LanguageDocumenter ld : list ) {
 			String htmlFileName = buildHtmlFileName(destDir, ld.getLanguageName());
-			generatedHtmlFile(htmlFileName, ld.getTypeConverter(), ld.getLiteralValuesProvider());
+			generatePageFile(htmlFileName, ld.getTypeConverter(), ld.getLiteralValuesProvider());
 			n++;
 		}
-		
-		// Generate the Table Of Contents 
-		String tocFullFileName = FileUtil.buildFilePath(destination.getParent(), TOC_FILENAME);
-		
+		return n;
+	}
+	
+	/**
+	 * Generates Table Of Content file (TOC or index)
+	 * @param tocFullFileName
+	 */
+	private static void generateTOC(String tocFullFileName) {
+		log( "File : " + tocFullFileName);
 		List<ItemLink> itemLinks = new LinkedList<>();
 		for ( LanguageDocumenter ld : LanguagesList.getLanguages() ) {
 			itemLinks.add( new ItemLink(ld.getLinkText(), ld.getHtmlPage()) ); 
@@ -63,15 +83,13 @@ public class LanguagesDocGenerator {
 
 		LanguagesTOCGeneratorHTML tocGenerator = new LanguagesTOCGeneratorHTML(tocFullFileName, itemLinks);
 		tocGenerator.generateTOCFile();
-
-		return n;
 	}
 	
 	private static String buildHtmlFileName(String destDir, String languageName) {
 		return destDir + "/language-" + languageName + ".html" ;
 	}
 	
-	private static void generatedHtmlFile(String fileName, TypeConverter typeConverter, LiteralValuesProvider literalValuesProvider ) {
+	private static void generatePageFile(String fileName, TypeConverter typeConverter, LiteralValuesProvider literalValuesProvider ) {
 		
 		Logger.log("Print doc : " + fileName );
 		
@@ -87,4 +105,8 @@ public class LanguagesDocGenerator {
 		}
 	}
 	
+	private static void log(String msg) {
+		Logger.log(msg);
+	}
+
 }

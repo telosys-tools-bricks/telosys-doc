@@ -4,6 +4,9 @@ import java.io.File;
 
 public class DestinationFolder {
 
+	/**
+	 * Private constructor
+	 */
 	private DestinationFolder() {
 	}
 	

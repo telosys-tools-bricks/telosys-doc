@@ -36,6 +36,9 @@ public class ObjectsDocGenerator {
 	private static final String INDEX_FILENAME = "index.html" ;
 	private static final boolean DETAILED_LOG = false ;
 	
+	/**
+	 * Private constructor
+	 */
 	private ObjectsDocGenerator() {
 	}
 	
