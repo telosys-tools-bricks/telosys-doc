@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $joinTable</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $joinTable</h1>
+<p class="desc"> ( documentation for Telosys generator version 3.3.0 ) </p>
+<hr>
+<p class="desc">
+This object provides the description of a 'join table' <br>
+<br>
+<br>
+<b>Example : </b><br>
+<code class="example">
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#if ( $link.hasJoinTable() )<br>
+&nbsp;&nbsp;&nbsp;#set($joinTable = $link.joinTable)<br>
+&nbsp;&nbsp;&nbsp; name   : $joinTable.name<br>
+&nbsp;&nbsp;&nbsp; schema : $joinTable.schema<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+Since : 2.1.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.catalog : String</B> </CODE>
+<p class="doc">
+Returns the table catalog if any <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.inverseJoinColumns : List<JoinColumnInContext></B> </CODE>
+<p class="doc">
+Returns the inverse join columns<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.joinColumns : List<JoinColumnInContext></B> </CODE>
+<p class="doc">
+Returns the join columns<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.name : String</B> </CODE>
+<p class="doc">
+Returns the table name <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.schema : String</B> </CODE>
+<p class="doc">
+Returns the table schema if any<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>
