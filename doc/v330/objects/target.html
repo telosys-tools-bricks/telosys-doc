@@ -87,6 +87,37 @@ Returns the original file definition for the generation in progress <br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.originalFolderDefinition : String</B> </CODE>
+<p class="doc">
+Returns the original folder definition for the generation in progress <br>
+(the folder as defined in the bundle, before variables substitution) <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.outputFileExists() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the file to generate already exists<br>
+ <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.outputFileFullPath : String</B> </CODE>
+<p class="doc">
+Returns the full path of the file that will be generated<br>
+(it uses the 'SpecificDestinationFolder' if defined in configuration)<br>
+ <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.targetName : String</B> </CODE>
 <p class="doc">
 Returns the target's name (as defined in the targets file) for the generation in progress <br>
@@ -97,6 +128,17 @@ Returns the target's name (as defined in the targets file) for the generation in
 <TD class="doc" ><CODE class="simpledesc"> <B>.template : String</B> </CODE>
 <p class="doc">
 Returns the template file name (.vm) for the generation in progress <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.type : String</B> </CODE>
+<p class="doc">
+Returns the target type as in templates configuration file <br>
+The type is '*', '1' or 'R'<br>
+ <br>
+<br>
+<b>Since : </b>3.3.0<br>
 </p>
 </TD>
 </TR>

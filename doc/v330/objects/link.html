@@ -152,6 +152,15 @@ Returns TRUE if the link has a 'join table'<br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasMappedBy() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if 'mappedBy' is defined<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.id : String</B> </CODE>
 <p class="doc">
 Returns the unique id of the link in the repository (id used by the tool)<br>
@@ -339,6 +348,7 @@ Returns the 'join columns' for the link <br>
 <p class="doc">
 Returns the 'join table' object for the link <br>
 NB : can be null if the link doesn't have a 'join table' <br>
+check existence before with 'hasJoinTable()' <br>
 </p>
 </TD>
 </TR>
@@ -347,6 +357,7 @@ NB : can be null if the link doesn't have a 'join table' <br>
 <p class="doc">
 Returns the name of the 'join table' for the link <br>
 NB : can be null if the link doesn't have a 'join table'<br>
+check existence before with 'hasJoinTable()' <br>
 </p>
 </TD>
 </TR>
@@ -355,6 +366,8 @@ NB : can be null if the link doesn't have a 'join table'<br>
 <p class="doc">
 Returns the name of the link in the 'owning side' <br>
 Typically for JPA 'mappedBy'<br>
+NB : can be null if 'mappedBy' is not defined <br>
+check existence before with 'hasMappedBy()' <br>
 </p>
 </TD>
 </TR>
