@@ -18,12 +18,13 @@ package org.telosys.doc.languages.tooling;
 import java.io.PrintWriter;
 import java.util.List;
 
+import org.telosys.doc.DocVersion;
 import org.telosys.doc.commons.AbstractTOCGeneratorHTML;
 import org.telosys.doc.commons.ItemLink;
 
 public class LanguagesTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 
-	private static final String TITLE = "Telosys target languages";
+	private static final String TITLE = "Telosys " + DocVersion.DOC_VERSION + " - target languages";
 	
 	public LanguagesTOCGeneratorHTML(String fullFileName, List<ItemLink> itemLinks) {
 		super(fullFileName, TITLE, itemLinks);

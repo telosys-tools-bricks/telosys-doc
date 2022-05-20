@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $factory</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $factory</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.0.0 ) </p>
+<hr>
+<p class="desc">
+Factory providing new objects instances<br>
+<br>
+<br>
+Since : 3.4.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.newBigDecimal(Double value) : BigDecimal</B> </CODE>
+<p class="doc">
+Creates a new instance of BigDecimal object with the given double value<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : the value to be converted in BigDecimal<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $var = $factory.newBigDecimal(12.4) )<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.newBigDecimal(Integer value) : BigDecimal</B> </CODE>
+<p class="doc">
+Creates a new instance of BigDecimal object with the given integer value<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : the value to be converted in BigDecimal<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $var = $factory.newBigDecimal(20) )<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.newBigDecimal(String value) : BigDecimal</B> </CODE>
+<p class="doc">
+Creates a new instance of BigDecimal object with the given string value<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : the value to be converted in BigDecimal<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $var = $factory.newBigDecimal("12.4") )<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.newBigInteger(Integer value) : BigInteger</B> </CODE>
+<p class="doc">
+Creates a new instance of BigInteger object with the given integer value<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : the value to be converted in BigInteger<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $var = $factory.newBigInteger(123) )<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.newBigInteger(String value) : BigInteger</B> </CODE>
+<p class="doc">
+Creates a new instance of BigInteger object with the given string value<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : the value to be converted in BigInteger<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $var = $factory.newBigInteger("1234") )<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.newJdbc(EntityInContext entity) : JdbcInContext</B> </CODE>
+<p class="doc">
+Creates a new instance of the JDBC tool object for the given entity<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity to be used (to create CRUD SQL requests, mapping, etc)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $jdbc = $factory.newJdbc($entity) )<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.newSql(String targetDbName) : SqlInContext</B> </CODE>
+<p class="doc">
+Creates a new instance of SQL tool object using the default database definition (if any)<br>
+for the given target database name <br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>targetDbName</b> : target database name (not case sensitive, eg<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $sql = $factory.newSql('PostgreSQL') )<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.newSql(String targetDbName, FileInContext targetDbConfigFile) : SqlInContext</B> </CODE>
+<p class="doc">
+Creates a new instance of SQL tool object using a specific database definition file<br>
+for the given target database name<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>targetDbName</b> : target database name ('postgresql', 'mysql', etc )<br>
+&nbsp;&nbsp;&nbsp;<b>targetDbConfigFile</b> : target database configuration file<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $sql = $factory.newSql('PostgreSQL', $fn.fileFromBundle('postgresql.properties') ) )<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

@@ -67,7 +67,8 @@ public abstract class CommonHtmlPrinter {
 		println("  table { border-collapse: collapse; }" );
 		println("  table, th, td { border: 1px solid black; } " );
 		println("  th, td { padding: 15px; text-align: left; }" );
-		println("  th { font-family: Courier New; font-weight: bold; background-color: #4CAF50; color: white; }" );
+//		println("  th { font-family: Courier New; font-weight: bold; background-color: #4CAF50; color: white; }" );
+		println("  th { font-family: Courier New; font-weight: bold; background-color: #A569BD ; color: white; }" );
 		println("  td { font-family: Courier New; font-weight: bold; }" );
 		println("  p.code { font-family: Courier New; font-weight: bold; }" );
 		println("  span.code { font-family: Courier New; font-weight: bold; }" );

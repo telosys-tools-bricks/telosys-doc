@@ -11,7 +11,7 @@
 		<dependency>
 			<groupId>org.telosys</groupId>
 			<artifactId>telosys-tools-all</artifactId>
-			<version>3.3.0</version> 
+			<version>4.0.0</version> 
 		</dependency>
 		
         <!-- FOR TESTS -->

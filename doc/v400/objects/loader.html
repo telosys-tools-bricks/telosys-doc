@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $loader</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $loader</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.0.0 ) </p>
+<hr>
+<p class="desc">
+Special object used as a specific class loader by the generator<br>
+<br>
+Can be used to load a specific Java Class tool in the Velocity Context<br>
+Allows users to create their own classes and to use them in the templates<br>
+<br>
+Since : 2.0.3<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.classesFolder : String</B> </CODE>
+<p class="doc">
+Returns the full file path of the folder where the specific classes are searched by the loader<br>
+<br>
+<b>Since : </b>2.0.5<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.libFolder : String</B> </CODE>
+<p class="doc">
+Returns the full file path of the folder where the specific libraries (jar) are searched by the loader<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.loadClass(String javaClassName) : Class<?></B> </CODE>
+<p class="doc">
+Loads the given java class and return it (no instance created).<br>
+It can be a standard Java class (class of the JDK) or a specific class.<br>
+The specific classes must be located in the 'classes' folder (in the templates bundle)<br>
+or in a jar located in the 'lib' folder (in the templates bundle)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>javaClassName</b> : the name of the Java class to be loaded<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;## load the class and put an instance in the context<br>
+&nbsp;&nbsp;&nbsp;#set( $Math = $loader.loadClass("java.lang.Math") <br>
+&nbsp;&nbsp;&nbsp;## use the static methods of this class <br>
+&nbsp;&nbsp;&nbsp;$Math.random()<br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.newInstance(String javaClassName) : Object</B> </CODE>
+<p class="doc">
+Loads the given java class, creates a new instance and return it<br>
+It can be a standard Java class (class of the JDK) or a specific class.<br>
+The specific classes must be located in the 'classes' folder (in the templates bundle)<br>
+or in a jar located in the 'lib' folder (in the templates bundle)<br>
+NB : The Java class must have a default constructor (in order to be created by 'javaClass.newInstance()'<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>javaClassName</b> : the name of the Java class to be loaded and used to create the instance<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;## create an instance of StringBuilder and put it in the context with #set<br>
+&nbsp;&nbsp;&nbsp;#set( $strBuilder = $loader.newInstance('java.lang.StringBuilder') )<br>
+&nbsp;&nbsp;&nbsp;## use the instance <br>
+&nbsp;&nbsp;&nbsp;$strBuilder.append('aa')<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;## create new instance of a specific class<br>
+&nbsp;&nbsp;&nbsp;#set( $tool = $loader.newInstance('MyTool') )<br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.uRLs : URL[]</B> </CODE>
+<p class="doc">
+Returns an array containing all the URLs used by the class loader<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

@@ -88,22 +88,26 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 		
 		print("<table style=\"\"> ");
 		println();
-		println("<colgroup>");
-		print(" <col style=\"width: 16%; background-color: GhostWhite ; \">" );
-		for ( int n=0 ; n < 6 ; n++ ) { // 6 columns x 14% = 84%
-			print(" <col style=\"width: 14%;\">" );
+		println("<colgroup>"); // 1 col GhostWhite + 5 col standard
+//		print(" <col style=\"width: 16%; background-color: GhostWhite ; \">" );
+//		for ( int n=0 ; n < 5 ; n++ ) { // 5 columns x 16% = 80%
+//			print(" <col style=\"width: 14%;\">" );
+//		}
+		print(" <col style=\"background-color: GhostWhite ; \">" );
+		for ( int n=0 ; n < 5 ; n++ ) { // 5 columns x 16% = 80%
+			print(" <col>" );
 		}
 		println();
 		println("</colgroup>");
 
 		println("<thead>");
 		print("<tr>");
-		print(" <th> Model type </th>" ); 
-		print(" <th> Default </th> " );
+		print(" <th> Model type &nbsp; &nbsp;</th>" ); 
+		print(" <th> Default &nbsp; &nbsp; &nbsp;&nbsp;</th> " );
 		print(" <th> @UnsignedType </th>" ); 
-		print(" <th> @NotNull </th>" ); 
-		print(" <th> @PrimitiveType </th>" ); 
-		print(" <th> @ObjectType </th>" );  
+		print(" <th> @NotNull &nbsp; &nbsp; &nbsp;</th>" ); 
+		print(" <th> @PrimitiveType</th>" ); 
+		print(" <th> @ObjectType &nbsp;&nbsp;</th>" );  
 		println("</tr>");
 	    println("</thead>");
 

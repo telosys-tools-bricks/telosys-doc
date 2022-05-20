@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $file</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $file</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.0.0 ) </p>
+<hr>
+<p class="desc">
+This object allows to work with a file located on the filesystem <br>
+Each file instance is created with $fn.file(..) or $fn.fileFromXxx(..) <br>
+It can be any type of filesystem item (file or directory)<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code class="example">
+&nbsp;&nbsp;&nbsp;## Get file instance :<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.file('dir/foo.txt') )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromBundle("foo.txt") )<br>
+&nbsp;&nbsp;&nbsp;#set( $file = $fn.fileFromModel('myfile.csv') )<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;## Use file instance :<br>
+&nbsp;&nbsp;&nbsp;#if( $file.exists() && $file.isFile() )<br>
+&nbsp;&nbsp;&nbsp;#set($content = $file.loadContent() )<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#foreach ( $line in $file.loadLines() )<br>
+&nbsp;&nbsp;&nbsp; > $line<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+Since : 3.3.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.absolutePath : String</B> </CODE>
+<p class="doc">
+Returns the absolute pathname string.<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$file.absolutePath<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.canonicalPath : String</B> </CODE>
+<p class="doc">
+Returns the canonical pathname string.<br>
+A canonical pathname is both absolute and unique.<br>
+The precise definition of canonical form is system-dependent<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$file.canonicalPath<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.exists() : boolean</B> </CODE>
+<p class="doc">
+Tests whether the file (or directory) exists<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if( $file.exists() ) <br>
+&nbsp;&nbsp;&nbsp;...  <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isDirectory() : boolean</B> </CODE>
+<p class="doc">
+Tests whether the file is a directory<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if( $file.isDirectory() ) <br>
+&nbsp;&nbsp;&nbsp;...  <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isFile() : boolean</B> </CODE>
+<p class="doc">
+Tests whether the file is a 'normal file'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if( $file.isFile() ) <br>
+&nbsp;&nbsp;&nbsp;...  <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isHidden() : boolean</B> </CODE>
+<p class="doc">
+Tests whether the file is a 'hidden file'<br>
+The exact definition of 'hidden' is system-dependent<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if( $file.isHidden() ) <br>
+&nbsp;&nbsp;&nbsp;...  <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.length : long</B> </CODE>
+<p class="doc">
+Returns the length of the file <br>
+The return value is 0 if the file is not a 'normal file' (eg directory)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if( $file.length > 0 ) <br>
+&nbsp;&nbsp;&nbsp;...  <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.loadContent() : String</B> </CODE>
+<p class="doc">
+Loads all the lines of the file <br>
+Returns a single string containing all the lines<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$file.loadContent()<br>
+&nbsp;&nbsp;&nbsp;#set($content = $file.loadContent() )<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.loadContent(int n) : String</B> </CODE>
+<p class="doc">
+Same as loadContent() but ignore the first N lines<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>n</b> : number of lines to ignore (at the beginning of the file)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$file.loadContent(1)<br>
+&nbsp;&nbsp;&nbsp;#set($content = $file.loadContent(3) )<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.loadLines() : List<String></B> </CODE>
+<p class="doc">
+Loads all the lines of the file <br>
+Returns a list of strings<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach ( $line in $file.loadLines() )<br>
+&nbsp;&nbsp;&nbsp; > $line<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.loadLines(int n) : List<String></B> </CODE>
+<p class="doc">
+Same as loadLines() but ignore the first N lines<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>n</b> : number of lines to ignore (at the beginning of the file)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach ( $line in $file.loadLines(2) )<br>
+&nbsp;&nbsp;&nbsp; > $line<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.loadValues(String separator) : List<List<String>></B> </CODE>
+<p class="doc">
+Loads values (split lines) from the file <br>
+Values are the result after splitting each line according a given separator<br>
+Returns a list of values for each line (list of lists)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : character to use as separator<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $csv = $file.loadValues(";") )<br>
+&nbsp;&nbsp;&nbsp;#foreach ( $line in $csv )<br>
+&nbsp;&nbsp;&nbsp; > #foreach ( $v in $line ) [$v] #end<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.loadValues(String separator, int n) : List<List<String>></B> </CODE>
+<p class="doc">
+Same as loadValues(separator) but ignore the first N lines<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : character to use as separator<br>
+&nbsp;&nbsp;&nbsp;<b>n</b> : number of lines to ignore (at the beginning of the file)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$file.loadValues(";", 2) )<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.name : String</B> </CODE>
+<p class="doc">
+Returns the name of the file or directory.<br>
+This is just the last name in the absolute pathname.<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$file.name<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.parent : String</B> </CODE>
+<p class="doc">
+Returns the pathname string for the file's parent<br>
+(or a void string if none)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$file.parent<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.path : String</B> </CODE>
+<p class="doc">
+Returns the path for the file or directory.<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$file.path<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

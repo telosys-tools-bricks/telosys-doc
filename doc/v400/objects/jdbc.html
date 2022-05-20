@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $jdbc</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $jdbc</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.0.0 ) </p>
+<hr>
+<p class="desc">
+Object providing the JDBC SQL requests for a given entity<br>
+<br>
+<br>
+Since : 2.1.1<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributesForInsert : List<AttributeInContext></B> </CODE>
+<p class="doc">
+Returns the list of all the attributes required for the SQL INSERT<br>
+All the attributes required to populate the PreparedStatement from a bean instance <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.attributesForInsert<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributesForPrimaryKey : List<AttributeInContext></B> </CODE>
+<p class="doc">
+Returns the list of all the attributes required for the Primary Key<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.attributesForPrimaryKey<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributesForSelect : List<AttributeInContext></B> </CODE>
+<p class="doc">
+Returns the list of all the attributes required for the SQL SELECT<br>
+All the attributes required to populate the bean instance from the result set<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.attributesForSelect<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributesForUpdate : List<AttributeInContext></B> </CODE>
+<p class="doc">
+Returns the list of all the attributes required for the SQL UPDATE<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.attributesForUpdate<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.preparedStatementSetter(AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns PreparedStatement setter according to the attribute type<br>
+e.g. : 'setInt', 'setString', 'setBoolean', etc<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.preparedStatementSetter($attribute)<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.resultSetGetter(AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns ResultSet getter according to the attribute type<br>
+e.g. : 'getInt', 'getString', 'getBoolean', etc<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.resultSetGetter($attribute)<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlDelete : String</B> </CODE>
+<p class="doc">
+Returns the JDBC SQL DELETE request<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.sqlDelete<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlInsert : String</B> </CODE>
+<p class="doc">
+Returns the JDBC SQL INSERT request<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.sqlInsert<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlSelect : String</B> </CODE>
+<p class="doc">
+Returns the JDBC SQL 'SELECT xxx FROM xxx' request<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.sqlSelect<br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlSelectCount : String</B> </CODE>
+<p class="doc">
+Returns the JDBC SQL 'SELECT COUNT(*) FROM xxx' request <br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.sqlSelectCount<br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlSelectCountWherePK : String</B> </CODE>
+<p class="doc">
+Returns the JDBC SQL 'SELECT COUNT(*) FROM xxx WHERE pk = xxx' request <br>
+Can be used to check the existence of a record for the given PK<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.sqlSelectCountWherePK<br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlSelectWherePK : String</B> </CODE>
+<p class="doc">
+Returns the JDBC SQL 'SELECT xxx FROM xxx WHERE pk = xxx' request<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.sqlSelectWherePK<br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlUpdate : String</B> </CODE>
+<p class="doc">
+Returns the JDBC SQL UPDATE request<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.sqlUpdate<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.valueForPreparedStatement(AttributeInContext attribute, String name) : String</B> </CODE>
+<p class="doc">
+Returns the attribute's value to be set in the PreparedStatement <br>
+e.g. : 'getFirstName', 'getCode', etc<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute<br>
+&nbsp;&nbsp;&nbsp;<b>name</b> : the variable name to be used to identify the attribute ( eg<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.valueForPreparedStatement($attribute, 'book')<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

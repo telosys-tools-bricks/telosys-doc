@@ -24,7 +24,7 @@ import org.telosys.doc.commons.ItemLink;
 
 public class ObjectsTOCGeneratorHTML extends AbstractTOCGeneratorHTML {
 
-	private static final String TITLE = "Telosys objects reference";
+	private static final String TITLE = "Telosys " + DocVersion.DOC_VERSION + " - objects reference";
 		
 	public ObjectsTOCGeneratorHTML(String fullFileName, List<ItemLink> sortedLinks ) {
 		super(fullFileName, TITLE, sortedLinks);

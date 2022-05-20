@@ -1,0 +1,33 @@
+
+1) Reference the latest version of Telosys
+
+ - Update "pom.xml"
+ - Maven / Update project
+ - Check version in "Maven Dependencies"
+ - if new language => add it in LanguagesList.java
+ 
+
+2) Generate all documentation 
+
+ - in src/main/java : AllDocumentation.java  => run "main()"
+ - refresh "doc" directory 
+ - check resulting documentation in "doc" directory
+
+
+3) Update "doc/index.html" manually 
+ 
+ - add link to new version (a new link for each version to keep all versions)
+ - test new link in browser
+ 
+
+4) Upload new doc on web site with FileZilla
+
+ Destination folder is "www/doc"
+ - drag & drop the new folder "vXXX" (new)
+ - drag & drop the updated "index.html" (overwrite)
+
+ Test with real URL 
+  - https://www.telosys.org/doc
+  - https://www.telosys.org/doc/vXXX
+ 
+ 
