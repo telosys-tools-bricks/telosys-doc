@@ -1,27 +1,44 @@
+/**
+ *  Copyright (C) 2008-2017  Telosys project org. ( http://www.telosys.org/ )
+ *
+ *  Licensed under the GNU LESSER GENERAL PUBLIC LICENSE, Version 3.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *          http://www.gnu.org/licenses/lgpl.html
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
 package org.telosys.doc.languages;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import org.telosys.doc.languages.tooling.LanguageDocumenter;
-import org.telosys.tools.generic.model.types.LiteralValuesProviderForCPlusPlus;
-import org.telosys.tools.generic.model.types.LiteralValuesProviderForCSharp;
-import org.telosys.tools.generic.model.types.LiteralValuesProviderForGo;
-import org.telosys.tools.generic.model.types.LiteralValuesProviderForJava;
-import org.telosys.tools.generic.model.types.LiteralValuesProviderForJavaScript;
-import org.telosys.tools.generic.model.types.LiteralValuesProviderForPHP;
-import org.telosys.tools.generic.model.types.LiteralValuesProviderForPython;
-import org.telosys.tools.generic.model.types.LiteralValuesProviderForScala;
-import org.telosys.tools.generic.model.types.LiteralValuesProviderForTypeScript;
-import org.telosys.tools.generic.model.types.TypeConverterForCPlusPlus;
-import org.telosys.tools.generic.model.types.TypeConverterForCSharp;
-import org.telosys.tools.generic.model.types.TypeConverterForGo;
-import org.telosys.tools.generic.model.types.TypeConverterForJava;
-import org.telosys.tools.generic.model.types.TypeConverterForJavaScript;
-import org.telosys.tools.generic.model.types.TypeConverterForPHP;
-import org.telosys.tools.generic.model.types.TypeConverterForPython;
-import org.telosys.tools.generic.model.types.TypeConverterForScala;
-import org.telosys.tools.generic.model.types.TypeConverterForTypeScript;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForCPlusPlus;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForCSharp;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForGo;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForJava;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForJavaScript;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForKotlin;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForPHP;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForPython;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForScala;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProviderForTypeScript;
+import org.telosys.tools.generator.languages.types.TypeConverterForCPlusPlus;
+import org.telosys.tools.generator.languages.types.TypeConverterForCSharp;
+import org.telosys.tools.generator.languages.types.TypeConverterForGo;
+import org.telosys.tools.generator.languages.types.TypeConverterForJava;
+import org.telosys.tools.generator.languages.types.TypeConverterForJavaScript;
+import org.telosys.tools.generator.languages.types.TypeConverterForKotlin;
+import org.telosys.tools.generator.languages.types.TypeConverterForPHP;
+import org.telosys.tools.generator.languages.types.TypeConverterForPython;
+import org.telosys.tools.generator.languages.types.TypeConverterForScala;
+import org.telosys.tools.generator.languages.types.TypeConverterForTypeScript;
 
 public class LanguagesList {
 
@@ -47,6 +64,9 @@ public class LanguagesList {
 		list.add(new LanguageDocumenter("javascript",  "JavaScript",  
 				new TypeConverterForJavaScript(), new LiteralValuesProviderForJavaScript()) );
 		
+		list.add(new LanguageDocumenter("kotlin", "Kotlin",           
+				new TypeConverterForKotlin(),     new LiteralValuesProviderForKotlin()) );
+
 		list.add(new LanguageDocumenter("php",    "PHP",           
 				new TypeConverterForPHP(),        new LiteralValuesProviderForPHP()) );
 		

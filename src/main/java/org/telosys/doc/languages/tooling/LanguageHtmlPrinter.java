@@ -19,12 +19,14 @@ import java.io.BufferedWriter;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.telosys.tools.generic.model.types.AttributeTypeInfo;
-import org.telosys.tools.generic.model.types.LanguageType;
-import org.telosys.tools.generic.model.types.LiteralValue;
-import org.telosys.tools.generic.model.types.LiteralValuesProvider;
+import org.telosys.doc.languages.tooling.attributetype.AttributeTypeAnnotation;
+import org.telosys.doc.languages.tooling.attributetype.AttributeTypeInfoForDoc;
+import org.telosys.tools.generator.languages.literals.LiteralValue;
+import org.telosys.tools.generator.languages.literals.LiteralValuesProvider;
+import org.telosys.tools.generator.languages.types.AttributeTypeInfo;
+import org.telosys.tools.generator.languages.types.LanguageType;
+import org.telosys.tools.generator.languages.types.TypeConverter;
 import org.telosys.tools.generic.model.types.NeutralType;
-import org.telosys.tools.generic.model.types.TypeConverter;
 
 public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 
@@ -123,22 +125,31 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 	private List<String> getSimpleTypes(String neutralType) {
 		List<String> list = new LinkedList<>();
 		
-		list.add( getSimpleType(neutralType, AttributeTypeInfo.NONE) ); // "default"
-		list.add( getSimpleType(neutralType, AttributeTypeInfo.UNSIGNED_TYPE) );
-		list.add( getSimpleType(neutralType, AttributeTypeInfo.NOT_NULL) );
-		list.add( getSimpleType(neutralType, AttributeTypeInfo.PRIMITIVE_TYPE) );
-		list.add( getSimpleType(neutralType, AttributeTypeInfo.OBJECT_TYPE) );
+		list.add( getSimpleType(neutralType, AttributeTypeAnnotation.NONE) ); 
+		list.add( getSimpleType(neutralType, AttributeTypeAnnotation.UNSIGNED_TYPE) );
+		list.add( getSimpleType(neutralType, AttributeTypeAnnotation.NOT_NULL) ); 
+		list.add( getSimpleType(neutralType, AttributeTypeAnnotation.PRIMITIVE_TYPE) ); 
+		list.add( getSimpleType(neutralType, AttributeTypeAnnotation.OBJECT_TYPE) ); 
+
+//		list.add( getSimpleType(neutralType, AttributeTypeInfo.NONE) ); // "default"
+//		list.add( getSimpleType(neutralType, AttributeTypeInfo.UNSIGNED_TYPE) );
+//		list.add( getSimpleType(neutralType, AttributeTypeInfo.NOT_NULL) );
+//		list.add( getSimpleType(neutralType, AttributeTypeInfo.PRIMITIVE_TYPE) );
+//		list.add( getSimpleType(neutralType, AttributeTypeInfo.OBJECT_TYPE) );
 		
 		return list;
 	}
 	
-	private LanguageType getLanguageType(String neutralType, int info) {
-		return typeConverter.getType(new AttributeTypeInfo(neutralType, info));
+//	private LanguageType getLanguageType(String neutralType, int info) {
+	private LanguageType getLanguageType(String neutralType, AttributeTypeAnnotation attributeTypeAnnotation) {
+		//return typeConverter.getType(new AttributeTypeInfo(neutralType, info));
+		return typeConverter.getType(new AttributeTypeInfoForDoc(neutralType, attributeTypeAnnotation));
 	}	
 	
-	private String getSimpleType(String neutralType, int info) {
-		LanguageType lt = getLanguageType(neutralType, info);
-		return lt.getSimpleType();
+	private String getSimpleType(String neutralType, AttributeTypeAnnotation attributeTypeAnnotation) {
+		//LanguageType languageType = getLanguageType(neutralType, info);
+		LanguageType languageType = getLanguageType(neutralType, attributeTypeAnnotation);
+		return languageType.getSimpleType();
 	}	
 	
 	private void printTypeRow(String neutralType, List<String> types) {
@@ -180,14 +191,16 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 	}
 	private void getLanguageTypesForNeutralType(List<LanguageType> list, String neutralType) {
 		// Add at least the default type
-		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.NONE ) ) ; // "default type"
+		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeAnnotation.NONE ) ) ; 
 		// Add other types 
-		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.UNSIGNED_TYPE ) ) ;
-		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.NOT_NULL ) ) ;
-		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.PRIMITIVE_TYPE ) ) ;
-		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeInfo.OBJECT_TYPE ) ) ;
+		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeAnnotation.UNSIGNED_TYPE ) ) ;
+		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeAnnotation.NOT_NULL ) ) ;
+		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeAnnotation.PRIMITIVE_TYPE ) ) ;
+		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeAnnotation.OBJECT_TYPE ) ) ;
 	}
 	private void addIfNotInList(List<LanguageType> list, LanguageType languageType) {
+		// TODO : do not use 'contains' ( no equals method in LanguageType )
+		// check unicity on NeutralType + "-" + TargetLangageType
 		if ( ! list.contains(languageType) ) {
 			list.add(languageType);
 		}
