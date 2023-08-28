@@ -199,11 +199,19 @@ public class LanguageHtmlPrinter extends CommonHtmlPrinter {
 		addIfNotInList( list, getLanguageType(neutralType, AttributeTypeAnnotation.OBJECT_TYPE ) ) ;
 	}
 	private void addIfNotInList(List<LanguageType> list, LanguageType languageType) {
-		// TODO : do not use 'contains' ( no equals method in LanguageType )
 		// check unicity on NeutralType + "-" + TargetLangageType
-		if ( ! list.contains(languageType) ) {
+		if ( ! isInList(languageType, list) ) {
 			list.add(languageType);
 		}
+	}
+	private boolean isInList(LanguageType languageType, List<LanguageType> list) {
+		for ( LanguageType e : list ) {
+			if ( languageType.getNeutralType().equals(e.getNeutralType()) 
+			  && languageType.getSimpleType().equals(e.getSimpleType())  ) {
+				return true ;
+			}
+		}
+		return false;
 	}
 	
 	private void printLiteralTrueFalseNull() {
