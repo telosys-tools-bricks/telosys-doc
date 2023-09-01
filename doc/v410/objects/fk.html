@@ -54,6 +54,35 @@ Returns the number of attributes composing the foreign key<br>
 </TD>
 </TR>
 <TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isComposite() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the Foreign Key is composite (has more than 1 attribute)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $fk.isComposite() )<br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isExplicit() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the Foreign Key is explicit (defined with name).<br>
+Returns false for an implicit Foreign Key.<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $fk.isExplicit() )<br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.name : String</B> </CODE>
 <p class="doc">
 Returns the name of the Foreign Key<br>
