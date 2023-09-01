@@ -1,0 +1,1213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $entity</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $entity</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.1.0 ) </p>
+<hr>
+<p class="desc">
+Entity class for the current generation <br>
+<br>
+Provides all information available for an entity as defined in the model : <br>
+ . attributes information (class fields) <br>
+ . database mapping <br>
+<br>
+<br>
+Since : 2.0.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributes : List of 'attribute' objects</B> </CODE>
+<p class="doc">
+Returns all the attributes defined for this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributesCount : int</B> </CODE>
+<p class="doc">
+Returns the number of attributes defined for this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.attributesCount<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributesNamesAsString(String separator) : String</B> </CODE>
+<p class="doc">
+Returns all the attributes names as a string.<br>
+The attributes names are separated by the given separator<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put between each attribute name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.attributesNamesAsString('/') <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributesNamesAsString(String separator, String prefix, String suffix) : String</B> </CODE>
+<p class="doc">
+Returns all the attributes names as a string.<br>
+The attributes names are separated by the given separator<br>
+with a prefix/suffix for each attribute name<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put between each attribute name<br>
+&nbsp;&nbsp;&nbsp;<b>prefix</b> : the prefix to be put before each attribute name<br>
+&nbsp;&nbsp;&nbsp;<b>suffix</b> : the prefix to be put after each attribute name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.attributesNamesAsString('/', '{{', '}}') <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.autoincrementedKeyAttribute : 'attribute' object</B> </CODE>
+<p class="doc">
+Returns the attribute used as the autoincremented key <br>
+or null if none<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasAutoIncrementedKey() )<br>
+&nbsp;&nbsp;&nbsp;$entity.autoincrementedKeyAttribute<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.context : String</B> </CODE>
+<p class="doc">
+Returns the 'context' to which the entity belongs<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.context <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseCatalog : String</B> </CODE>
+<p class="doc">
+Returns the 'database catalog' of the table mapped with this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.databaseCatalog<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseComment : String</B> </CODE>
+<p class="doc">
+Returns the 'database comment' for the table mapped with this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.databaseComment<br>
+</code>
+<br>
+<b>Since : </b>3.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseForeignKeys : List of 'foreign keys' objects</B> </CODE>
+<p class="doc">
+Returns all the database foreign keys defined for this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.databaseForeignKeys<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseForeignKeysCount : int</B> </CODE>
+<p class="doc">
+Returns the number of database foreign keys defined for this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.databaseForeignKeysCount<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseSchema : String</B> </CODE>
+<p class="doc">
+Returns the 'database schema' of the table mapped with this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.databaseSchema<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseTable : String</B> </CODE>
+<p class="doc">
+Returns the 'database table name' mapped with this entity in the model<br>
+or an empty string if no table is specified in the model<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.databaseTable<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseTablespace : String</B> </CODE>
+<p class="doc">
+Returns the 'database tablespace' <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.databaseTablespace <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseType : String</B> </CODE>
+<p class="doc">
+Returns the real database type for the table mapped with this entity<br>
+('TABLE' or 'VIEW') <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.databaseType<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.domain : String</B> </CODE>
+<p class="doc">
+Returns the 'domain' to which the entity belongs<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.domain <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fullName : String</B> </CODE>
+<p class="doc">
+Returns the full class name for the entity (ie : "my.package.MyClass" )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.fullName<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getAttributeByColumnName(String columnName) : 'attribute' object</B> </CODE>
+<p class="doc">
+Returns the attribute associated with the given database column name<br>
+or throws an error if not found<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>columnName</b> : the database column name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.getAttributeByColumnName('column_name')<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getAttributeByName(String attributeName) : 'attribute' object</B> </CODE>
+<p class="doc">
+Returns the attribute associated with the given name<br>
+or throws an error if not found<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributeName</b> : the attribute name in the entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.getAttributeByName('foo')<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getAttributesByCriteria(int crit1, int crit2, int crit3, int crit4) : List of 'attribute' objects</B> </CODE>
+<p class="doc">
+Returns all the attributes of this entity matching the given criteria<br>
+This method accepts 1 to 4 criteria<br>
+The critera are combined using the 'AND' operator<br>
+Usable criteria ( to be prefixed with '$const.' ) : <br>
+KEY,  NOT_KEY,  IN_LINKS,  NOT_IN_LINKS,  IN_SELECTED_LINKS,  NOT_IN_SELECTED_LINKS,  TEXT,  NOT_TEXT  <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>crit1</b> : 1st criterion<br>
+&nbsp;&nbsp;&nbsp;<b>crit2</b> : 2nd criterion (optional)<br>
+&nbsp;&nbsp;&nbsp;<b>crit3</b> : 3rd criterion (optional)<br>
+&nbsp;&nbsp;&nbsp;<b>crit4</b> : 4th criterion (optional)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.getAttributesByCriteria($const.NOT_KEY)<br>
+&nbsp;&nbsp;&nbsp;$entity.getAttributesByCriteria($const.NOT_KEY, $const.NOT_IN_SELECTED_LINKS)<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasAttribute(String attributeName) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity has an attribute with the given name<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributeName</b> : the attribute name in the entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasAttribute('foo') )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasAutoIncrementedKey() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has an 'auto-incremented' key attribute <br>
+( a key based on a numeric value automatically incremented by the database )<br>
+If 'true' the key generation is based on 'IDENTITY' strategy<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasAutoIncrementedKey() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasCollections() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has at least one collection <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasCollections() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasCompositePrimaryKey() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has a composite primary key <br>
+( a primary key composed of 2 or more attributes )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasCompositePrimaryKey() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasContext() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity belongs to a 'context'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasContext() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDatabaseCatalog() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity has a 'database catalog' explicitly defined in the model<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasDatabaseCatalog() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDatabaseComment() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity has a 'database comment' explicitly defined in the model<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasDatabaseComment() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDatabaseSchema() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity has a 'database schema' explicitly defined in the model<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasDatabaseSchema() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDatabaseTable() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has a 'database table name' explicitly defined in the model<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasDatabaseTable() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDatabaseTablespace() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity has a 'database tablespace' explicitly defined in the model<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasDatabaseTablespace() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasDomain() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity belongs to a 'domain'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasDomain() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasForeignKeys() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has at least one Foreign Key <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasForeignKeys() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasGeneratedKey() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has a key with an 'auto-generated' value.<br>
+A key generation based on a predefined strategy: 'AUTO', 'IDENTITY', 'SEQUENCE', 'TABLE'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasGeneratedKey() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasLinks() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has at least one link <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasLinks() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasPrimaryKey() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has a primary key <br>
+( a primary key composed of one or more attributes )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasPrimaryKey() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasSuperClass() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity has a 'super class' (if its class extends another class)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasSuperClass() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasTag(String tagName) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if a tag is defined with the given name<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to check the existence<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$enity.hasTag('mytag') <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasTextAttribute() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if this entity has at least one attribute tagged as 'long text'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.hasTextAttribute() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isAbstract() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity class is abstract <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.isAbstract() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isAggregateRoot() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity is an 'aggregate root'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.isAggregateRoot() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isDatabaseView() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity data comes from a 'database view'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.isDatabaseView() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isInMemoryRepository() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if entity occurrences are stored in memory ( in a 'in-memory repository' ) <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.isInMemoryRepository() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isJoinEntity() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity is marked as '@JoinEntity'<br>
+( typically if the entity is a 'join table' in the database )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.isJoinEntity() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isReadOnly() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the entity occurrences are 'read only' <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.isReadOnly() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isTableType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the database type of the entity is 'TABLE' <br>
+(it can be a TABLE or a VIEW, see also 'isViewType') <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.isTableType() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isViewType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the database type of the entity is 'VIEW' <br>
+(it can be a TABLE or a VIEW, see also 'isTableType') <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $entity.isViewType() )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.keyAttribute : Instance of 'attribute' </B> </CODE>
+<p class="doc">
+Returns the unique attribute used as the Primary Key for this entity.<br>
+Throws an exception if the entity does not have a Primary Key<br>
+or if it has a composite Primary Key (2 or more attributes)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.keyAttribute<br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.keyAttributes : List of 'attribute' objects</B> </CODE>
+<p class="doc">
+Returns the attributes used in the Primary Key for this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.keyAttributes )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.keyAttributesCount : int</B> </CODE>
+<p class="doc">
+Returns the number of attributes used in the Primary Key for this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.keyAttributesCount<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.keyAttributesNamesAsString(String separator) : String</B> </CODE>
+<p class="doc">
+Returns the key attributes names as a string.<br>
+The attributes names are separated by the given separator<br>
+with a prefix/suffix for each attribute name<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put between each attribute name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.keyAttributesNamesAsString('/') <br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.keyAttributesNamesAsString(String separator, String prefix, String suffix) : String</B> </CODE>
+<p class="doc">
+Returns the key attributes names as a string.<br>
+The attributes names are separated by the given separator<br>
+with a prefix/suffix for each attribute name<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put between each attribute name<br>
+&nbsp;&nbsp;&nbsp;<b>prefix</b> : the prefix to be put before each attribute name<br>
+&nbsp;&nbsp;&nbsp;<b>suffix</b> : the prefix to be put after each attribute name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.keyAttributesNamesAsString('/', '{{', '}}') <br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.links : List of 'link' objects</B> </CODE>
+<p class="doc">
+Returns a list of all the links defined for the current entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $link in $entity.links )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.linksCount : int</B> </CODE>
+<p class="doc">
+Returns the number of links defined in the entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.linksCount<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.name : String</B> </CODE>
+<p class="doc">
+Returns the entity class name without the package ( ie : "MyClass" )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.name<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.nonKeyAttributes : List of 'attribute' objects</B> </CODE>
+<p class="doc">
+Returns the attributes NOT used in the Primary Key for this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.nonKeyAttributes )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.nonKeyAttributesCount : int</B> </CODE>
+<p class="doc">
+Returns the number of attributes NOT used in the Primary Key for this entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.nonKeyAttributesCount<br>
+</code>
+<br>
+<b>Since : </b>2.0.7<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.nonKeyAttributesNamesAsString(String separator) : String</B> </CODE>
+<p class="doc">
+Returns the 'non key' attributes names as a string.<br>
+The attributes names are separated by the given separator<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put between each attribute name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.nonKeyAttributesNamesAsString('/') <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.nonKeyAttributesNamesAsString(String separator, String prefix, String suffix) : String</B> </CODE>
+<p class="doc">
+Returns the 'non key' attributes names as a string.<br>
+The attributes names are separated by the given separator<br>
+with a prefix/suffix for each attribute name<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put between each attribute name<br>
+&nbsp;&nbsp;&nbsp;<b>prefix</b> : the prefix to be put before each attribute name<br>
+&nbsp;&nbsp;&nbsp;<b>suffix</b> : the prefix to be put after each attribute name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.nonKeyAttributesNamesAsString('/', '{{', '}}') <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.nonTextAttributes : List of 'attribute' objects</B> </CODE>
+<p class="doc">
+Returns the attributes NOT tagged as 'long text' for this entity<br>
+( 'standard attributes' )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.nonTextAttributes )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.package : String</B> </CODE>
+<p class="doc">
+Returns the package name (or void) for the entity ( ie : "my.package" or "" )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.package<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedEntities : List of 'entity' objects</B> </CODE>
+<p class="doc">
+Returns a list containing all entities referenced by the current entity<br>
+(only for the first level of dependency)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $refEntity in $entity.referencedEntities )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedEntitiesForAllLevels : List of 'entity' objects</B> </CODE>
+<p class="doc">
+Returns a list containing all entities referenced by the current entity<br>
+at all levels of dependencies tree (including all sub levels)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $refEntity in $entity.referencedEntitiesForAllLevels )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedEntityTypes() : List<String></B> </CODE>
+<p class="doc">
+Returns a list of 'simple type' for all the entities referenced by the current entity<br>
+(based on the 'owning side' links)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $referencedEntities = $entity.referencedEntityTypes() )<br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedEntityTypes(List attributes) : List<String></B> </CODE>
+<p class="doc">
+Returns a list of 'simple type' for each entity referenced by the given attributes<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be used to search the referenced entities<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#set( $referencedEntities = $entity.referencedEntityTypes( $entity.nonKeyAttributes ) )<br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.references : List of 'reference' objects</B> </CODE>
+<p class="doc">
+Returns a list containing all references hold by the current entity<br>
+(only for the first level of dependency)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $reference in $entity.references )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencesInDepth : List of 'reference' objects</B> </CODE>
+<p class="doc">
+Returns a list containing all references hold by the current entity<br>
+in all levels of dependencies tree (including all sub levels)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $reference in $entity.referencesInDepth )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.selectedLinks : List of 'link' objects</B> </CODE>
+<p class="doc">
+Returns a list of all the links selected in the model for the current entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $link in $entity.selectedLinks )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlPrimaryKeyColumns : List of strings</B> </CODE>
+<p class="doc">
+Returns a list of SQL column names for all the attributes making up the Primary Key<br>
+(returns a void list if no Primary Key)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $col in $entity.sqlPrimaryKeyColumns )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlPrimaryKeyColumnsAsString : String</B> </CODE>
+<p class="doc">
+Returns a string containing SQL column names for all the attributes making up the Primary Key<br>
+the column names are separated by a comma <br>
+(returns a void string if no Primary Key)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlTableName : String</B> </CODE>
+<p class="doc">
+Returns the database table name for the given entity <br>
+If the table name is defined in the model it is used in priority<br>
+if no table name is defined then the entity name is converted to table name<br>
+by applying the target database conventions<br>
+(for example 'student_projects' for an entity named 'StudentProjects')<br>
+<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.superClass : String</B> </CODE>
+<p class="doc">
+Returns the 'super class' extended by the entity class<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$entity.superClass <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValue(String tagName) : String</B> </CODE>
+<p class="doc">
+Returns the value held by the given tag name<br>
+If the tag is undefined or has no value, the returned value is an empty string<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to get the value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$enity.tagValue('mytag') <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValue(String tagName, String defaultValue) : String</B> </CODE>
+<p class="doc">
+Returns the value held by the given tag name<br>
+If the tag is undefined or has no value, the default value is returned<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to get the value<br>
+&nbsp;&nbsp;&nbsp;<b>defaultValue</b> : default value if no tag or no value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$enity.tagValue('mytag', 'abc') <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValueAsBoolean(String tagName, boolean defaultValue) : boolean</B> </CODE>
+<p class="doc">
+Returns the boolean value held by the given tag name<br>
+If the tag is undefined or has no value, the default value is returned<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to get the value<br>
+&nbsp;&nbsp;&nbsp;<b>defaultValue</b> : default value if no tag or no value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$enity.tagValueAsBoolean('mytag', false) <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValueAsInt(String tagName, int defaultValue) : int</B> </CODE>
+<p class="doc">
+Returns the integer value held by the given tag name<br>
+If the tag is undefined or has no value, the default value is returned<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to get the value<br>
+&nbsp;&nbsp;&nbsp;<b>defaultValue</b> : default value if no tag or no value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$enity.tagValueAsInt('mytag', 123) <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.textAttributes : List of 'attribute' objects</B> </CODE>
+<p class="doc">
+Returns the attributes tagged as 'long text' for this entity<br>
+( specific attributes used to store long text )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.textAttributes )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

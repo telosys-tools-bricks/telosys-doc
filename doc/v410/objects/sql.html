@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $sql</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $sql</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.1.0 ) </p>
+<hr>
+<p class="desc">
+Object for schema creation in SQL language (for a relational database)<br>
+with functions for :<br>
+ - names conversion (table name, column name, pk/fk name)<br>
+ - field type conversion (neutral type to SQL column type)<br>
+It is designed to facilitate DDL commands generation<br>
+( CREATE TABLE, ADD CONSTRAINT FOREIGN KEY, etc) <br>
+<br>
+Each instance of this object is dedicated to a database type  <br>
+To get a new instance use : $factory.newSql('DatabaseName') <br>
+or $factory.newSql('DatabaseName', specificConventionsFileName)<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code class="example">
+&nbsp;&nbsp;&nbsp;## Get predefined conventions for a standard database (eg 'PostgreSQL') <br>
+&nbsp;&nbsp;&nbsp;## Known databases names : 'SQL-ANSI', 'PostgreSQL', 'Oracle', 'SQLServer'<br>
+&nbsp;&nbsp;&nbsp;## Database name is not case sensitive<br>
+&nbsp;&nbsp;&nbsp;#set( $sql = $factory.newSql('PostgreSQL') )<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;## Get specific conventions using a specific file located in the bundle of templates<br>
+&nbsp;&nbsp;&nbsp;#set( $sql = $factory.newSql('PostgreSQL', $fn.fileFromBundle('postgresql.properties') ) )<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+Since : 3.4.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.columnConstraints(AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns the column constraints for the given attribute<br>
+For example : NOT NULL DEFAULT 12<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : attribute from which to get column constraints<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.columnConstraints($attribute)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.columnName(AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns the database column name for the given attribute <br>
+For example 'city_code' for an attribute named 'cityCode'<br>
+The database name defined in the model is used in priority<br>
+if no database name is defined then the attribute name is converted to database name<br>
+by applying the target database conventions<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : attribute from which to get column name<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.columnName($attribute)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.columnType(AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Converts the attribute neutral type to the corresponding SQL type <br>
+For example converts 'string' to 'varchar(x)' <br>
+The database type defined in the model is used in priority<br>
+if no database type is defined then the attribute type is converted to database type<br>
+by applying the target database conventions<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : attribute from which to get column type<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.columnType($attribute)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.convertToColumnName(String originalName) : String</B> </CODE>
+<p class="doc">
+Converts the given string to column naming style <br>
+For example converts 'firstName' to 'first_name' <br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>originalName</b> : name to be converted<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.convertToColumnName($var)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.convertToColumnType(String neutralType, boolean autoInc, BigDecimal size) : String</B> </CODE>
+<p class="doc">
+Converts the given neutral type to column type <br>
+For example converts 'string' to 'varchar(20)' <br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>neutralType</b> : neutral type to be converted<br>
+&nbsp;&nbsp;&nbsp;<b>autoInc</b> : auto-incremented attribute (true/false)<br>
+&nbsp;&nbsp;&nbsp;<b>size</b> : maximum size (for a variable length string, eg 45 or 8.2  )<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.convertToColumnType('string', false, 20)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.convertToFkName(String originalName) : String</B> </CODE>
+<p class="doc">
+Converts the given string to foreign key naming style <br>
+For example converts 'PkFirstName' to 'pk_first_name' <br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>originalName</b> : name to be converted<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.convertToFkName($var)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.convertToPkName(String originalName) : String</B> </CODE>
+<p class="doc">
+Converts the given string to primary key naming style <br>
+For example converts 'PkFirstName' to 'pk_first_name' <br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>originalName</b> : name to be converted<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.convertToPkName($var)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.convertToTableName(String originalName) : String</B> </CODE>
+<p class="doc">
+Converts the given string to table naming style <br>
+For example converts 'EmployeeJobs' to 'employee_jobs'<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>originalName</b> : name to be converted<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.convertToTableName($var)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseConfigFile : String</B> </CODE>
+<p class="doc">
+Returns the target database configuration file<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.databaseConfigFile<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseName : String</B> </CODE>
+<p class="doc">
+Returns the target database name<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.databaseName<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fkColumns(ForeignKeyInContext foreignKey) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the names of all the columns composing the foreign key<br>
+Each column name is converted according to the naming rules for the target database<br>
+Examples : 'group_id' or 'car_code, group_id' <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>foreignKey</b> : the foreign key<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.fkColumns($fk)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fkName(ForeignKeyInContext foreignKey) : String</B> </CODE>
+<p class="doc">
+Returns the name of the given Foreign Key<br>
+(converts the name to expected naming style if necessary)<br>
+For example converts 'fkFooBar' or 'FK_FOO_BAR' to 'fk_foo_bar'<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>foreignKey</b> : the foreign key<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.fkName($fk)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fkOriginTable(ForeignKeyInContext foreignKey) : String</B> </CODE>
+<p class="doc">
+Returns the name of the table for the given Foreign Key<br>
+(converts the name to table naming style if necessary)<br>
+For example converts 'SpecialCar' or 'SPECIAL_CAR' to 'special_car'<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>foreignKey</b> : the foreign key<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.fkTable($fk)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fkReferencedColumns(ForeignKeyInContext foreignKey) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the names of all the columns referenced by the foreign key<br>
+Each column name is converted according to the naming rules for the target database<br>
+For example 'id' or 'code, group' <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>foreignKey</b> : the foreign key<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.fkReferencedColumns($fk)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fkReferencedTable(ForeignKeyInContext foreignKey) : String</B> </CODE>
+<p class="doc">
+Returns the name of the referenced table for the given Foreign Key<br>
+(converts the name to table naming style if necessary)<br>
+For example converts 'SpecialCar' or 'SPECIAL_CAR' to 'special_car'<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>foreignKey</b> : the foreign key<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.fkReferencedTable($fk)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.pkColumns(EntityInContext entity) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the names of all the columns composing the primary key<br>
+for the given entity<br>
+Each column name is converted according to the naming rules for the target database<br>
+For example 'id' or 'code, group' <br>
+Returns an empty string if the entity does not have a primary key<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.pkColumns($entity)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tableName(EntityInContext entity) : String</B> </CODE>
+<p class="doc">
+Returns the database table name for the given entity <br>
+If the table name is defined in the model it is used in priority<br>
+if no table name is defined then the entity name is converted to table name<br>
+by applying the target database conventions<br>
+(for example 'student_projects' for an entity named 'StudentProjects')<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$sql.tableName($entity)<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $target</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $target</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.1.0 ) </p>
+<hr>
+<p class="desc">
+The current target for the generation in progress<br>
+<br>
+Example when using $generator : <br>
+$generator.generate($target.entityName, "${beanClass.name}Key.java", $target.folder, "jpa_bean_pk.vm"  )<br>
+<br>
+Since : 2.0.3<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.entityName : String</B> </CODE>
+<p class="doc">
+Returns the entity name for the generation in progress (entity class name : Book, Author, ...)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.file : String</B> </CODE>
+<p class="doc">
+Returns the output file name for the generation in progress <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.folder : String</B> </CODE>
+<p class="doc">
+Returns the output file folder for the generation in progress <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.forceEntityName(String forcedName) : String</B> </CODE>
+<p class="doc">
+Forces the entity name (to change dynamically the entity name)<br>
+If a forced name has been defined it will be used as the 'BEANNAME' to build the target file name<br>
+Returns a void string (so that it can be used easily in the template)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>forcedName</b> : the new entity name<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.forcedEntityName : String</B> </CODE>
+<p class="doc">
+Returns the 'forced entity name' (or '' if none)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.javaPackageFromFolder(String srcFolder) : String</B> </CODE>
+<p class="doc">
+Returns the Java package corresponding to the file path after removing the given source folder <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>srcFolder</b> : the source folder (the beginning of path to be removed to get the package folder)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;package ${target.javaPackageFromFolder($SRC)};<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.originalFileDefinition : String</B> </CODE>
+<p class="doc">
+Returns the original file definition for the generation in progress <br>
+(the file as defined in the bundle, before variables substitution) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.originalFolderDefinition : String</B> </CODE>
+<p class="doc">
+Returns the original folder definition for the generation in progress <br>
+(the folder as defined in the bundle, before variables substitution) <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.outputFileExists() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the file to generate already exists<br>
+ <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.outputFileFullPath : String</B> </CODE>
+<p class="doc">
+Returns the full path of the file that will be generated<br>
+(it uses the 'SpecificDestinationFolder' if defined in configuration)<br>
+ <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.targetName : String</B> </CODE>
+<p class="doc">
+Returns the target's name (as defined in the targets file) for the generation in progress <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.template : String</B> </CODE>
+<p class="doc">
+Returns the template file name (.vm) for the generation in progress <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.type : String</B> </CODE>
+<p class="doc">
+Returns the target type as in templates configuration file <br>
+The type is '*', '1' or 'R'<br>
+ <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

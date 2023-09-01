@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $csharp</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $csharp</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.1.0 ) </p>
+<hr>
+<p class="desc">
+Object providing a set of utility functions for C# language code generation<br>
+<br>
+<br>
+Since : 4.1.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toStringMethod(EntityInContext entity, List attributes, int indentationLevel) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a C# 'ToString()' method<br>
+Generates a 'ToString' method using the given attributes <br>
+(except non-printable attributes)<br>
+Indent with tabs (1 tab for each indentation level)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity for which to generate the 'ToString' method<br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be used in the 'ToString' method<br>
+&nbsp;&nbsp;&nbsp;<b>indentationLevel</b> : initial indentation level<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$csharp.toStringMethod( $entity, $attributes, 2 )<br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toStringMethod(EntityInContext entity, List attributes, int indentationLevel, String indentationString) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a C# 'ToString()' method<br>
+Generates a 'ToString' method using the given attributes <br>
+(except non-printable attributes)<br>
+Indentation with spaces (1 'indentationString' for each indentation level)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity for which to generate the 'ToString' method<br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be used in the 'ToString' method<br>
+&nbsp;&nbsp;&nbsp;<b>indentationLevel</b> : initial indentation level<br>
+&nbsp;&nbsp;&nbsp;<b>indentationString</b> : string to use for each indentation (usually N spaces)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$csharp.toStringMethod( $entity, $attributes, 2, '  ' )<br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toStringMethod(EntityInContext entity, int indentationLevel) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a C# 'ToString()' method<br>
+Generates a 'ToString' method using all the attributes of the given entity<br>
+(except non-printable attributes)<br>
+Indentation with tabs (1 tab for each indentation level)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity for which to generate the 'ToString' method<br>
+&nbsp;&nbsp;&nbsp;<b>indentationLevel</b> : initial indentation level<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$csharp.toStringMethod( $entity, 2 )<br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toStringMethod(EntityInContext entity, int indentationLevel, String indentationString) : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the code for a C# 'ToString()' method<br>
+Generates a 'ToString' method using all the attributes of the given entity<br>
+(except non-printable attributes)<br>
+Indentation with spaces (1 'indentationString' for each indentation level)<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity for which to generate the 'ToString' method<br>
+&nbsp;&nbsp;&nbsp;<b>indentationLevel</b> : initial indentation level<br>
+&nbsp;&nbsp;&nbsp;<b>indentationString</b> : string to use for each indentation (usually N spaces)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$csharp.toStringMethod( $entity, 2, '  ' )<br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

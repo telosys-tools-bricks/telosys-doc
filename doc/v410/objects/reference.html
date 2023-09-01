@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $reference</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $reference</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.1.0 ) </p>
+<hr>
+<p class="desc">
+Entity referenced by another entity  <br>
+Provides references count for 'toMany' and 'toOne' links<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code class="example">
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#foreach($reference in $entity.references )<br>
+&nbsp;&nbsp;&nbsp;  ${reference.entityName}<br>
+&nbsp;&nbsp;&nbsp;  ${reference.toOneCount}<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+Since : 3.4.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.entity : EntityInContext</B> </CODE>
+<p class="doc">
+Referenced entity<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.entityName : String</B> </CODE>
+<p class="doc">
+Name of the referenced entity<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toMany : boolean</B> </CODE>
+<p class="doc">
+true if has 'to many' reference(s) (one or more)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toManyCount : int</B> </CODE>
+<p class="doc">
+Number of 'to many' references (0..N)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toOne : boolean</B> </CODE>
+<p class="doc">
+true if has 'to one' reference(s) (one or more)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toOneCount : int</B> </CODE>
+<p class="doc">
+Number of 'to one' references (0..N)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.totalCount : int</B> </CODE>
+<p class="doc">
+Total number of references (1..N)<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

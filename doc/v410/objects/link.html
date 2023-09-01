@@ -1,0 +1,585 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $link</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $link</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.1.0 ) </p>
+<hr>
+<p class="desc">
+This object provides all information about an entity link<br>
+Each link is retrieved from the entity class <br>
+<br>
+<br>
+<b>Example : </b><br>
+<code class="example">
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#foreach( $link in $entity.links )<br>
+&nbsp;&nbsp;&nbsp;    private $link.formattedFieldType(10) $link.formattedFieldName(12);<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributes : List of '$linkAttribute' (origin-target association) </B> </CODE>
+<p class="doc">
+Returns a list of all attributes defining the link <br>
+Each element contains the owning side attribute and its corresponding reverse side attribute <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributesCount : int</B> </CODE>
+<p class="doc">
+Returns the number of attributes used to define the link<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$link.attributesCount<br>
+</code>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.cardinality : String</B> </CODE>
+<p class="doc">
+Returns the cardinality of the link <br>
+eg : 'OneToMany', 'ManyToOne', 'OneToOne', 'ManyToMany'<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.cascade : String</B> </CODE>
+<p class="doc">
+Returns the 'cascade type' ( 'ALL', 'MERGE', 'MERGE PERSIST', 'PERSIST REFRESH', 'REMOVE' )<br>
+A string containing all the selected cascade options<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.entity : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the entity to which the link belongs <br>
+<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fetch : String</B> </CODE>
+<p class="doc">
+Returns the 'fetch type' ( 'DEFAULT' or 'EAGER' or 'LAZY' )<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fieldName : String</B> </CODE>
+<p class="doc">
+Returns the field name for the link (attribute name in the entity class)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.fieldType : String</B> </CODE>
+<p class="doc">
+Returns the type of the link <br>
+eg : Person, List<Person>,  ...<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.formattedFieldName(int n) : String</B> </CODE>
+<p class="doc">
+Returns the link's name with n trailing blanks <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>n</b> : the number of blanks to be added at the end of the name<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.formattedFieldType(int n) : String</B> </CODE>
+<p class="doc">
+Returns the link's type with n trailing blanks <br>
+eg : List, List<Person>, Person, ...<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>n</b> : the number of blanks to be added at the end of the name<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getter : String</B> </CODE>
+<p class="doc">
+Returns the Java getter for the link e.g. 'getPerson' for link 'person' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasAttributeInPrimaryKey() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link has one (or more) attribute in the entity Primary Key<br>
+( one of its 'origin attributes' is the Primary Key or a part of the Primary Key )<br>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasJoinEntity() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link has a 'join entity'<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasMappedBy() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if 'mappedBy' is defined<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasTag(String tagName) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link has a tag with the given name<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to check the existence<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$link.hasTag('mytag') <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.insertable : String</B> </CODE>
+<p class="doc">
+Returns the 'insertable' flag value as string<br>
+( 'true' or 'false' or 'undefined' )<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.insertableIs(boolean booleanValue) : boolean</B> </CODE>
+<p class="doc">
+Returns true if 'insertable flag' is defined and equals the given value<br>
+The flag can be 'undefined' then neither true nor false<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>booleanValue</b> : true or false<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $link.insertableIs(true) )<br>
+&nbsp;&nbsp;&nbsp;#if ( $link.insertableIs(false) )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCardinalityManyToMany() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link has a 'ManyToMany' cardinality<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCardinalityManyToOne() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link has a 'ManyToOne' cardinality<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCardinalityOneToMany() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link has a 'OneToMany' cardinality<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCardinalityOneToOne() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link has a 'OneToOne' cardinality<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCardinalityToMany() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link cardinality is 'OneToMany' or 'ManyToMany'<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCardinalityToOne() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link cardinality is 'ManyToOne' or 'OneToOne'<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCascadeALL() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'cascade options' is 'ALL' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCascadeMERGE() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'cascade options' contains 'MERGE' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCascadePERSIST() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'cascade options' contains 'PERSIST' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCascadeREFRESH() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'cascade options' contains 'REFRESH' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCascadeREMOVE() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'cascade options' contains 'REMOVE' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isCollectionType() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link is a collection<br>
+In other words, if its cardinality is 'OneToMany' or 'ManyToMany'<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isEmbedded() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link is marked as 'embedded' <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isFetchDEFAULT() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'fetch type' is 'DEFAULT' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isFetchEAGER() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'fetch type' is 'EAGER' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isFetchLAZY() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'fetch type' is 'LAZY' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isOptionalFalse() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'optional status' is 'FALSE' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isOptionalTrue() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'optional status' is 'TRUE' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isOptionalUndefined() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the 'optional status' is 'UNDEFINED' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isOrphanRemoval() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link is marked with 'OrphanRemoval' option.<br>
+Useful for ORM like JPA, Doctrine, etc<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $link.isOrphanRemoval() )  <br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end  <br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isOwningSide() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link is the 'Owning Side' of the relationship between 2 entities<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isSelected() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link is selected (checkbox checked in the GUI)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isTransient() : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the link is marked as 'transient' <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.joinEntity : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the 'join entity' (entity object) used by the link <br>
+Throws an exception if the link doesn't have a 'join entity'<br>
+check existence before with 'hasJoinEntity()' <br>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.joinEntityName : String</B> </CODE>
+<p class="doc">
+Returns the name of the 'join entity' used by the link <br>
+Returns an empty string if the link doesn't have a 'join entity'<br>
+check existence before with 'hasJoinEntity()' <br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.mappedBy : String</B> </CODE>
+<p class="doc">
+Returns the name of the link in the 'owning side' <br>
+Typically for JPA 'mappedBy'<br>
+NB : can be null if 'mappedBy' is not defined <br>
+check existence before with 'hasMappedBy()' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.optional : String</B> </CODE>
+<p class="doc">
+Returns the 'optional status' for the link  ( 'TRUE', 'FALSE' or 'UNDEFINED' ) <br>
+Typically for JPA 'optional=true/false'<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.setter : String</B> </CODE>
+<p class="doc">
+Returns the Java setter for the link e.g. 'setPerson' for link 'person' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValue(String tagName) : String</B> </CODE>
+<p class="doc">
+Returns the value held by the given tag name<br>
+If the tag is undefined or has no value, the returned value is an empty string<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to get the value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$link.tagValue('mytag') <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValue(String tagName, String defaultValue) : String</B> </CODE>
+<p class="doc">
+Returns the value held by the given tag name<br>
+If the tag is undefined or has no value, the default value is returned<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to get the value<br>
+&nbsp;&nbsp;&nbsp;<b>defaultValue</b> : default value if no tag or no value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$link.tagValue('mytag', 'abc') <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValueAsBoolean(String tagName, boolean defaultValue) : boolean</B> </CODE>
+<p class="doc">
+Returns the boolean value held by the given tag name<br>
+If the tag is undefined or has no value, the default value is returned<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to get the value<br>
+&nbsp;&nbsp;&nbsp;<b>defaultValue</b> : default value if no tag or no value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$link.tagValueAsBoolean('mytag', false) <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.tagValueAsInt(String tagName, int defaultValue) : int</B> </CODE>
+<p class="doc">
+Returns the integer value held by the given tag name<br>
+If the tag is undefined or has no value, the default value is returned<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tagName</b> : name of the tag for which to get the value<br>
+&nbsp;&nbsp;&nbsp;<b>defaultValue</b> : default value if no tag or no value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$link.tagValueAsInt('mytag', 123) <br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.targetEntity : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the entity referenced by the link <br>
+<br>
+<br>
+<b>Since : </b>2.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.targetEntityFullType : String</B> </CODE>
+<p class="doc">
+Returns the type of the entity referenced by the link <br>
+eg : 'my.package.Book', 'my.package.Customer', ...<br>
+<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.targetEntityName : String</B> </CODE>
+<p class="doc">
+Returns the name of the entity referenced by the link <br>
+eg : 'Book', 'Customer', ...<br>
+<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.targetEntitySimpleType : String</B> </CODE>
+<p class="doc">
+Returns the type of the entity referenced by the link <br>
+eg : 'Book', 'Customer', ...<br>
+<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.updatable : String</B> </CODE>
+<p class="doc">
+Returns the 'updatable' flag value as string<br>
+( 'true' or 'false' or 'undefined' )<br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.updatableIs(boolean booleanValue) : boolean</B> </CODE>
+<p class="doc">
+Returns true if 'updatable flag' is defined and equals the given value<br>
+The flag can be 'undefined' then neither true nor false<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>booleanValue</b> : true or false<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $link.updatableIs(true) )<br>
+&nbsp;&nbsp;&nbsp;#if ( $link.updatableIs(false) )<br>
+</code>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.usesAttribute(AttributeInContext attribute) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the given attribute is an origin attribute in the link  <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute to be checked<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>
