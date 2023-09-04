@@ -12,14 +12,15 @@
 <p class="desc"> ( documentation for Telosys generator version 4.1.0 ) </p>
 <hr>
 <p class="desc">
-Foreign Key attribute<br>
-<br>
+A link uses one or more attributes to reference another entity. <br>
+A 'link attribute' is one of these attributes, <br>
+it defines the 'origin-->referenced' association at attribute level. <br>
 <br>
 <b>Example : </b><br>
 <code class="example">
 &nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;#foreach( $fkAttribute in $fk.attributes )<br>
-&nbsp;&nbsp;&nbsp;    $fkAttribute.xxx - $fkAttribute.xxx <br>
+&nbsp;&nbsp;&nbsp;#foreach( $linkAttribute in $link.attributes )<br>
+&nbsp;&nbsp;&nbsp;    $linkAttribute.originAttributeName references $linkAttribute.referencedAttributeName <br>
 &nbsp;&nbsp;&nbsp;#end<br>
 </code>
 <br>
@@ -32,6 +33,7 @@ Since : 3.4.0<br>
 <TR>
 <TD class="doc" ><CODE class="simpledesc"> <B>.linkName : String</B> </CODE>
 <p class="doc">
+Returns the link name using the attribute (field name in the entity)<br>
 </p>
 </TD>
 </TR>
