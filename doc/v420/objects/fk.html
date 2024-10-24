@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $fk</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $fk</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.2.0 ) </p>
+<hr>
+<p class="desc">
+This object provides all information about a database foreign key<br>
+Each foreign key is retrieved from the entity class <br>
+<br>
+<br>
+<b>Example : </b><br>
+<code class="example">
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#foreach( $fk in $entity.databaseForeignKeys )<br>
+&nbsp;&nbsp;&nbsp;    $fk.name <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+Since : 2.0.7<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributes : List of 'Foreign Key Attribute' objects ( List of '$fkAttribute' )</B> </CODE>
+<p class="doc">
+Returns all the attributes composing the Foreign Key<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $fkAttribute in $fk.attributes ) <br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.attributesCount : int</B> </CODE>
+<p class="doc">
+Returns the number of attributes composing the foreign key<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isComposite() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the Foreign Key is composite (has more than 1 attribute)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $fk.isComposite() )<br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.isExplicit() : boolean</B> </CODE>
+<p class="doc">
+Returns true if the Foreign Key is explicit (defined with name).<br>
+Returns false for an implicit Foreign Key.<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $fk.isExplicit() )<br>
+</code>
+<br>
+<b>Since : </b>4.1.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.name : String</B> </CODE>
+<p class="doc">
+Returns the name of the Foreign Key<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.originEntity : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the origin entity object<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.originEntityName : String</B> </CODE>
+<p class="doc">
+Returns the origin entity name<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedEntity : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the referenced entity object<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedEntityName : String</B> </CODE>
+<p class="doc">
+Returns the referenced entity name<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlName : String</B> </CODE>
+<p class="doc">
+Returns the name of the Foreign Key.<br>
+The name is converted according to SQL conventions <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlOriginColumns : List<String></B> </CODE>
+<p class="doc">
+Returns all the columns names composing the Foreign Key<br>
+Each column name is converted according the SQL conventions<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $col in $fk.sqlOriginColumns ) <br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlOriginColumnsAsString : String</B> </CODE>
+<p class="doc">
+Returns all the columns names composing the Foreign Key in a single string<br>
+The columns names are separated by a comma<br>
+Each column name is converted according the SQL conventions<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlOriginTableName : String</B> </CODE>
+<p class="doc">
+Returns the name of the table holding the foreign key<br>
+converted according to SQL conventions<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlReferencedColumns : List<String></B> </CODE>
+<p class="doc">
+Returns a list containing the names of the referenced columns.<br>
+The names are converted according to SQL conventions<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach( $col in $fk.sqlReferencedColumns ) <br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlReferencedColumnsAsString : String</B> </CODE>
+<p class="doc">
+Returns all the names of the referenced columns separated by a comma.<br>
+The names are converted according to SQL conventions<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.sqlReferencedTableName : String</B> </CODE>
+<p class="doc">
+Returns the name of the referenced table (the table referenced by the foreign key).<br>
+The name is converted according to SQL conventions<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

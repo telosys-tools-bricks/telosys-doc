@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>"Java" language specificities</title>
+ <style>
+  table { border-collapse: collapse; }
+  table, th, td { border: 1px solid black; } 
+  th, td { padding: 15px; text-align: left; }
+  th { font-family: Courier New; font-weight: bold; background-color: #A569BD ; color: white; }
+  td { font-family: Courier New; font-weight: bold; }
+  p.code { font-family: Courier New; font-weight: bold; }
+  span.code { font-family: Courier New; font-weight: bold; }
+  ul.code { font-family: Courier New; font-weight: bold; }
+ </style>
+</head>
+
+<body>
+<h1>"Java" language specificities</h1>
+<p>Telosys version : <b>4.2.0</b> </p>
+<hr/><br>
+<p>Java is the default target language <br>therefore it is <b>not necessary</b> to call  <b>'#set( $env.language = 'Java' )'</b> in the templates files.<br>
+<br>
+The information below shows the behavior of the generator when 'Java' is the current target language.</p><br>
+<hr/>
+<h2>Type conversion ( model type to language type ) </h2>
+
+The language type conversion has an impact on :<ul class="code" ><li> $attribute.type </li><li> $attribute.fullType </li><li> $attribute.simpleType </li><li> $attribute.wrapperType </li><li> $attribute.isPrimitiveType() </li></ul>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col> <col> <col> <col> <col>
+</colgroup>
+<thead>
+<tr> <th> Model type &nbsp; &nbsp;</th> <th> Default &nbsp; &nbsp; &nbsp;&nbsp;</th>  <th> @UnsignedType </th> <th> @NotNull &nbsp; &nbsp; &nbsp;</th> <th> @PrimitiveType</th> <th> @ObjectType &nbsp;&nbsp;</th></tr>
+</thead>
+<tbody>
+ <tr> <td>string</td> <td>String</td> <td>String</td> <td>String</td> <td>String</td> <td>String</td> </tr>
+ <tr> <td>byte</td> <td>Byte</td> <td>Byte</td> <td>byte</td> <td>byte</td> <td>Byte</td> </tr>
+ <tr> <td>short</td> <td>Short</td> <td>Short</td> <td>short</td> <td>short</td> <td>Short</td> </tr>
+ <tr> <td>int</td> <td>Integer</td> <td>Integer</td> <td>int</td> <td>int</td> <td>Integer</td> </tr>
+ <tr> <td>long</td> <td>Long</td> <td>Long</td> <td>long</td> <td>long</td> <td>Long</td> </tr>
+ <tr> <td>decimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> <td>BigDecimal</td> </tr>
+ <tr> <td>float</td> <td>Float</td> <td>Float</td> <td>float</td> <td>float</td> <td>Float</td> </tr>
+ <tr> <td>double</td> <td>Double</td> <td>Double</td> <td>double</td> <td>double</td> <td>Double</td> </tr>
+ <tr> <td>boolean</td> <td>Boolean</td> <td>Boolean</td> <td>boolean</td> <td>boolean</td> <td>Boolean</td> </tr>
+ <tr> <td>date</td> <td>LocalDate</td> <td>LocalDate</td> <td>LocalDate</td> <td>LocalDate</td> <td>LocalDate</td> </tr>
+ <tr> <td>time</td> <td>LocalTime</td> <td>LocalTime</td> <td>LocalTime</td> <td>LocalTime</td> <td>LocalTime</td> </tr>
+ <tr> <td>timestamp</td> <td>LocalDateTime</td> <td>LocalDateTime</td> <td>LocalDateTime</td> <td>LocalDateTime</td> <td>LocalDateTime</td> </tr>
+ <tr> <td>binary</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> <td>byte[]</td> </tr>
+</tbody>
+</table>
+<h2>Remarks</h2><p class="code" >'@UnsignedType' : <br>&nbsp;  has no effect (all numeric types are signed in Java)<br>'@NotNull' : <br>&nbsp;  switches to primitive type if possible (in order to avoid 'null' value) <br>'@PrimitiveType' : <br>&nbsp;  switches to primitive type if possible (short, int, boolean, etc) <br>'@ObjectType' : <br>&nbsp;  switches primitive types to standard wrapper types (Short, Integer, Long, Float, etc)  <br></p><br>
+<hr/>
+<h2>Literals for TRUE, FALSE and NULL </h2>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col>
+</colgroup>
+<tbody>
+ <tr> <td> TRUE  </td> <td>true</td> </tr> <tr> <td> FALSE </td> <td>false</td> </tr> <tr> <td> NULL  </td> <td>null</td> </tr></tbody>
+</table>
+<br>
+<hr/>
+<h2>Literal values </h2>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col> <col> <col>
+</colgroup>
+<thead>
+ <tr> <th> Model type </th> <th> Language type </th>  <th> Language full type </th>  <th> Language literal value example </th></tr>
+</thead>
+<tbody>
+ <tr> <td>string</td> <td>String</td> <td>java.lang.String</td> <td>"AAA"</td> </tr>
+ <tr> <td>byte</td> <td>Byte</td> <td>java.lang.Byte</td> <td>Byte.valueOf((byte)1)</td> </tr>
+ <tr> <td>byte</td> <td>byte</td> <td>byte</td> <td>(byte)1</td> </tr>
+ <tr> <td>short</td> <td>Short</td> <td>java.lang.Short</td> <td>Short.valueOf((short)1)</td> </tr>
+ <tr> <td>short</td> <td>short</td> <td>short</td> <td>(short)1</td> </tr>
+ <tr> <td>int</td> <td>Integer</td> <td>java.lang.Integer</td> <td>Integer.valueOf(100)</td> </tr>
+ <tr> <td>int</td> <td>int</td> <td>int</td> <td>100</td> </tr>
+ <tr> <td>long</td> <td>Long</td> <td>java.lang.Long</td> <td>Long.valueOf(1000L)</td> </tr>
+ <tr> <td>long</td> <td>long</td> <td>long</td> <td>1000L</td> </tr>
+ <tr> <td>decimal</td> <td>BigDecimal</td> <td>java.math.BigDecimal</td> <td>java.math.BigDecimal.valueOf(10000.77)</td> </tr>
+ <tr> <td>float</td> <td>Float</td> <td>java.lang.Float</td> <td>Float.valueOf(1000.5F)</td> </tr>
+ <tr> <td>float</td> <td>float</td> <td>float</td> <td>1000.5F</td> </tr>
+ <tr> <td>double</td> <td>Double</td> <td>java.lang.Double</td> <td>Double.valueOf(1000.66D)</td> </tr>
+ <tr> <td>double</td> <td>double</td> <td>double</td> <td>1000.66D</td> </tr>
+ <tr> <td>boolean</td> <td>Boolean</td> <td>java.lang.Boolean</td> <td>Boolean.valueOf(true)</td> </tr>
+ <tr> <td>boolean</td> <td>boolean</td> <td>boolean</td> <td>true</td> </tr>
+ <tr> <td>date</td> <td>LocalDate</td> <td>java.time.LocalDate</td> <td>java.time.LocalDate.parse("2001-06-22")</td> </tr>
+ <tr> <td>time</td> <td>LocalTime</td> <td>java.time.LocalTime</td> <td>java.time.LocalTime.parse("01:46:52")</td> </tr>
+ <tr> <td>timestamp</td> <td>LocalDateTime</td> <td>java.time.LocalDateTime</td> <td>java.time.LocalDateTime.parse("2001-05-21T01:46:52")</td> </tr>
+ <tr> <td>binary</td> <td>byte[]</td> <td>byte[]</td> <td>null</td> </tr>
+</tbody>
+</table>
+<br>
+<br>
+</body>
+</html>

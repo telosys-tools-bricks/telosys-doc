@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $jdbcFactory</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $jdbcFactory</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.2.0 ) </p>
+<hr>
+<p class="desc">
+Object providing the JDBC factory<br>
+(!) DEPRECATED : use '$factory' instead <br>
+<br>
+Since : 2.1.1<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getInstance(EntityInContext entity) : JdbcInContext</B> </CODE>
+<p class="doc">
+(!) DEPRECATED : use '$factory' instead <br>
+<br>
+Creates a new instance of the JDBC tool for the given entity<br>
+<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entity</b> : the entity to be used (to create CRUD SQL requests, mapping, etc)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbcFactory.getInstance($entity)<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.useSchema(boolean value) : void</B> </CODE>
+<p class="doc">
+Defines if the 'schema' must be used in the table name<br>
+Must be set before 'getInstance()' <br>
+Default value is FALSE<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>value</b> : true = use schema, false = do not use schema<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$jdbc.useSchema()<br>
+</code>
+<br>
+<b>Since : </b>2.1.1<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

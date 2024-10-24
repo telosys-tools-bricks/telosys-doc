@@ -7,7 +7,7 @@ public class DocVersion {
 	/**
 	 * Telosys version used for documentation generation
 	 */
-	public static final String DOC_VERSION = GeneratorVersion.GENERATOR_VERSION ;
+	public static final String DOC_VERSION = GeneratorVersion.getVersion() ;
 
 	/**
 	 * Documentation directory for the current version
