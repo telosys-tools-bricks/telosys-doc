@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>"C#" language specificities</title>
+ <style>
+  table { border-collapse: collapse; }
+  table, th, td { border: 1px solid black; } 
+  th, td { padding: 15px; text-align: left; }
+  th { font-family: Courier New; font-weight: bold; background-color: #A569BD ; color: white; }
+  td { font-family: Courier New; font-weight: bold; }
+  p.code { font-family: Courier New; font-weight: bold; }
+  span.code { font-family: Courier New; font-weight: bold; }
+  ul.code { font-family: Courier New; font-weight: bold; }
+ </style>
+</head>
+
+<body>
+<h1>"C#" language specificities</h1>
+<p>Telosys version : <b>4.3.0</b> </p>
+<hr/><br>
+<p>To define <b>C#</b> as the target language call &nbsp;<span class="code">#set( $env.language = 'C#' )</span>&nbsp; in the templates files.<br>
+<br>
+The information below shows the behavior of the generator when 'C#' is the current target language.</p><br>
+<hr/>
+<h2>Type conversion ( model type to language type ) </h2>
+
+The language type conversion has an impact on :<ul class="code" ><li> $attribute.type </li><li> $attribute.fullType </li><li> $attribute.simpleType </li><li> $attribute.wrapperType </li><li> $attribute.isPrimitiveType() </li></ul>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col> <col> <col> <col> <col>
+</colgroup>
+<thead>
+<tr> <th> Model type &nbsp; &nbsp;</th> <th> Default &nbsp; &nbsp; &nbsp;&nbsp;</th>  <th> @UnsignedType </th> <th> @NotNull &nbsp; &nbsp; &nbsp;</th> <th> @PrimitiveType</th> <th> @ObjectType &nbsp;&nbsp;</th></tr>
+</thead>
+<tbody>
+ <tr> <td>string</td> <td>string?</td> <td>string?</td> <td>string</td> <td>string?</td> <td>String?</td> </tr>
+ <tr> <td>byte</td> <td>sbyte?</td> <td>byte?</td> <td>sbyte</td> <td>sbyte?</td> <td>SByte?</td> </tr>
+ <tr> <td>short</td> <td>short?</td> <td>ushort?</td> <td>short</td> <td>short?</td> <td>Int16?</td> </tr>
+ <tr> <td>int</td> <td>int?</td> <td>uint?</td> <td>int</td> <td>int?</td> <td>Int32?</td> </tr>
+ <tr> <td>long</td> <td>long?</td> <td>ulong?</td> <td>long</td> <td>long?</td> <td>Int64?</td> </tr>
+ <tr> <td>decimal</td> <td>decimal?</td> <td>decimal?</td> <td>decimal</td> <td>decimal?</td> <td>Decimal?</td> </tr>
+ <tr> <td>float</td> <td>float?</td> <td>float?</td> <td>float</td> <td>float?</td> <td>Single?</td> </tr>
+ <tr> <td>double</td> <td>double?</td> <td>double?</td> <td>double</td> <td>double?</td> <td>Double?</td> </tr>
+ <tr> <td>boolean</td> <td>bool?</td> <td>bool?</td> <td>bool</td> <td>bool?</td> <td>Boolean?</td> </tr>
+ <tr> <td>date</td> <td>DateOnly?</td> <td>DateOnly?</td> <td>DateOnly</td> <td>DateOnly?</td> <td>DateOnly?</td> </tr>
+ <tr> <td>time</td> <td>TimeOnly?</td> <td>TimeOnly?</td> <td>TimeOnly</td> <td>TimeOnly?</td> <td>TimeOnly?</td> </tr>
+ <tr> <td>timetz</td> <td>TimeOnly?</td> <td>TimeOnly?</td> <td>TimeOnly</td> <td>TimeOnly?</td> <td>TimeOnly?</td> </tr>
+ <tr> <td>datetime</td> <td>DateTime?</td> <td>DateTime?</td> <td>DateTime</td> <td>DateTime?</td> <td>DateTime?</td> </tr>
+ <tr> <td>datetimetz</td> <td>DateTimeOffset?</td> <td>DateTimeOffset?</td> <td>DateTimeOffset</td> <td>DateTimeOffset?</td> <td>DateTimeOffset?</td> </tr>
+ <tr> <td>timestamp</td> <td>DateTime?</td> <td>DateTime?</td> <td>DateTime</td> <td>DateTime?</td> <td>DateTime?</td> </tr>
+ <tr> <td>uuid</td> <td>Guid?</td> <td>Guid?</td> <td>Guid</td> <td>Guid?</td> <td>Guid?</td> </tr>
+ <tr> <td>binary</td> <td>byte[]?</td> <td>byte[]?</td> <td>byte[]</td> <td>byte[]?</td> <td>byte[]?</td> </tr>
+</tbody>
+</table>
+<h2>Remarks</h2><p class="code" >'@UnsignedType'  has effect only for byte, short, int, long <br>'@ObjectType'  switches to .Net types ( System.Int64, System.Boolean, etc) <br><br>'@NotNull'  has no effect, use '$csharp' object for 'nullable type' with '?' <br>'@PrimitiveType'  has no effect <br></p><br>
+<hr/>
+<h2>Literals for TRUE, FALSE and NULL </h2>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col>
+</colgroup>
+<tbody>
+ <tr> <td> TRUE  </td> <td>true</td> </tr> <tr> <td> FALSE </td> <td>false</td> </tr> <tr> <td> NULL  </td> <td>null</td> </tr></tbody>
+</table>
+<br>
+<hr/>
+<h2>Literal values </h2>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col> <col> <col>
+</colgroup>
+<thead>
+ <tr> <th> Model type </th> <th> Language type </th>  <th> Language full type </th>  <th> Language literal value example </th></tr>
+</thead>
+<tbody>
+ <tr> <td>string</td> <td>string?</td> <td>string?</td> <td>"AAA"</td> </tr>
+ <tr> <td>string</td> <td>string</td> <td>string</td> <td>"AAA"</td> </tr>
+ <tr> <td>string</td> <td>String?</td> <td>System.String?</td> <td>"AAA"</td> </tr>
+ <tr> <td>byte</td> <td>sbyte?</td> <td>sbyte?</td> <td>1</td> </tr>
+ <tr> <td>byte</td> <td>byte?</td> <td>byte?</td> <td>1</td> </tr>
+ <tr> <td>byte</td> <td>sbyte</td> <td>sbyte</td> <td>1</td> </tr>
+ <tr> <td>byte</td> <td>SByte?</td> <td>System.SByte?</td> <td>1</td> </tr>
+ <tr> <td>short</td> <td>short?</td> <td>short?</td> <td>1</td> </tr>
+ <tr> <td>short</td> <td>ushort?</td> <td>ushort?</td> <td>1</td> </tr>
+ <tr> <td>short</td> <td>short</td> <td>short</td> <td>1</td> </tr>
+ <tr> <td>short</td> <td>Int16?</td> <td>System.Int16?</td> <td>1</td> </tr>
+ <tr> <td>int</td> <td>int?</td> <td>int?</td> <td>100</td> </tr>
+ <tr> <td>int</td> <td>uint?</td> <td>uint?</td> <td>100</td> </tr>
+ <tr> <td>int</td> <td>int</td> <td>int</td> <td>100</td> </tr>
+ <tr> <td>int</td> <td>Int32?</td> <td>System.Int32?</td> <td>100</td> </tr>
+ <tr> <td>long</td> <td>long?</td> <td>long?</td> <td>1000L</td> </tr>
+ <tr> <td>long</td> <td>ulong?</td> <td>ulong?</td> <td>1000L</td> </tr>
+ <tr> <td>long</td> <td>long</td> <td>long</td> <td>1000L</td> </tr>
+ <tr> <td>long</td> <td>Int64?</td> <td>System.Int64?</td> <td>1000L</td> </tr>
+ <tr> <td>decimal</td> <td>decimal?</td> <td>decimal?</td> <td>10000.77M</td> </tr>
+ <tr> <td>decimal</td> <td>decimal</td> <td>decimal</td> <td>10000.77M</td> </tr>
+ <tr> <td>decimal</td> <td>Decimal?</td> <td>System.Decimal?</td> <td>10000.77M</td> </tr>
+ <tr> <td>float</td> <td>float?</td> <td>float?</td> <td>1000.5F</td> </tr>
+ <tr> <td>float</td> <td>float</td> <td>float</td> <td>1000.5F</td> </tr>
+ <tr> <td>float</td> <td>Single?</td> <td>System.Single?</td> <td>1000.5F</td> </tr>
+ <tr> <td>double</td> <td>double?</td> <td>double?</td> <td>1000.66D</td> </tr>
+ <tr> <td>double</td> <td>double</td> <td>double</td> <td>1000.66D</td> </tr>
+ <tr> <td>double</td> <td>Double?</td> <td>System.Double?</td> <td>1000.66D</td> </tr>
+ <tr> <td>boolean</td> <td>bool?</td> <td>bool?</td> <td>true</td> </tr>
+ <tr> <td>boolean</td> <td>bool</td> <td>bool</td> <td>true</td> </tr>
+ <tr> <td>boolean</td> <td>Boolean?</td> <td>System.Boolean?</td> <td>true</td> </tr>
+ <tr> <td>date</td> <td>DateOnly?</td> <td>System.DateOnly?</td> <td>null</td> </tr>
+ <tr> <td>date</td> <td>DateOnly</td> <td>System.DateOnly</td> <td>null</td> </tr>
+ <tr> <td>time</td> <td>TimeOnly?</td> <td>System.TimeOnly?</td> <td>null</td> </tr>
+ <tr> <td>time</td> <td>TimeOnly</td> <td>System.TimeOnly</td> <td>null</td> </tr>
+ <tr> <td>timetz</td> <td>TimeOnly?</td> <td>System.TimeOnly?</td> <td>null</td> </tr>
+ <tr> <td>timetz</td> <td>TimeOnly</td> <td>System.TimeOnly</td> <td>null</td> </tr>
+ <tr> <td>datetime</td> <td>DateTime?</td> <td>System.DateTime?</td> <td>null</td> </tr>
+ <tr> <td>datetime</td> <td>DateTime</td> <td>System.DateTime</td> <td>null</td> </tr>
+ <tr> <td>datetimetz</td> <td>DateTimeOffset?</td> <td>System.DateTimeOffset?</td> <td>null</td> </tr>
+ <tr> <td>datetimetz</td> <td>DateTimeOffset</td> <td>System.DateTimeOffset</td> <td>null</td> </tr>
+ <tr> <td>timestamp</td> <td>DateTime?</td> <td>System.DateTime?</td> <td>null</td> </tr>
+ <tr> <td>timestamp</td> <td>DateTime</td> <td>System.DateTime</td> <td>null</td> </tr>
+ <tr> <td>uuid</td> <td>Guid?</td> <td>System.Guid?</td> <td>Guid.Parse("2ce536ca-e24b-4cad-a748-dff405277b4d")</td> </tr>
+ <tr> <td>uuid</td> <td>Guid</td> <td>System.Guid</td> <td>Guid.Parse("8f6a16c8-7280-4249-b5cf-ea35d2c06e3e")</td> </tr>
+ <tr> <td>binary</td> <td>byte[]?</td> <td>byte[]?</td> <td>null</td> </tr>
+ <tr> <td>binary</td> <td>byte[]</td> <td>byte[]</td> <td>null</td> </tr>
+</tbody>
+</table>
+<br>
+<br>
+</body>
+</html>

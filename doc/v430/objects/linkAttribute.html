@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $linkAttribute</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $linkAttribute</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.3.0 ) </p>
+<hr>
+<p class="desc">
+A link uses one or more attributes to reference another entity. <br>
+A 'link attribute' is one of these attributes, <br>
+it defines the 'origin-->referenced' association at attribute level. <br>
+<br>
+<b>Example : </b><br>
+<code class="example">
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#foreach( $linkAttribute in $link.attributes )<br>
+&nbsp;&nbsp;&nbsp;    $linkAttribute.originAttributeName references $linkAttribute.referencedAttributeName <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+Since : 3.4.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.linkName : String</B> </CODE>
+<p class="doc">
+Returns the link name using the attribute (field name in the entity)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.originAttribute : AttributeInContext</B> </CODE>
+<p class="doc">
+Returns the origin attribute object<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.originAttributeName : String</B> </CODE>
+<p class="doc">
+Returns the origin attribute name<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedAttribute : AttributeInContext</B> </CODE>
+<p class="doc">
+Returns the referenced attribute object<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.referencedAttributeName : String</B> </CODE>
+<p class="doc">
+Returns the referenced attribute name <br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

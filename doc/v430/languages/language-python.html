@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>"Python" language specificities</title>
+ <style>
+  table { border-collapse: collapse; }
+  table, th, td { border: 1px solid black; } 
+  th, td { padding: 15px; text-align: left; }
+  th { font-family: Courier New; font-weight: bold; background-color: #A569BD ; color: white; }
+  td { font-family: Courier New; font-weight: bold; }
+  p.code { font-family: Courier New; font-weight: bold; }
+  span.code { font-family: Courier New; font-weight: bold; }
+  ul.code { font-family: Courier New; font-weight: bold; }
+ </style>
+</head>
+
+<body>
+<h1>"Python" language specificities</h1>
+<p>Telosys version : <b>4.3.0</b> </p>
+<hr/><br>
+<p>To define <b>Python</b> as the target language call &nbsp;<span class="code">#set( $env.language = 'Python' )</span>&nbsp; in the templates files.<br>
+<br>
+The information below shows the behavior of the generator when 'Python' is the current target language.</p><br>
+<hr/>
+<h2>Type conversion ( model type to language type ) </h2>
+
+The language type conversion has an impact on :<ul class="code" ><li> $attribute.type </li><li> $attribute.fullType </li><li> $attribute.simpleType </li><li> $attribute.wrapperType </li><li> $attribute.isPrimitiveType() </li></ul>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col> <col> <col> <col> <col>
+</colgroup>
+<thead>
+<tr> <th> Model type &nbsp; &nbsp;</th> <th> Default &nbsp; &nbsp; &nbsp;&nbsp;</th>  <th> @UnsignedType </th> <th> @NotNull &nbsp; &nbsp; &nbsp;</th> <th> @PrimitiveType</th> <th> @ObjectType &nbsp;&nbsp;</th></tr>
+</thead>
+<tbody>
+ <tr> <td>string</td> <td>str</td> <td>str</td> <td>str</td> <td>str</td> <td>str</td> </tr>
+ <tr> <td>byte</td> <td>int</td> <td>int</td> <td>int</td> <td>int</td> <td>int</td> </tr>
+ <tr> <td>short</td> <td>int</td> <td>int</td> <td>int</td> <td>int</td> <td>int</td> </tr>
+ <tr> <td>int</td> <td>int</td> <td>int</td> <td>int</td> <td>int</td> <td>int</td> </tr>
+ <tr> <td>long</td> <td>int</td> <td>int</td> <td>int</td> <td>int</td> <td>int</td> </tr>
+ <tr> <td>decimal</td> <td>Decimal</td> <td>Decimal</td> <td>Decimal</td> <td>Decimal</td> <td>Decimal</td> </tr>
+ <tr> <td>float</td> <td>float</td> <td>float</td> <td>float</td> <td>float</td> <td>float</td> </tr>
+ <tr> <td>double</td> <td>float</td> <td>float</td> <td>float</td> <td>float</td> <td>float</td> </tr>
+ <tr> <td>boolean</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>bool</td> <td>bool</td> </tr>
+ <tr> <td>date</td> <td>date</td> <td>date</td> <td>date</td> <td>date</td> <td>date</td> </tr>
+ <tr> <td>time</td> <td>time</td> <td>time</td> <td>time</td> <td>time</td> <td>time</td> </tr>
+ <tr> <td>timetz</td> <td>time</td> <td>time</td> <td>time</td> <td>time</td> <td>time</td> </tr>
+ <tr> <td>datetime</td> <td>datetime</td> <td>datetime</td> <td>datetime</td> <td>datetime</td> <td>datetime</td> </tr>
+ <tr> <td>datetimetz</td> <td>datetime</td> <td>datetime</td> <td>datetime</td> <td>datetime</td> <td>datetime</td> </tr>
+ <tr> <td>timestamp</td> <td>datetime</td> <td>datetime</td> <td>datetime</td> <td>datetime</td> <td>datetime</td> </tr>
+ <tr> <td>uuid</td> <td>UUID</td> <td>UUID</td> <td>UUID</td> <td>UUID</td> <td>UUID</td> </tr>
+ <tr> <td>binary</td> <td>bytes</td> <td>bytes</td> <td>bytes</td> <td>bytes</td> <td>bytes</td> </tr>
+</tbody>
+</table>
+<h2>Remarks</h2><p class="code" >Python does not require types — it's a dynamically typed language.<br>But 'type hints' are strongly recommended (especially for modern Python)<br>So Telosys converts model neutral types to Python 'type hints'.<br></p><br>
+<hr/>
+<h2>Literals for TRUE, FALSE and NULL </h2>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col>
+</colgroup>
+<tbody>
+ <tr> <td> TRUE  </td> <td>True</td> </tr> <tr> <td> FALSE </td> <td>False</td> </tr> <tr> <td> NULL  </td> <td>None</td> </tr></tbody>
+</table>
+<br>
+<hr/>
+<h2>Literal values </h2>
+<table style=""> 
+<colgroup>
+ <col style="background-color: GhostWhite ; "> <col> <col> <col>
+</colgroup>
+<thead>
+ <tr> <th> Model type </th> <th> Language type </th>  <th> Language full type </th>  <th> Language literal value example </th></tr>
+</thead>
+<tbody>
+ <tr> <td>string</td> <td>str</td> <td>str</td> <td>"AAA"</td> </tr>
+ <tr> <td>byte</td> <td>int</td> <td>int</td> <td>1</td> </tr>
+ <tr> <td>short</td> <td>int</td> <td>int</td> <td>1</td> </tr>
+ <tr> <td>int</td> <td>int</td> <td>int</td> <td>100</td> </tr>
+ <tr> <td>long</td> <td>int</td> <td>int</td> <td>1000</td> </tr>
+ <tr> <td>decimal</td> <td>Decimal</td> <td>from decimal import Decimal</td> <td>10000.77</td> </tr>
+ <tr> <td>float</td> <td>float</td> <td>float</td> <td>1000.5</td> </tr>
+ <tr> <td>double</td> <td>float</td> <td>float</td> <td>1000.66</td> </tr>
+ <tr> <td>boolean</td> <td>bool</td> <td>bool</td> <td>True</td> </tr>
+ <tr> <td>date</td> <td>date</td> <td>from datetime import date</td> <td>date.fromisoformat("2001-06-22")</td> </tr>
+ <tr> <td>time</td> <td>time</td> <td>from datetime import time</td> <td>time.fromisoformat("01:46:52")</td> </tr>
+ <tr> <td>timetz</td> <td>time</td> <td>from datetime import time</td> <td>time.fromisoformat("01:46:52+01:00")</td> </tr>
+ <tr> <td>datetime</td> <td>datetime</td> <td>from datetime import datetime</td> <td>datetime.fromisoformat("2001-05-21T01:47:53")</td> </tr>
+ <tr> <td>datetimetz</td> <td>datetime</td> <td>from datetime import datetime</td> <td>datetime.fromisoformat("2001-05-21T01:47:53+01:00")</td> </tr>
+ <tr> <td>timestamp</td> <td>datetime</td> <td>from datetime import datetime</td> <td>datetime.fromisoformat("2001-05-21T01:47:53")</td> </tr>
+ <tr> <td>uuid</td> <td>UUID</td> <td>from uuid import UUID</td> <td>UUID("3609a539-86c7-4813-965f-992966ff6998")</td> </tr>
+ <tr> <td>binary</td> <td>bytes</td> <td>bytes</td> <td>None</td> </tr>
+</tbody>
+</table>
+<br>
+<br>
+</body>
+</html>

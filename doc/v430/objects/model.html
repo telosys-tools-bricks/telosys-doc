@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $model</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $model</h1>
+<p class="desc"> ( documentation for Telosys generator version 4.3.0 ) </p>
+<hr>
+<p class="desc">
+Object giving access to the current model <br>
+<br>
+Since : 2.0.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.allEntites : List<EntityInContext></B> </CODE>
+<p class="doc">
+<b>Deprecated.</b><br>
+<br>
+Returns a list containing all the entities defined in the model<br>
+NB : has a typo, just kept for backward compatibility<br>
+use 'allEntities' instead<br>
+(!) DEPRECATED : do not use (will be removed)<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.allEntities : List<EntityInContext></B> </CODE>
+<p class="doc">
+Returns a list containing all the entities defined in the model<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach ( $entity in $model.allEntities )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseId : String</B> </CODE>
+<p class="doc">
+Returns the id of the database used to generate the model<br>
+(since ver 4 the id is a string) <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseName : String</B> </CODE>
+<p class="doc">
+Returns the name of the database used to generate the model<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.databaseType : String</B> </CODE>
+<p class="doc">
+Returns the type of the database used to generate the model<br>
+<br>
+<b>Since : </b>3.4.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.description : String</B> </CODE>
+<p class="doc">
+Returns the model description <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.entities : List<EntityInContext></B> </CODE>
+<p class="doc">
+Returns a list containing all the entities defined in the model<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#foreach ( $entity in $model.entities )<br>
+&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+<br>
+<b>Since : </b>4.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.folderName : String</B> </CODE>
+<p class="doc">
+<b>Deprecated.</b><br>
+<br>
+Returns the name of the folder where entities are located <br>
+<br>
+(!) DEPRECATED since ver 4.3.0 : useless, always returns the model name<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getEntityByClassName(String name) : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the entity identified by the given name<br>
+or throws an exception if not found<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>name</b> : the name identifying the entity in the model (eg 'Car', 'Student', etc)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $model.hasEntityWithClassName($entityName) )<br>
+&nbsp;&nbsp;&nbsp;#set( $entity = $model.getEntityByClassName($entityName) )<br>
+&nbsp;&nbsp;&nbsp;#else<br>
+&nbsp;&nbsp;&nbsp;#error("No entity '$entityName' in model")<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getEntityByTableName(String tableName) : EntityInContext</B> </CODE>
+<p class="doc">
+Returns the entity identified by the given database table name<br>
+or throws an exception if not found<br>
+The table name is supposed to be unique in the model<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tableName</b> : the name of the table associated with the searched entity (not case sensitive)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $model.hasEntityWithTableName($tableName) )<br>
+&nbsp;&nbsp;&nbsp;#set( $entity = $model.getEntityByTableName($tableName) )<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasEntityWithClassName(String name) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the model contains an entity identified by the given class name<br>
+else FALSE<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>name</b> : the class name identifying the entity<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $model.hasEntityWithClassName($entityName) )<br>
+&nbsp;&nbsp;&nbsp;#set( $entity = $model.getEntityByClassName($entityName) )<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.hasEntityWithTableName(String tableName) : boolean</B> </CODE>
+<p class="doc">
+Returns TRUE if the model contains an entity identified by the given table name<br>
+else FALSE<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>tableName</b> : the name of the table associated with the searched entity (not case sensitive)<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $model.hasEntityWithTableName($tableName) )<br>
+&nbsp;&nbsp;&nbsp;#set( $entity = $model.getEntityByTableName($tableName) )<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+&nbsp;&nbsp;&nbsp;<br>
+</code>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.name : String</B> </CODE>
+<p class="doc">
+Returns the model name as defined by file/folder in the project directory <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.numberOfEntities : int</B> </CODE>
+<p class="doc">
+Returns the number of entities defined in the model<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.title : String</B> </CODE>
+<p class="doc">
+Returns the model title <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.type : String</B> </CODE>
+<p class="doc">
+<b>Deprecated.</b><br>
+<br>
+Returns the Telosys model type <br>
+<br>
+(!) DEPRECATED since ver 4.3.0 : useless, always returns 'DSL-MODEL' <br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.version : String</B> </CODE>
+<p class="doc">
+Returns the Telosys model version <br>
+<br>
+<b>Since : </b>3.3.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>

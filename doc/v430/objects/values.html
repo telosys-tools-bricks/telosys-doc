@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <title> $values</title>
+ <style type="text/css">
+ h1 {   font-size:28px;   font-family: verdana; }  p.otherNames {    font-size:14px;    font-family: verdana; }  p.desc {    font-size:12px;    font-family: verdana;  }  p.doc {    margin-left:2cm;  }  td.doc {    font-size:12px;    font-family: verdana;    vertical-align:text-top;    padding-top: 6px;    padding-bottom: 12px;  } tr.title {   font-family: verdana;   font-size:20px;   font-weight:bold;   background-color: #CCCCFF ; } code.example {   font-size:14px; } code.simpledesc {   font-size:15px;   color: #000099; }
+ </style>
+</head>
+<body>
+<h1> $values</h1>
+<p class="otherNames">Other name(s) : <b>$keyValues</b>,&nbsp;<b>$dataValues</b></p>
+<p class="desc"> ( documentation for Telosys generator version 4.3.0 ) </p>
+<hr>
+<p class="desc">
+This object provides a set literal values<br>
+Each literal value is associated with an attribute's name and can be assigned to this attribute<br>
+<br>
+<br>
+<b>Example : </b><br>
+<code class="example">
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#set( $values = $fn.buildValues($entity.attributes, 1) )<br>
+&nbsp;&nbsp;&nbsp;count = $values.size()<br>
+&nbsp;&nbsp;&nbsp;#foreach( $attribute in $entity.attributes )<br>
+&nbsp;&nbsp;&nbsp;  Value for attribute "${attribute.name}" = $values.getValue($attribute.name) <br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+Since : 3.0.0<br>
+</p>
+<table width="100%" border="1" cellspacing="0">
+<TR class="title">
+  <TD>Attributes and methods</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.allValues : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the literal values separated by a comma. <br>
+e.g. for Java : ' "AAAA", (short)10, true '  <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp; $values.allValues  <br>
+&nbsp;&nbsp;&nbsp; or  <br>
+&nbsp;&nbsp;&nbsp; $values.getAllValues()  <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.comparisonStatement(String entityVariableName, AttributeInContext attribute) : String</B> </CODE>
+<p class="doc">
+Returns a comparison statement between the attribute's current value and its associated literal value <br>
+Example of strings returned for Java language :  <br>
+  book.getId() == 100 <br>
+  book.getFirstName().equals("abcd") <br>
+ <br>
+Usage example in Velocity template :<br>
+  $values.comparisonStatement("book", $attribute)   <br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>entityVariableName</b> : the variable name used before the 'getter'<br>
+&nbsp;&nbsp;&nbsp;<b>attribute</b> : the attribute instance (used to retrieve the 'getter' and the 'literal value')<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.contains(String searchedValue) : boolean</B> </CODE>
+<p class="doc">
+Returns true if the values contains the given value<br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>searchedValue</b> : the value (string) to find<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;#if ( $values.contains('null') )<br>
+&nbsp;&nbsp;&nbsp;import static org.junit.jupiter.api.Assertions.assertNull;<br>
+&nbsp;&nbsp;&nbsp;#end<br>
+</code>
+<br>
+<b>Since : </b>4.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getValue(String attributeName) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the literal value for the given attribute's name <br>
+e.g. for Java : '"AAAA"' or '(short)10' or 'true' etc...  <br>
+ <br>
+Usage example in Velocity template :<br>
+ $values.getValue($attribute.name) <br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributeName</b> : the name of the attribute<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.getValues(List attributes, String separator) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the literal values for the given list of attributes. <br>
+e.g. for Java : ' "AAAA", 10, true '  <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the resulting string<br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to put between each value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.getValues($entity.keyAttributes, ", " ) <br>
+</code>
+<br>
+<b>Since : </b>4.3.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.size() : int</B> </CODE>
+<p class="doc">
+Returns the size of the values list (the number of values)<br>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toFormattedJSON() : String</B> </CODE>
+<p class="doc">
+Returns a JSON string containing all the attributes with their literal values. <br>
+The resulting JSON is formatted (one line for each attribute) <br>
+ <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toFormattedJSON() <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toFormattedJSON(List attributes) : String</B> </CODE>
+<p class="doc">
+Returns a JSON string containing the given attributes with their literal values. <br>
+The resulting JSON is formatted (one line for each attribute) <br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toFormattedJSON( $entity.keyAttributes ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON() : String</B> </CODE>
+<p class="doc">
+Returns a JSON string containing all the attributes with their literal values. <br>
+e.g. : '{"id":1, "name":"AAAA"} <br>
+ <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON() <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List attributes) : String</B> </CODE>
+<p class="doc">
+Returns a JSON string containing the given attributes with their literal values. <br>
+e.g. : '{"id":1, "name":"AAAA"} <br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.keyAttributes ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List attributes, String separator) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the literal values in JSON format for the given list of attributes. <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put before each value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.nonKeyAttributes, "${NEWLINE}${TAB}" ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(List attributes, String separator1, String separator2) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the literal values in JSON format for the given list of attributes. <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the JSON string<br>
+&nbsp;&nbsp;&nbsp;<b>separator1</b> : the separator to be put before each value<br>
+&nbsp;&nbsp;&nbsp;<b>separator2</b> : the separator to be put before the ending '}'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( $entity.nonKeyAttributes, "${NEWLINE}${TAB}", "${NEWLINE}" ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(String separator) : String</B> </CODE>
+<p class="doc">
+Returns a string containing ALL the literal values in JSON format. <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator</b> : the separator to be put before each value<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( "${NEWLINE}${TAB}" ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toJSON(String separator1, String separator2) : String</B> </CODE>
+<p class="doc">
+Returns a string containing ALL the literal values in JSON format. <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>separator1</b> : the separator to be put before each value<br>
+&nbsp;&nbsp;&nbsp;<b>separator2</b> : the separator to be put before the ending '}'<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toJSON( "${NEWLINE}${TAB}", "${NEWLINE}" ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toURI() : String</B> </CODE>
+<p class="doc">
+Returns a string containing all the values in URI format (with '/' separator) <br>
+e.g. : '/12/ABC<br>
+ <br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toURI() <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+<TR>
+<TD class="doc" ><CODE class="simpledesc"> <B>.toURI(List attributes) : String</B> </CODE>
+<p class="doc">
+Returns a string containing the given attributes values in URI format (with '/' separator) <br>
+e.g. : '/12/ABC<br>
+ <br>
+<br>
+<b>Parameters : </b><br>
+&nbsp;&nbsp;&nbsp;<b>attributes</b> : list of attributes to be put in the URI string<br>
+<br>
+<b>Example : </b><br>
+<code>
+&nbsp;&nbsp;&nbsp;$values.toURI( $entity.keyAttributes ) <br>
+</code>
+<br>
+<b>Since : </b>3.0.0<br>
+</p>
+</TD>
+</TR>
+</table>
+</body>
+</html>
